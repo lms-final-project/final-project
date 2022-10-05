@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ==== Dashboard Routes ====
+Route::middleware(['auth'])->group( function() {
+    Route::get('/dashboard', function () {
+        return view('dashboard.layouts.app');
+    })->name('dashboard');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
