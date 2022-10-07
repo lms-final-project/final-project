@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>LMS-Signin</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="">
+	<meta name="author" content="Phoenixcoded" />
+	<!-- Favicon icon -->
+	<link rel="icon" href="{{ asset('dashboard/assets/images/favicon.ico')}}" type="image/x-icon">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="{{ asset('dashboard/assets/css/style.css')}}">
+</head>
+
+
+<!-- [ auth-signup ] start -->
+<div class="auth-wrapper">
+	<div class="auth-content text-center">
+		<img src="assets/images/logo.png" alt="" class="img-fluid mb-4">
+		<div class="card borderless">
+			<div class="row align-items-center text-center">
+				<div class="col-md-12">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <div class="card-body">
+                            <h4 class="f-w-400">Sign up</h4>
+                            <hr>
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" name="name" id="Username" placeholder="Username">
+                                <x-input_error :messages="$errors->get('name')" class="mt-2" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" id="Email" name="email" placeholder="Email address">
+                                <x-input_error :messages="$errors->get('email')" class="mt-2" />
+                            </div>
+                            <div class="form-group mb-4">
+                                <input type="password" class="form-control" id="Password" name="password" placeholder="Password">
+                            </div>
+                            <div class="form-group mb-4">
+                                <input type="password" class="form-control" id="Password" name="password_confirmation" placeholder="Password Confirmation">
+                                <x-input_error :messages="$errors->get('password')" class="mt-2" />
+                                <x-input_error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                            </div>
+                            <button class="btn btn-primary btn-block mb-4">Sign up</button>
+                            <hr>
+                            <p class="mb-2">Already have an account? <a href="{{ route('login') }}" class="f-w-400">Signin</a></p>
+                        </div>
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [ auth-signup ] end -->
+    <!-- Required Js -->
+    <script src="{{ asset('dashboard/assets/js/vendor-all.min.js')}}"></script>
+    <script src="{{ asset('dashboard/assets/js/plugins/bootstrap.min.js')}}"></script>
+
+    <script src="{{ asset('dashboard/assets/js/pcoded.min.js')}}"></script>
+</body>
+
+</html>
+

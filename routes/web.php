@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,15 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 // ==== Dashboard Routes ====
-Route::middleware(['auth'])->group( function() {
+Route::middleware(['checkAuth:admin' , 'auth'])->group( function() {
     Route::get('/dashboard', function () {
         return view('dashboard.layouts.app');
     })->name('dashboard');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+// ==== Frontend Routes ====
+    Route::controller(HomeController::class)->group( function(){
+        Route::get('/', 'index');
+    } );
 
 
 require __DIR__.'/auth.php';
