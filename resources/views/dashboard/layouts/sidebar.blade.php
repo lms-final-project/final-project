@@ -41,8 +41,16 @@
                         <span class="pcoded-mtext">Page layouts</span>
                     </a>
                     <ul class="pcoded-submenu">
-                        <li><a href="#">Vertical</a></li>
+                        <li ><a href="#">Vertical</a></li>
                         <li><a href="#">Horizontal</a></li>
+                        <li @class(['nav-link' , 'active' =>$active_button == 'category'])>
+                            <a href="{{ route('Category.index') }}" >
+                               
+                                <p>
+                                    Course Categories
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +15,8 @@
     <link rel="icon" href="{{ asset('dashboard/assets/images/favicon.ico') }}" type="image/x-icon">
     <!-- vendor css -->
     <link rel="stylesheet" href="{{ asset('dashboard/assets/css/style.css') }}">
+   
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor/remixicon.css')}}">
     @stack('styles')
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
@@ -43,7 +46,7 @@
                 <!-- table card-1 start -->
                 <div class="col-12">
                     <div class="container">
-                        <h1>Welcome to our dashboard</h1>
+                       
                         @yield('content')
                     </div>
                 </div>
@@ -53,6 +56,7 @@
     </div>
 
     <!-- Required Js -->
+
     <script src="{{ asset('dashboard/assets/js/vendor-all.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/plugins/bootstrap.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/pcoded.min.js') }}"></script>

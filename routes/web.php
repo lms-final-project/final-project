@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Dashboard\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +20,9 @@ use Illuminate\Support\Facades\Route;
 // ==== Dashboard Routes ====
 Route::middleware(['checkAuth:admin' , 'auth'])->group( function() {
     Route::get('/dashboard', function () {
-        return view('dashboard.layouts.app');
+        return view('dashboard.Home');
     })->name('dashboard');
+    Route::resource('dashboard/Category' , CategoryController::class);
 });
 
 
