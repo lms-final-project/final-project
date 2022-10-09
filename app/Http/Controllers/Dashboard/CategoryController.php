@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Icon;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -17,8 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $icons = Icon::all();
         $categories = Category::all();
-        return view('dashboard.categories.index', compact('categories'));
+        return view('dashboard.categories.index', compact('categories', 'icons'));
     }
 
     /**
@@ -28,8 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $icons = Icon::all();
-        return view('dashboard.categories.create' , compact('icons'));
+        //
     }
 
     /**
@@ -38,15 +37,14 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(CategoryRequest $request)
     {
         Category::create([
             'name'          => $request->name,
-            'description'   => $request->description,
             'icon_id'       => $request->icon_id,
         ]);
 
-        return redirect()->route('Category.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -81,17 +79,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $category = Category::findOrFail($id);
 
-
         $category->update([
             'name'          => $request->name,
-            'description'   => $request->description,
-            'icon_id'       => $request->icon_id,]);
+            'icon_id'       => $request->icon_id
+        ]);
 
-            return redirect()->route('Category.index');
+        return redirect()->route('category.index');
     }
 
 
@@ -99,6 +96,6 @@ class CategoryController extends Controller
     {
         $category=Category::findorfail($id);
         $category->delete();
-        return redirect()->route('Category.index');
+        return redirect()->route('category.index');
     }
 }

@@ -15,10 +15,10 @@
     <link rel="icon" href="{{ asset('dashboard/assets/images/favicon.ico') }}" type="image/x-icon">
     <!-- vendor css -->
     <link rel="stylesheet" href="{{ asset('dashboard/assets/css/style.css') }}">
-   
+
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor/remixicon.css')}}">
     @stack('styles')
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/js/app.js'])
 </head>
 
 <body class="">
@@ -46,7 +46,7 @@
                 <!-- table card-1 start -->
                 <div class="col-12">
                     <div class="container">
-                       
+
                         @yield('content')
                     </div>
                 </div>

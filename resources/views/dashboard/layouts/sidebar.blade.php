@@ -36,19 +36,14 @@
                     </a>
                 </li>
                 <li class="nav-item pcoded-hasmenu">
-                    <a href="#!" class="nav-link ">
+                    <a href="#!" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
-                        <span class="pcoded-mtext">Page layouts</span>
+                        <span class="pcoded-mtext">Courses</span>
                     </a>
                     <ul class="pcoded-submenu">
-                        <li ><a href="#">Vertical</a></li>
-                        <li><a href="#">Horizontal</a></li>
-                        <li @class(['nav-link' , 'active' =>$active_button == 'category'])>
-                            <a href="{{ route('Category.index') }}" >
-                               
-                                <p>
-                                    Course Categories
-                                </p>
+                        <li @class(['active' =>$active_button == 'category'])>
+                            <a href="{{ route('category.index') }}" >
+                                Categories
                             </a>
                         </li>
                     </ul>

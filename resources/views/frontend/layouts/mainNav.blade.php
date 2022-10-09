@@ -127,17 +127,17 @@
                         <button class="white-box-icon search-trigger header-search"><i class="ri-search-line"></i></button>
                     </div>
                     @auth
-                        <div class="quote-icon quote-user d-none d-md-block ml--15 ml_sm--5">
+                    <form action="{{ route('logout') }}" method="POST">
+                        <div class="quote-icon quote-user d-none d-md-block ml--15 ml_sm--5" id="user-btn">
                             <a class="edu-btn btn-medium left-icon header-button" >
-                                <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <i class="ri-user-line"></i>
-                                    <button>
+                                    <span>
                                         {{ auth()->user()->name }}
-                                    </button>
-                                </form>
-                            </a>
-                        </div>
+                                    </span>
+                                </a>
+                            </div>
+                        </form>
                     @endauth
                     @guest
                         <div class="quote-icon quote-user d-none d-md-block ml--15 ml_sm--5">

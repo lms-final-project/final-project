@@ -22,15 +22,15 @@ Route::middleware(['checkAuth:admin' , 'auth'])->group( function() {
     Route::get('/dashboard', function () {
         return view('dashboard.Home');
     })->name('dashboard');
-    Route::resource('dashboard/Category' , CategoryController::class);
+    Route::resource('dashboard/category' , CategoryController::class);
 });
 
 
 
 // ==== Frontend Routes ====
-    Route::controller(HomeController::class)->group( function(){
-        Route::get('/', 'index');
-    } );
+Route::middleware('checkAdmin:instructor|student')->group(function(){
+        Route::get('/', [ HomeController::class , 'index' ]);
+});
 
 
 require __DIR__.'/auth.php';

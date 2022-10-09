@@ -29,6 +29,11 @@
     </div>
     <!-- JS ============================================ -->
     @include('frontend.layouts.js')
+    <script>
+        $('#user-btn').on('click' , ()=> {
+            $('#user-btn').closest('form').submit();
+        })
+    </script>
     @stack('scripts')
 </body>
 

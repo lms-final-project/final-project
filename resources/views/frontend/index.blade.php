@@ -68,24 +68,23 @@
 
                     <!-- Start Service Grid  -->
                     @forelse ($categories as $category)
-
-
-                    <div class="col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                        <div class="service-card service-card-5">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i class="{{$category->icon->class}}"></i>
-                                </div>
-                                <div class="content">
-                                    <h6 class="title"><a href="#">{{$category->name}}</a></h6>
-                                    <h6 class="discription"><a href="#">{{$category->description}}</a></h6>
-                                    <p class="numcourse">39 Course</p>
+                        <div class="col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="service-card service-card-5">
+                                <div class="inner">
+                                    <div class="icon">
+                                        <i class="{{$category->icon->class}}""></i>
+                                    </div>
+                                    <div class="content">
+                                        <h6 class="title"><a href="#">{{$category->name}}</a></h6>
+                                        <p class="description">39 Course</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @empty
-
+                        <div class="text-center">
+                            <p>no categories yet</p>
+                        </div>
                     @endforelse
                     <!-- End Service Grid  -->
 

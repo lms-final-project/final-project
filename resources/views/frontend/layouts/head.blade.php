@@ -20,8 +20,13 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor/animation.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor/jqueru-ui-min.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css')}}">
+    <style>
+        #user-btn:hover{
+            cursor: pointer;
+        }
+    </style>
 
     @stack('styles')
 
-    @vite(['resources/css/app.css', 'resources/js/app.js',])
+    @vite([ 'resources/js/app.js',])
 </head>
