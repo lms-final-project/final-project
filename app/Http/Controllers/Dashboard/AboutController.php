@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Icon;
-use App\Models\Category;
+use App\Models\About;
+use Illuminate\Http\Request;
+use App\Http\Requests\AboutRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
 
-class CategoryController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $icons = Icon::all();
-        $categories = Category::all();
-        return view('dashboard.categories.index', compact('categories', 'icons'));
+    {    $abouts = About::all();
+        return view('dashboard.About.index', compact('abouts'));
+
     }
 
     /**
@@ -37,14 +36,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(AboutRequest $request)
     {
-        Category::create([
-            'name'          => $request->name,
-            'icon_id'       => $request->icon_id,
+       
+        About::create([
+            'question'          => $request->question,
+            'answer'       => $request->answer,
         ]);
 
-        return redirect()->route('category.index');
+        return redirect()->route('about.index');
     }
 
     /**
@@ -66,7 +66,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-     
+        //
     }
 
     /**
@@ -76,23 +76,28 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(AboutRequest $request, $id)
     {
-        $category = Category::findOrFail($id);
+        $about =About::findOrFail($id);
 
-        $category->update([
-            'name'          => $request->name,
-            'icon_id'       => $request->icon_id
+        $about->update([
+            'question'          => $request->question,
+            'answer'       => $request->answer
         ]);
 
-        return redirect()->route('category.index');
+        return redirect()->route('about.index');
     }
 
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        $category=Category::findorfail($id);
-        $category->delete();
-        return redirect()->route('category.index');
+        $about=About::findorfail($id);
+        $about->delete();
+        return redirect()->route('about.index');
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Dashboard\AboutController;
 use App\Http\Controllers\Dashboard\CategoryController;
 
 /*
@@ -23,6 +24,7 @@ Route::middleware(['checkAuth:admin' , 'auth'])->group( function() {
         return view('dashboard.Home');
     })->name('dashboard');
     Route::resource('dashboard/category' , CategoryController::class);
+    Route::resource('dashboard/about' , AboutController::class);
 });
 
 

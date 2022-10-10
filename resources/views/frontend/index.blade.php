@@ -72,7 +72,7 @@
                             <div class="service-card service-card-5">
                                 <div class="inner">
                                     <div class="icon">
-                                        <i class="{{$category->icon->class}}""></i>
+                                        <i class="{{$category->icon->class}}"></i>
                                     </div>
                                     <div class="content">
                                         <h6 class="title"><a href="#">{{$category->name}}</a></h6>
@@ -598,68 +598,28 @@
                             </div>
 
                             <div class="edu-accordion edu-accordion-01" id="accordionExample1" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                @forelse ($about  as $about)
+
+
                                 <div class="edu-accordion-item">
                                     <div class="edu-accordion-header" id="headingOne">
                                         <button class="edu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            What does it take become an author?
+{{$about->question}}
                                         </button>
                                     </div>
                                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample1">
                                         <div class="edu-accordion-body">
-                                            Learning management system, combines a wide range of features to present
-                                            a class setting without having the students come into a physical classroom. It all depends on the WordPress LMS plugin you go with, but
-                                            in general.
+{{$about->answer}}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="edu-accordion-item">
-                                    <div class="edu-accordion-header" id="headingTwo">
-                                        <button class="edu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            How to Change my Password easily?
-                                        </button>
-                                    </div>
-                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample1">
-                                        <div class="edu-accordion-body">
-                                            Learning management system, combines a wide range of features to present
-                                            a class setting without having the students come into a physical
-                                            classroom. It all depends on the WordPress LMS plugin you go with, but
-                                            in general.
-                                        </div>
-                                    </div>
-                                </div>
+                                @empty
 
-                                <div class="edu-accordion-item">
-                                    <div class="edu-accordion-header" id="headingThree">
-                                        <button class="edu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            How to Change my Plan using PayPal?
-                                        </button>
-                                    </div>
-                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample1">
-                                        <div class="edu-accordion-body">
-                                            Learning management system, combines a wide range of features to present
-                                            a class setting without having the students come into a physical
-                                            classroom. It all depends on the WordPress LMS plugin you go with, but
-                                            in general.
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforelse
 
-                                <div class="edu-accordion-item">
-                                    <div class="edu-accordion-header" id="headingFour">
-                                        <button class="edu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                            How long it take to create a video course?
-                                        </button>
-                                    </div>
-                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample1">
-                                        <div class="edu-accordion-body">
-                                            Learning management system, combines a wide range of features to present
-                                            a class setting without having the students come into a physical
-                                            classroom. It all depends on the WordPress LMS plugin you go with, but
-                                            in general.
-                                        </div>
-                                    </div>
-                                </div>
+
+
                             </div>
                         </div>
                     </div>
