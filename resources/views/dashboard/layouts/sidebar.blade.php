@@ -49,7 +49,7 @@
                     </ul>
                 </li>
                 <li class="nav-item pcoded-hasmenu">
-                    <a href="{{route('about.index')}}" class="nav-link">
+                    <a href="{{route('about.index')}}" @class(['active' =>$active_button == 'about'])>
                         <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
                         <span class="pcoded-mtext">About</span>
                     </a>

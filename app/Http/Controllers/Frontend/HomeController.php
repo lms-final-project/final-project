@@ -12,11 +12,10 @@ class HomeController extends Controller
 {
     public function index(){
         $categories=Category::all();
-      //  $about=About::all();
-       $about = DB::table('abouts')->limit(4)->get();
-
-
-
+      $About = About::orderBy('created_at', 'DESC')->get();
+      //dd($About);
+      $about = $About->skip(0)->take(4)->all();
+     // dd($about);
         return view('frontend.index',compact('categories','about'));
     }
 }

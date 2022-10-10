@@ -46,7 +46,7 @@
         </div>
     </div>
     <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModalLive">
-        Add About
+        Add Question
     </button>
 
     <div class="card">
