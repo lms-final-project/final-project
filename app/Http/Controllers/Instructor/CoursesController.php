@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Instructor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseTopic;
 use App\Models\CourseType;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class CoursesController extends Controller
             $path = $file->store('instructors/courses' , 'public');
         }
 
-        Course::create([
+        $course = Course::create([
             'image'                 => $path ?? null,
             'title'                 => $request->title,
             'description'           => $request->description,
@@ -55,6 +56,17 @@ class CoursesController extends Controller
             'course_type_id'        => $request->course_type_id,
             'instructor_id'         => auth()->user()->id
         ]);
+
+        // todo
+        // array of topics
+        // foreach on topics
+
+        // foreach( $request->topics as $topic ){
+        //     CourseTopic::create([
+                    // 'topic' => $topic['name']
+                    // 'course_id' => $course->id
+        //     ])
+        // }
 
         return redirect()->back();
     }
