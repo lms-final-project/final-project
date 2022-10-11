@@ -14,19 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('course_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->foreignId('role_id')->constrained('roles');
-            // todo :: add socail links/nullable
-            $table->rememberToken();
-            $table->timestamps();
         });
+
         Artisan::call('db:seed', [
-            '--class' => 'UserSeeder',
+            '--class' => 'CourseTypeSeeder',
         ]);
     }
 
@@ -37,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('course_types');
     }
 };

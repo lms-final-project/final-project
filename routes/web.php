@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Dashboard\AboutController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Instructor\CoursesController;
+use App\Http\Controllers\Instructor\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +33,12 @@ Route::middleware(['checkAuth:admin' , 'auth'])->group( function() {
 
 // ==== Frontend Routes ====
 Route::middleware('checkAdmin:instructor|student')->group(function(){
-        Route::get('/', [ HomeController::class , 'index' ]);
+        Route::get('/', [ HomeController::class , 'index' ])->name('home');
+
+        // Instructor Routes
+        Route::get('instructor/panel' , [DashboardController::class , 'index'])->name('instructor.panel');
+        Route::resource('instructor/courses'  , CoursesController::class);
+
 });
 
 

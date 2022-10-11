@@ -14,9 +14,10 @@
         <!-- End Search Popup  -->
 
         @yield('index')
+        @yield('breadcrump')
+        @yield('content')
     </div>
 
-    @yield('content')
 
     <!-- Start Footer Area  -->
     @include('frontend.layouts.footer')
