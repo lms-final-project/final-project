@@ -1,56 +1,12 @@
-@extends('frontend.instructor.panel.layouts.index')
+@extends('frontend.instructor.panel.layouts.index', ['active_btn' => 'create_course'])
 
-@push('styles')
-    <style>
-        .preview-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 15px;
-            border: 1px solid #e9e9e9;
-            box-shadow: 0px 0px 4px #e9e9e975;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            overflow: hidden;
-        }
-        .preview-img .icon {
-            font-size: 50px;
-            color: #c2b9b9;
-        }
-        .uploaded-image{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        input, textarea {
-            outline: none !important;
-            box-shadow: none !important;
-        }
-        textarea.form-control, select {
-            font-size: 16px !important;
-            border-radius: 15px;
-        }
-        textarea.form-control:focus{
-            border-color: var(--color-primary) !important;
-        }
-        select , option {
-            font-size: 16px !important;
-        }
-        select {
-            height: 30px !important;
-        }
-    </style>
-@endpush
 @section('instructor_panel')
     <form action="{{ route('courses.store') }}" enctype="multipart/form-data" method="POST">
         @csrf
         <div class="row">
             <h5 class="text-center">Add New Course</h5>
             <div class="col-12">
-                <div class="input-group ">
+                <div>
                     <label for="image" class="preview-img">
                         <i class="ri-image-line"></i>
                         <p>upload image</p>
@@ -112,19 +68,7 @@
     </form>
 @endsection
 
-
-
-
 @push('scripts')
-    <script>
-        $('#image').on('change', function(e) {
-            const file = e.target.files[0];
-            const url = URL.createObjectURL(file);
-            const img = `<img src="${url} " class="img-fluid uploaded-image" />`;
-            $('.preview-img').html( img );
-        });
-    </script>
-
     <script>
         $('#is-free').on('change' , ()=> {
             if($('#is-free').is(':checked')){

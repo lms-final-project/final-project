@@ -1,4 +1,4 @@
-@extends('frontend.instructor.panel.layouts.index')
+@extends('frontend.instructor.panel.layouts.index' ,  ['active_btn' => 'dashboard'])
 
 
 @section('instructor_panel')
