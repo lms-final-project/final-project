@@ -55,7 +55,14 @@
                     @endforeach
                 </select>
             </div>
-
+            <div class="mb-3">
+                <select class="form-select form-select-sm" name="course_type_id"   aria-label="Default select example">
+                    <option selected disabled>Open this to select course category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="text-center py-4">
                 <div class="button-group">
                     <button class="edu-btn btn-dark btn-sm">

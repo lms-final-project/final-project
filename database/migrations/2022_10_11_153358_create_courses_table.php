@@ -24,6 +24,7 @@ return new class extends Migration
             $table->boolean('has_certificate')->default(false);
             $table->string('certification')->nullable();
             $table->foreignId('course_type_id')->constrained('course_types');
+            $table->foreignId('categories_id')->constrained('categories');
             $table->foreignId('instructor_id')->constrained('users');
             // todo : add category_id
             $table->timestamps();

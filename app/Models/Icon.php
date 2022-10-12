@@ -12,4 +12,7 @@ class Icon extends Model
         'name',
         'class',
     ];
+    public function category(){
+        return $this->hasOne(Category::class);
+    }
 }

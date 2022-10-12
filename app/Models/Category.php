@@ -14,6 +14,6 @@ class Category extends Model
 'icon_id'
     ];
     public function icon(){
-        return $this->belongsTo(Icon::class);
+     return   $this->belongsTo(Icon::class);
     }
 }

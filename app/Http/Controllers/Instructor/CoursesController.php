@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Instructor;
 
-use App\Http\Controllers\Controller;
 use App\Models\Course;
-use App\Models\CourseTopic;
+use App\Models\Category;
 use App\Models\CourseType;
+use App\Models\CourseTopic;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CoursesController extends Controller
 {
@@ -28,7 +29,8 @@ class CoursesController extends Controller
     public function create()
     {
         $types = CourseType::all();
-        return view('frontend.instructor.panel.courses.create', compact('types'));
+        $categories=Category::all();
+        return view('frontend.instructor.panel.courses.create', compact('types','categories'));
     }
 
     /**
