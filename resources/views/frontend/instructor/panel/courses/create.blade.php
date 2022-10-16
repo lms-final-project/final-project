@@ -56,6 +56,19 @@
                 </select>
             </div>
 
+            <div class="mb-3">
+                <div class="d-flex py-2">
+                    <label for="topic" class="form-label">Topics</label>
+                    <button type="button" class="btn btn-sm btn-success ms-5" onclick="addTopic()">add new topic</button>
+                </div>
+                <div class="topics-section">
+                    <div class="d-flex mb-2">
+                        <input type="text" class="form-control" id="topic" name="topics[]" placeholder="course topic" value="{{ $i }}">
+                        <button type="button" class="btn btn-danger rounded-full ms-2 delete-btn" >X</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="text-center py-4">
                 <div class="button-group">
                     <button class="edu-btn btn-dark btn-sm">
@@ -69,6 +82,22 @@
 @endsection
 
 @push('scripts')
+    <script>
+        // Create new topic
+        function addTopic(){
+            let topic = `   <div class="d-flex mb-2">
+                                <input type="text" class="form-control" id="topic" name="topics[]" placeholder="course topic">
+                                <button type="button" class="btn btn-danger rounded-full ms-2 delete-btn" >X</button>
+                            </div>`;
+
+            $('.topics-section').append(topic);
+        }
+        // Delete an topic field
+        $('.topics-section').on('click' , 'button.delete-btn' , function() {
+            $(this).parent().remove();
+        })
+    </script>
+
     <script>
         $('#is-free').on('change' , ()=> {
             if($('#is-free').is(':checked')){

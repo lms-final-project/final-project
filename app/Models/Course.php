@@ -9,4 +9,8 @@ class Course extends Model
 {
     use HasFactory;
     public $guarded = [];
+
+    public function topics(){
+        return $this->hasMany(CourseTopic::class);
+    }
 }

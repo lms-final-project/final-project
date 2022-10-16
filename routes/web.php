@@ -20,26 +20,16 @@ use App\Http\Controllers\Instructor\DashboardController;
 |
 */
 
-// ==== Dashboard Routes ====
-Route::middleware(['checkAuth:admin' , 'auth'])->group( function() {
-    Route::get('/dashboard', function () {
-        return view('dashboard.Home');
-    })->name('dashboard');
-    Route::resource('dashboard/category' , CategoryController::class);
-    Route::resource('dashboard/about' , AboutController::class);
-});
+Route::get('/', [ HomeController::class , 'index' ])->name('home');
 
+
+// ==== Dashboard Routes ====
+require __DIR__.'/admin.php';
 
 
 // ==== Frontend Routes ====
-Route::middleware('checkAdmin:instructor|student')->group(function(){
-        Route::get('/', [ HomeController::class , 'index' ])->name('home');
-
-        // Instructor Routes
-        Route::get('instructor/panel' , [DashboardController::class , 'index'])->name('instructor.panel');
-        Route::resource('instructor/courses'  , CoursesController::class);
-
-});
+require __DIR__.'/instructor.php';
+require __DIR__.'/student.php';
 
 
 require __DIR__.'/auth.php';
