@@ -65,18 +65,14 @@ class CoursesController extends Controller
 
             // todo : search about createMany
             if($request->topics){
-                $topics = [];
-                foreach ($request->topics as $key => $value) {
-                    $topics[] = $value;
-                }
-                $course->topics()->createMany($topics);
+                // $course->topics()->createMany($request->topics);
 
-                // foreach($request->topics as $topic){
-                //     CourseTopic::create([
-                //         'course_id' => $course->id,
-                //         'topic'     => $topic
-                //     ]);
-                // }
+                foreach($request->topics as $topic){
+                    CourseTopic::create([
+                        'course_id' => $course->id,
+                        'topic'     => $topic
+                    ]);
+                }
             }
 
             DB::commit();
