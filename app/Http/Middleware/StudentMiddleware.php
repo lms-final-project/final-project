@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CheckAdminMiddleware
+class StudentMiddleware
 {
     /**
      * Handle an incoming request.
@@ -14,11 +14,11 @@ class CheckAdminMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next , $roles)
+    public function handle(Request $request, Closure $next , $role)
     {
-        if(auth()->check() &&  in_array( $request->user()->role->name , explode('|' , $roles)) ){
+        if(auth()->check() && $request->user()->role->name == $role){
             return $next($request);
         }
-		return redirect('/dashboard');
+		return redirect('/');
     }
 }

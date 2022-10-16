@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Instructor;
 
+use Exception;
 use App\Models\Course;
 use App\Models\Category;
 use App\Models\CourseType;
 use App\Models\CourseTopic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class CoursesController extends Controller
@@ -41,36 +43,48 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $path = $file->store('instructors/courses' , 'public');
+        DB::beginTransaction();
+        try{
+            if($request->hasFile('image')){
+                $file = $request->file('image');
+                $path = $file->store('instructors/courses' , 'public');
+            }
+
+            $course = Course::create([
+                'image'                 => $path ?? null,
+                'title'                 => $request->title,
+                'description'           => $request->description,
+                'is_free'               => $request->boolean('is_free'),
+                'price'                 => $request->price,
+                'price_after_discount'  => $request->price_after_discount,
+                'has_certificate'       => $request->boolean('has_certificate'),
+                'certification'         => $request->certification,
+                'course_type_id'        => $request->course_type_id,
+                'instructor_id'         => auth()->user()->id
+            ]);
+
+            // todo : search about createMany
+            if($request->topics){
+                $topics = [];
+                foreach ($request->topics as $key => $value) {
+                    $topics[] = $value;
+                }
+                $course->topics()->createMany($topics);
+
+                // foreach($request->topics as $topic){
+                //     CourseTopic::create([
+                //         'course_id' => $course->id,
+                //         'topic'     => $topic
+                //     ]);
+                // }
+            }
+
+            DB::commit();
+            return redirect()->back();
+        }catch(Exception $e){
+            dd($e->getMessage());
         }
 
-        $course = Course::create([
-            'image'                 => $path ?? null,
-            'title'                 => $request->title,
-            'description'           => $request->description,
-            'is_free'               => $request->boolean('is_free'),
-            'price'                 => $request->price,
-            'price_after_discount'  => $request->price_after_discount,
-            'has_certificate'       => $request->boolean('has_certificate'),
-            'certification'         => $request->certification,
-            'course_type_id'        => $request->course_type_id,
-            'instructor_id'         => auth()->user()->id
-        ]);
-
-        // todo
-        // array of topics
-        // foreach on topics
-
-        // foreach( $request->topics as $topic ){
-        //     CourseTopic::create([
-                    // 'topic' => $topic['name']
-                    // 'course_id' => $course->id
-        //     ])
-        // }
-
-        return redirect()->back();
     }
 
     /**

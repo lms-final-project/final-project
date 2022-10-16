@@ -2,12 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class CheckAuthMiddleware
+class InstructorMiddleware
 {
     /**
      * Handle an incoming request.
