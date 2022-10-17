@@ -35,12 +35,13 @@
                                     dashboard
                                 </a>
                             </li>
-                            <li  @class(['active' => $active_btn == 'create_course'])>
-                                <a href="{{ route('courses.create') }}" class="d-flex justify-center items-center">
-                                    <i class="ri-upload-line me-2"></i>
-                                    create course
+                            <li  @class(['active' => $active_btn == 'courses'])>
+                                <a href="{{ route('courses.index') }}" class="d-flex justify-center items-center">
+                                    <i class="ri-slideshow-line"></i>
+                                    show all courses
                                 </a>
                             </li>
+                           
 
                         </ul>
                     </div>

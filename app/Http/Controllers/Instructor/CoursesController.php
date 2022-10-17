@@ -19,8 +19,8 @@ class CoursesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { $allcourses=Course::all();
+        return view('frontend.instructor.panel.courses.allcourses',compact('allcourses'));
     }
 
     /**
@@ -42,7 +42,7 @@ class CoursesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {//dd($request->c);
         DB::beginTransaction();
         try{
             if($request->hasFile('image')){
@@ -60,6 +60,7 @@ class CoursesController extends Controller
                 'has_certificate'       => $request->boolean('has_certificate'),
                 'certification'         => $request->certification,
                 'course_type_id'        => $request->course_type_id,
+               'categories_id'=>$request->c,
                 'instructor_id'         => auth()->user()->id
             ]);
 

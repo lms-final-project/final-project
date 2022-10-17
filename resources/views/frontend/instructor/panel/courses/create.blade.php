@@ -1,4 +1,4 @@
-@extends('frontend.instructor.panel.layouts.index', ['active_btn' => 'create_course'])
+@extends('frontend.instructor.panel.layouts.index', ['active_btn' => 'create-course'])
 
 @section('instructor_panel')
     <form action="{{ route('courses.store') }}" enctype="multipart/form-data" method="POST">
@@ -56,7 +56,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <select class="form-select form-select-sm" name="course_type_id"   aria-label="Default select example">
+                <select class="form-select form-select-sm" name="c"   aria-label="Default select example">
                     <option selected disabled>Open this to select course category</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>

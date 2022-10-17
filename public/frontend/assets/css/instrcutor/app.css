@@ -17,7 +17,20 @@
 }
 /* End Dashboard Customization */
 
-
+.eduu-btn{
+    border-radius: 15px;
+    display: inline-block;
+    height: 40px;
+    line-height: 30px;
+    color: white;
+    background-color:#525FE1 ;
+    padding: 0 20px;
+    font-size: 15px;
+    font-weight: 700;
+    transition: 0.4s;
+    font-family: 'Urbanist', sans-serif;
+    border: 0 none;
+}
 
 .preview-img {
     width: 100px;
