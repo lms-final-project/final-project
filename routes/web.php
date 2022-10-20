@@ -1,13 +1,11 @@
 <?php
 
+use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Dashboard\AboutController;
-use App\Http\Controllers\Dashboard\CategoryController;
-use App\Http\Controllers\Instructor\CoursesController;
-use App\Http\Controllers\Instructor\DashboardController;
+use App\Http\Controllers\Frontend\CoursesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +19,9 @@ use App\Http\Controllers\Instructor\DashboardController;
 */
 
 Route::get('/', [ HomeController::class , 'index' ])->name('home');
+Route::get('/courses/{category}', [CoursesController::class , 'index'])->name('front.courses');
+
+
 
 
 // ==== Dashboard Routes ====

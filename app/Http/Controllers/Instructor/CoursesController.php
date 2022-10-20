@@ -10,6 +10,8 @@ use App\Models\CourseTopic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Courses\CreateCourseRequest;
+use Illuminate\Support\Facades\Log;
 
 class CoursesController extends Controller
 {
@@ -19,8 +21,9 @@ class CoursesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { $allcourses=Course::all();
-        return view('frontend.instructor.panel.courses.allcourses',compact('allcourses'));
+    {
+        $courses = Course::with('type')->get();
+        return view('frontend.instructor.panel.courses.index',compact('courses'));
     }
 
     /**
@@ -31,7 +34,7 @@ class CoursesController extends Controller
     public function create()
     {
         $types = CourseType::all();
-        $categories=Category::all();
+        $categories = Category::all();
         return view('frontend.instructor.panel.courses.create', compact('types','categories'));
     }
 
@@ -41,8 +44,8 @@ class CoursesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {//dd($request->c);
+    public function store(CreateCourseRequest $request)
+    {
         DB::beginTransaction();
         try{
             if($request->hasFile('image')){
@@ -51,7 +54,7 @@ class CoursesController extends Controller
             }
 
             $course = Course::create([
-                'image'                 => $path ?? null,
+                'image'                 => $path,
                 'title'                 => $request->title,
                 'description'           => $request->description,
                 'is_free'               => $request->boolean('is_free'),
@@ -60,7 +63,7 @@ class CoursesController extends Controller
                 'has_certificate'       => $request->boolean('has_certificate'),
                 'certification'         => $request->certification,
                 'course_type_id'        => $request->course_type_id,
-               'categories_id'=>$request->c,
+                'category_id'           => $request->category_id,
                 'instructor_id'         => auth()->user()->id
             ]);
 
@@ -77,9 +80,10 @@ class CoursesController extends Controller
             }
 
             DB::commit();
-            return redirect()->back();
+            return redirect()->route('courses.index');
         }catch(Exception $e){
-            dd($e->getMessage());
+            Log::info($e->getMessage());
+            return redirect()->back();
         }
 
     }

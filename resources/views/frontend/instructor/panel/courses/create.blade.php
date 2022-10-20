@@ -1,4 +1,4 @@
-@extends('frontend.instructor.panel.layouts.index', ['active_btn' => 'create-course'])
+@extends('frontend.instructor.panel.layouts.index', ['active_btn' => 'courses'])
 
 @section('instructor_panel')
     <form action="{{ route('courses.store') }}" enctype="multipart/form-data" method="POST">
@@ -16,11 +16,15 @@
             </div>
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" required id="title" name="title" placeholder="course title">
+                {{-- <input type="text" class="form-control" required id="title" name="title" placeholder="course title"> --}}
+                <x-form.text-input name='title' placeholder="course title"/>
+
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea name="description" id="description" class="form-control" required placeholder="course description"></textarea>
+                {{-- <textarea name="description" id="description" class="form-control" required placeholder="course description"></textarea> --}}
+                <x-form.text-area-input name='description'/>
+
             </div>
 
             <div class="mb-3 form-check">
@@ -29,11 +33,11 @@
             </div>
             <div class="mb-3 price-section">
                 <label for="price" class="form-label">Price</label>
-                <input type="text" class="form-control" required id="price" name="price" placeholder="course price">
+                <x-form.number-input name='price'/>
             </div>
             <div class="mb-3 price-section">
                 <label for="price_after_discount" class="form-label">Price after discount</label>
-                <input type="text" class="form-control" required id="price_after_discount" name="price_after_discount" placeholder="course price after discount">
+                <x-form.number-input name='price_after_discount'/>
             </div>
 
 
@@ -48,20 +52,12 @@
             </div>
 
             <div class="mb-3">
-                <select class="form-select form-select-sm" name="course_type_id"   aria-label="Default select example">
-                    <option selected disabled>Open this to select course level</option>
-                    @foreach ($types as $type)
-                        <option value="{{ $type->id }}">{{ $type->name }}</option>
-                    @endforeach
-                </select>
+                <label for="course_type_id" class="form-label">Level</label>
+                <x-form.select-option :options="$types" name="course_type_id" />
             </div>
             <div class="mb-3">
-                <select class="form-select form-select-sm" name="c"   aria-label="Default select example">
-                    <option selected disabled>Open this to select course category</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
+                <label for="category_id" class="form-label">Category</label>
+                <x-form.select-option :options="$categories" name="category_id" />
             </div>
 
             <div class="mb-3">

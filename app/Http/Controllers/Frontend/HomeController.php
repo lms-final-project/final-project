@@ -12,13 +12,8 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function index(){
-        $categories=Category::all();
-
-      
-      $About = About::orderBy('created_at', 'DESC')->get();
-      //dd($About);
-      $about = $About->skip(0)->take(4)->all();
-     // dd($about);
+        $categories=Category::withCount('courses')->with('icon')->get();
+        $about = About::orderBy('created_at', 'DESC')->take(4)->get();
         return view('frontend.index',compact('categories','about'));
     }
 }

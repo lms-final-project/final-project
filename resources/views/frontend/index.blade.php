@@ -75,8 +75,8 @@
                                         <i class="{{$category->icon->class}}"></i>
                                     </div>
                                     <div class="content">
-                                        <h6 class="title"><a href="#">{{$category->name}}</a></h6>
-                                        <p class="description">39 Course</p>
+                                        <h6 class="title"><a href="{{ route('front.courses', $category->id) }}">{{$category->name}}</a></h6>
+                                        <p class="description">{{ $category->courses_count }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -567,7 +567,7 @@
         </div>
         <!-- End Counterup Area  -->
 
-
+        @if ($about->count()>0)
         <!-- Start Accordion Area  -->
         <div class="edu-accordion-area eduvibe-home-three-accordion accordion-shape-1 edu-section-gap bg-color-white">
             <div class="container eduvibe-animated-shape">
@@ -589,40 +589,30 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-6">
-                        <div class="accordion-style-1">
-                            <div class="section-title text-start mb--40" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                                <span class="pre-title">About Us</span>
-                                <h3 class="title">Get Every General Answers From Here</h3>
-                            </div>
-
-                            <div class="edu-accordion edu-accordion-01" id="accordionExample1" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                                @forelse ($about  as $about)
-
-
-                                <div class="edu-accordion-item">
-                                    <div class="edu-accordion-header" id="headingOne">
-                                        <button class="edu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-{{$about->question}}
-                                        </button>
-                                    </div>
-                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample1">
-                                        <div class="edu-accordion-body">
-{{$about->answer}}
+                        <div class="col-lg-6">
+                            <div class="accordion-style-1">
+                                <div class="section-title text-start mb--40" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                    <span class="pre-title">About Us</span>
+                                    <h3 class="title">Get Every General Answers From Here</h3>
+                                </div>
+                                <div class="edu-accordion edu-accordion-01" id="accordionExample1" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                    @foreach ($about  as $about)
+                                    <div class="edu-accordion-item">
+                                        <div class="edu-accordion-header" id="headingOne">
+                                            <button class="edu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                {{$about->question}}
+                                            </button>
+                                        </div>
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample1">
+                                            <div class="edu-accordion-body">
+                                                {{$about->answer}}
+                                            </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
-
-                                @empty
-
-                                @endforelse
-
-
-
                             </div>
                         </div>
-                    </div>
                 </div>
                 <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
                     <div class="shape shape-1"><span class="shape-dot"></span></div>
@@ -636,6 +626,8 @@
             </div>
         </div>
         <!-- End Accordion Area  -->
+        @endif
+
 
         <div class="eduvibe-home-three-testimonial edu-testimonial-area testimonial-four-wrapper edu-section-gap bg-image">
             <div class="container eduvibe-animated-shape">

@@ -11,5 +11,7 @@ class CourseType extends Model
     public $timestamps = false;
     public $guarded = [];
 
-
+    public function courses(){
+        return $this->hasMany(Course::class);
+    }
 }

@@ -41,8 +41,6 @@
                                     show all courses
                                 </a>
                             </li>
-                           
-
                         </ul>
                     </div>
                 </div>
