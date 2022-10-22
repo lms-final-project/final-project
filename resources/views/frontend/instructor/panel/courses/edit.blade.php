@@ -16,9 +16,9 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label" >Title</label>
                 {{-- <input type="text" class="form-control" required id="title" name="title" placeholder="course title"> --}}
-                <x-form.text-input name='title' placeholder="course title"/>
+                <x-form.text-input name='title'   placeholder="course title"/>
 
             </div>
             <div class="mb-3">
