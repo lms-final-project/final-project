@@ -1,10 +1,11 @@
 @extends('frontend.instructor.panel.layouts.index', ['active_btn' => 'courses'])
 
 @section('instructor_panel')
-    <form action="{{ route('courses.store') }}" enctype="multipart/form-data" method="POST">
+    <form action="{{route('courses.update', ['course' => $course->id])  }}" enctype="multipart/form-data" method="POST">
         @csrf
+        @method('put')
         <div class="row">
-            <h5 class="text-center">Add New Course</h5>
+            <h5 class="text-center"> Update Course</h5>
             <div class="col-12">
                 <div>
                     <label for="image" class="preview-img">
@@ -63,6 +64,7 @@
             <div class="mb-3">
                 <div class="d-flex py-2">
                     <label for="topic" class="form-label">Topics</label>
+
                     <button type="button" class="btn btn-sm btn-success ms-5" onclick="addTopic()">add new topic</button>
                 </div>
                 <div class="topics-section">
@@ -76,7 +78,7 @@
             <div class="text-center py-4">
                 <div class="button-group">
                     <button type="submit" class="edu-btn btn-dark btn-sm">
-                        Create
+                        Update
                         <i class="icon-arrow-right-line-right"></i>
                     </button>
                 </div>

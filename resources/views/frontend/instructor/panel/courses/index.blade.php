@@ -61,6 +61,19 @@
                                 <ul class="edu-meta meta-01">
                                     <li><i class="icon-account-circle-line"></i>42 Students</li>
                                 </ul>
+
+                            </div>
+                            <div class="d-flex">
+                                <form action="{{ route('courses.edit', ['course' => $course->id]) }}" method="get">
+                                    @csrf
+                                    <button class="btn btn-info btn-sm"style="font-size: 12px">Edit</button>
+                                </form>
+
+                                <form class="ms-3"  action="{{ route('courses.destroy', ['course' => $course->id]) }}" method="POST" >
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger btn-sm"style="font-size: 12px" >Delete</button>
+                                </form>
                             </div>
                         </div>
                     </div>

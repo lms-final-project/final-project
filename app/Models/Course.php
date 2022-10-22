@@ -20,7 +20,9 @@ class Course extends Model
     public function scopeCategory($query , $arg){
         return $query->where('category_id', $arg);
     }
-
+    public function scopeInstructor($query , $arg){
+        return $query->where('instructor_id', $arg);
+    }
 
 
     // relationships
@@ -30,5 +32,8 @@ class Course extends Model
 
     public function type(){
         return $this->belongsTo(CourseType::class, 'course_type_id' , 'id');
+    }
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id' , 'id');
     }
 }

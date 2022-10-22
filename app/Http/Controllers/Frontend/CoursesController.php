@@ -14,4 +14,5 @@ class CoursesController extends Controller
         $courses = Course::category($category->id)->status('accepted')->with('type')->get();
         return view('frontend.courses' , compact('category', 'courses'));
     }
+
 }
