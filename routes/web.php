@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Dashboard\CategoryController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +16,6 @@ use App\Http\Controllers\Dashboard\CategoryController;
 |
 */
 
-// ==== Dashboard Routes ====
 Route::middleware(['checkAuth:admin' , 'auth'])->group( function() {
     Route::get('/dashboard', function () {
         return view('dashboard.Home');
@@ -33,4 +31,7 @@ Route::middleware('checkAdmin:instructor|student')->group(function(){
 });
 
 
-require __DIR__.'/auth.php';
+/*require __DIR__.'/auth.php';*/
+/*Route:: get ('/',function(){
+    return view('dashboard.Home');
+});*/
