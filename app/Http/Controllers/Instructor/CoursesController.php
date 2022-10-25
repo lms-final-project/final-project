@@ -138,7 +138,7 @@ class CoursesController extends Controller
 
 //dd($course->topics()->delete());
 
-        DB::beginTransaction();
+       DB::beginTransaction();
         try{
 
           $old_image=$course->image;
@@ -151,7 +151,7 @@ class CoursesController extends Controller
           }
 
           $course ->update([
-           
+
             'title'                 => $request->title,
             'description'           => $request->description,
             'is_free'               => $request->boolean('is_free'),
@@ -185,6 +185,7 @@ $course->topics()->delete();
     Log::info($e->getMessage());
     return redirect()->back();
 }
+
 
     }
     /**
