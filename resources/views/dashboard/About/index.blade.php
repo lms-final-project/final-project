@@ -13,7 +13,7 @@
                     <h5 class="modal-title" id="exampleModalLiveLabel">Create About</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <form action="{{ route('about.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.about.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
                         <div class="card-body">
@@ -70,7 +70,7 @@
                                 <div class="d-flex">
 
                                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModalLive{{ $about->id }}">Update</button>
-                                    <form action="{{ route('about.destroy' , $about->id) }}" method="post" class="ml-2 delete-form">
+                                    <form action="{{ route('dashboard.about.destroy' , $about->id) }}" method="post" class="ml-2 delete-form">
                                         @csrf
                                         @method('delete')
                                         <input type="button" class="btn btn-sm btn-outline-danger delete-btn" value="Delete">
@@ -87,7 +87,7 @@
                                         <h5 class="modal-title" id="exampleModalLiveLabel">Edit Question {{$loop->iteration  }}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form action="{{ route('about.update' , $about->id) }}" method="POST">
+                                    <form action="{{ route('dashboard.about.update' , $about->id) }}" method="POST">
                                         @csrf
                                         @method('put')
                                         <div class="modal-body">

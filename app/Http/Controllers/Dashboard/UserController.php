@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Icon;
-use App\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $icons = Icon::all();
-        $categories = Category::all();
-        return view('dashboard.categories.index', compact('categories', 'icons'));
+        $users = User::where('id' ,'!=', auth()->user()->id)->with('role')->get();
+
+        return view('dashboard.Users.index', compact('users'));
     }
 
     /**
@@ -37,14 +36,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
-        Category::create([
-            'name'          => $request->name,
-            'icon_id'       => $request->icon_id,
-        ]);
-
-        return redirect()->route('dashboard.category.index')->with('success' , 'Category created successfully');
+        //
     }
 
     /**
@@ -66,7 +60,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -76,23 +70,19 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $category = Category::findOrFail($id);
-
-        $category->update([
-            'name'          => $request->name,
-            'icon_id'       => $request->icon_id
-        ]);
-
-        return redirect()->route('dashboard.category.index')->with('success' , 'Category updated successfully.');
+        //
     }
 
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        $category=Category::findorfail($id);
-        $category->delete();
-        return redirect()->route('dashboard.category.index')->with('danger' , 'Category deleted!');
+        //
     }
 }

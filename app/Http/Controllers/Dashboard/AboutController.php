@@ -38,13 +38,13 @@ class AboutController extends Controller
      */
     public function store(AboutRequest $request)
     {
-       
+
         About::create([
             'question'          => $request->question,
             'answer'       => $request->answer,
         ]);
 
-        return redirect()->route('about.index');
+        return redirect()->route('dashboard.about.index');
     }
 
     /**
@@ -85,7 +85,7 @@ class AboutController extends Controller
             'answer'       => $request->answer
         ]);
 
-        return redirect()->route('about.index');
+        return redirect()->route('dashboard.about.index');
     }
 
     /**
@@ -98,6 +98,6 @@ class AboutController extends Controller
     {
         $about=About::findorfail($id);
         $about->delete();
-        return redirect()->route('about.index');
+        return redirect()->route('dashboard.about.index');
     }
 }

@@ -24,12 +24,9 @@ class UpdateCourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'             => ['required'],
             'title'             => ['required' , 'string'],
             'description'       => ['required' , 'string'],
-            'is_free'           => ['required'],
             'price'             => ['required_if:is_free,false'],
-            'has_certificate'   => ['required'],
             'certification'     => ['required_if:has_certificate,true'],
             'course_type_id'    => ['required' , 'exists:course_types,id'],
             'category_id'       => ['required' , 'exists:categories,id'],
@@ -39,8 +36,8 @@ class UpdateCourseRequest extends FormRequest
     public function messages()
     {
         return [
-            'course_type_id.required' => "you must choose the course type",
-            'category_id.required' => "you must choose the course category"
+            'course_type_id.required'   => "you must choose the course type",
+            'category_id.required'      => "you must choose the course category"
         ];
     }
 }

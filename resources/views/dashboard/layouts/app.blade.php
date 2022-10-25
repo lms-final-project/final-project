@@ -13,10 +13,23 @@
     <meta name="author" content="Phoenixcoded" />
     <!-- Favicon icon -->
     <link rel="icon" href="{{ asset('dashboard/assets/images/favicon.ico') }}" type="image/x-icon">
-    <!-- vendor css -->
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/css/style.css') }}">
+
 
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor/remixicon.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/alertify.min.css') }}">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/css/style.css') }}">
+    <style>
+        .ajs-message {
+            color: white;
+            border: 1px solid white;
+            border-radius: 8px;
+            box-shadow: -3px 2px 17px -1px rgba(0,0,0,0.53);
+            -webkit-box-shadow: -3px 2px 17px -1px rgba(0,0,0,0.53);
+            -moz-box-shadow: -3px 2px 17px -1px rgba(0,0,0,0.53);
+        }
+    </style>
+
     @stack('styles')
     @vite(['resources/js/app.js'])
 </head>
@@ -66,8 +79,20 @@
     <script src="{{ asset('dashboard/assets/js/pages/dashboard-main.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/plugins/jquery-ui.min.js') }}"></script>
 
+    <script src="{{ asset('frontend/assets/js/alertify.min.js') }}"></script>
     {{-- Customized js --}}
     <script src="{{ asset('dashboard/assets/js/custom.js') }}"></script>
+
+    <script>
+        alertify.set('notifier','position', 'top-right');
+        @if ( Session::has('success') )
+            alertify.notify("{{ Session::get('success') }}", 'success', 3);
+        @endif
+
+        @if ( Session::has('danger') )
+            alertify.notify("{{ Session::get('danger') }}", 'error', 3);
+        @endif
+    </script>
     @stack('scripts')
 </body>
 

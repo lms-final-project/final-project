@@ -50,9 +50,8 @@ class CoursesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {//you should use CreateCourceRequest instead Request
-       // dd($request->all());
+    public function store(CreateCourseRequest $request)
+    {
         DB::beginTransaction();
         try{
             if($request->hasFile('image')){
@@ -88,10 +87,10 @@ class CoursesController extends Controller
 
             DB::commit();
 
-            return redirect()->route('courses.index');
+            return redirect()->route('courses.index')->with('success' , 'Course added succesffully');
         }catch(Exception $e){
             Log::info($e->getMessage());
-            return redirect()->back();
+            return redirect()->back()->with('error' , 'Something went wrong!');
         }
 
     }
@@ -113,9 +112,9 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit($id)
     {
-
+        $course = Course::with('topics')->find($id);
         $types = CourseType::all();
         $categories = Category::all();
 
@@ -129,62 +128,53 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(UpdateCourseRequest $request, Course $course)
 
-    {//you should use UpdateCourceRequest instead Request
-       // dd($request->all());
-
-
-
-//dd($course->topics()->delete());
-
+    {
         DB::beginTransaction();
         try{
 
-          $old_image=$course->image;
-          if($request->hasFile('image')){
-            $file=$request->file('image');
-            $path = $file->store('instructors/courses' , 'public');
-          }
-          if($old_image && $request->hasFile('image')){
-            Storage::disk('public')->delete($old_image);
-          }
+            $old_image = $course->image;
+            if($request->hasFile('image')){
+                $file = $request->file('image');
+                $path = $file->store('instructors/courses' , 'public');
+            }
 
-          $course ->update([
-           
-            'title'                 => $request->title,
-            'description'           => $request->description,
-            'is_free'               => $request->boolean('is_free'),
-            'price'                 => $request->price,
-            'price_after_discount'  => $request->price_after_discount,
-            'has_certificate'       => $request->boolean('has_certificate'),
-            'certification'         => $request->certification,
-            'course_type_id'        => $request->course_type_id,
-            'category_id'           => $request->category_id,
-
-        ]);
-
-
-
-
-    if($request->topics){
-        // $course->topics()->createMany($request->topics);
-$course->topics()->delete();
-        foreach($request->topics as $topic){
-            $course::create([
-                'course_id' => $course->id,
-                'topic'     => $topic
+            $course ->update([
+                'image'                 => $path ?? $old_image,
+                'title'                 => $request->title,
+                'description'           => $request->description,
+                'is_free'               => $request->boolean('is_free'),
+                'price'                 => $request->price,
+                'price_after_discount'  => $request->price_after_discount,
+                'has_certificate'       => $request->boolean('has_certificate'),
+                'certification'         => $request->certification,
+                'course_type_id'        => $request->course_type_id,
+                'category_id'           => $request->category_id,
             ]);
-        }
-    }
 
-    DB::commit();
+            if($old_image && $request->hasFile('image')){
+                Storage::disk('public')->delete($old_image);
+            }
 
-    return redirect()->route('courses.index');
-}catch(Exception $e){
-    Log::info($e->getMessage());
-    return redirect()->back();
-}
+
+            if($request->topics){
+                $course->topics()->delete();
+
+                foreach($request->topics as $topic){
+                    CourseTopic::create([
+                        'course_id' => $course->id,
+                        'topic'     => $topic
+                    ]);
+                }
+            }
+            DB::commit();
+            return redirect()->route('courses.index');
+
+            }catch(Exception $e){
+                Log::info($e->getMessage());
+                return redirect()->back();
+            }
 
     }
     /**
