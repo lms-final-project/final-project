@@ -50,9 +50,8 @@ class CoursesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {//you should use CreateCourceRequest instead Request
-       // dd($request->all());
+    public function store(CreateCourseRequest $request)
+    {
         DB::beginTransaction();
         try{
             if($request->hasFile('image')){
@@ -88,10 +87,10 @@ class CoursesController extends Controller
 
             DB::commit();
 
-            return redirect()->route('courses.index');
+            return redirect()->route('courses.index')->with('success' , 'Course added succesffully');
         }catch(Exception $e){
             Log::info($e->getMessage());
-            return redirect()->back();
+            return redirect()->back()->with('error' , 'Something went wrong!');
         }
 
     }
@@ -113,9 +112,9 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit($id)
     {
-
+        $course = Course::with('topics')->find($id);
         $types = CourseType::all();
         $categories = Category::all();
 
@@ -129,7 +128,7 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(UpdateCourseRequest $request, Course $course)
 
     {//you should use UpdateCourceRequest instead Request
        // dd($request->all());
@@ -138,17 +137,14 @@ class CoursesController extends Controller
 
 //dd($course->topics()->delete());
 
-       DB::beginTransaction();
+        DB::beginTransaction();
         try{
 
-          $old_image=$course->image;
-          if($request->hasFile('image')){
-            $file=$request->file('image');
-            $path = $file->store('instructors/courses' , 'public');
-          }
-          if($old_image && $request->hasFile('image')){
-            Storage::disk('public')->delete($old_image);
-          }
+            $old_image = $course->image;
+            if($request->hasFile('image')){
+                $file = $request->file('image');
+                $path = $file->store('instructors/courses' , 'public');
+            }
 
           $course ->update([
 
@@ -164,27 +160,28 @@ class CoursesController extends Controller
 
         ]);
 
+            if($old_image && $request->hasFile('image')){
+                Storage::disk('public')->delete($old_image);
+            }
 
 
+            if($request->topics){
+                $course->topics()->delete();
 
-    if($request->topics){
-        // $course->topics()->createMany($request->topics);
-$course->topics()->delete();
-        foreach($request->topics as $topic){
-            $course::create([
-                'course_id' => $course->id,
-                'topic'     => $topic
-            ]);
-        }
-    }
+                foreach($request->topics as $topic){
+                    CourseTopic::create([
+                        'course_id' => $course->id,
+                        'topic'     => $topic
+                    ]);
+                }
+            }
+            DB::commit();
+            return redirect()->route('courses.index');
 
-    DB::commit();
-
-    return redirect()->route('courses.index');
-}catch(Exception $e){
-    Log::info($e->getMessage());
-    return redirect()->back();
-}
+            }catch(Exception $e){
+                Log::info($e->getMessage());
+                return redirect()->back();
+            }
 
 
     }

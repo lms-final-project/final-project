@@ -21,7 +21,6 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->foreignId('role_id')->constrained('roles');
-            // todo :: add socail links/nullable
             $table->rememberToken();
             $table->timestamps();
         });

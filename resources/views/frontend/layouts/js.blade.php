@@ -18,5 +18,6 @@
  <script src="{{ asset('frontend/assets/js/vendor/paralax-scroll.js') }}"></script>
  <script src="{{ asset('frontend/assets/js/vendor/jquery-ui.js') }}"></script>
  <script src="{{ asset('frontend/assets/js/vendor/tilt.jquery.min.js') }}"></script>
+ <script src="{{ asset('frontend/assets/js/alertify.min.js') }}"></script>
  <!-- Main JS -->
  <script src="{{ asset('frontend/assets/js/main.js') }}"></script>

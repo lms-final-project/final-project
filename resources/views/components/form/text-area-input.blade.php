@@ -1,5 +1,7 @@
+@props(['value'])
+
 <textarea name="{{$name}}" id="{{$name}}" @class(['form-control' , 'is-invalid' => $errors->has( $name )]) required>
-    {{ old($name) }}
+    {{ old($name , $value ?? '') }}
 </textarea>
 @error($name)
     <span class="invalid-feedback">

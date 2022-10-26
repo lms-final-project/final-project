@@ -64,15 +64,15 @@
 
                             </div>
                             <div class="d-flex">
-                                <form action="{{ route('courses.edit', ['course' => $course->id]) }}" method="get">
+                                <form action="{{ route('courses.edit', $course->id) }}" method="get">
                                     @csrf
-                                    <button class="btn btn-info btn-sm"style="font-size: 12px">Edit</button>
+                                    <button class="btn btn-info btn-sm rounded-3"style="font-size: 12px">Edit</button>
                                 </form>
 
-                                <form class="ms-3"  action="{{ route('courses.destroy', ['course' => $course->id]) }}" method="POST" >
+                                <form class="ms-3"  action="{{ route('courses.destroy', $course->id) }}" method="POST" >
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger btn-sm"style="font-size: 12px" >Delete</button>
+                                    <button class="btn btn-danger btn-sm rounded-3"style="font-size: 12px" >Delete</button>
                                 </form>
                             </div>
                         </div>
