@@ -44,7 +44,7 @@ class AboutController extends Controller
             'answer'       => $request->answer,
         ]);
 
-        return redirect()->route('dashboard.about.index');
+        return redirect()->route('dashboard.about.index')->with('success' , 'Question added succesffully');;
     }
 
     /**
@@ -85,7 +85,7 @@ class AboutController extends Controller
             'answer'       => $request->answer
         ]);
 
-        return redirect()->route('dashboard.about.index');
+        return redirect()->route('dashboard.about.index')->with('success' , 'Question updated successfully.');;
     }
 
     /**
@@ -98,6 +98,6 @@ class AboutController extends Controller
     {
         $about=About::findorfail($id);
         $about->delete();
-        return redirect()->route('dashboard.about.index');
+        return redirect()->route('dashboard.about.index')->with('danger' , 'Question deleted!');
     }
 }

@@ -11,9 +11,9 @@
                             <div class="inner">
                                 <div class="content text-start">
                                     <span class="pre-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Better Learning Future With Us</span>
-                                    <h1 class="title" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">Education Is About Academic Excellence</h1>
-                                    <p class="description" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">Sed eu volutpat arcu, a tincidunt nulla quam, feugiat sit amet ipsum a, dapibus porta velit.</p>
-                                    <a class="edu-btn" href="#" data-sal-delay="450" data-sal="slide-up" data-sal-duration="800">Get Started Today <i class="icon-arrow-right-line-right"></i></a>
+                                    <h1 class="title" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">Real Knowledge Build a Life</h1>
+                                    <p class="description" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800"></p>
+                                    <a class="edu-btn" href="#" data-sal-delay="450" data-sal="slide-up" data-sal-duration="800">Must return to page <i class="icon-arrow-right-line-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
     @endsection
 
     @section('content')
-        <div class="home-three-about edu-about-area about-style-4 bg-color-white edu-section-gapBottom">
+       <!-- <div class="home-three-about edu-about-area about-style-4 bg-color-white edu-section-gapBottom">
             <div class="container eduvibe-animated-shape">
                 <div class="row g-lg-5 g-md-5 g-sm-5">
                     <div class="col-lg-12 col-xl-6">
@@ -162,12 +162,13 @@
                     <div class="shape-image shape-image-2"><img src="{{ asset('frontend/assets/images/shapes/shape-27.png')}}" alt="Shape Thumb" /></div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
         <!-- Start Counterup Area  -->
-        <div class="edu-counterup-and-course-area">
-            <div class="container">
+       <div class="edu-counterup-and-course-area">
+        <!--
+           <div class="container">
                 <div class="counterup-style-2 bg-color-primary radius-small ptb--80 ">
                     <div class="row g-5">
                         <!-- Start Single Counter  -->
@@ -225,7 +226,7 @@
                         <!-- End Single Counter  -->
 
                         <!-- Start Single Counter  -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 line-separator">
+                       <div class="col-lg-3 col-md-6 col-sm-6 col-12 line-separator">
                             <div class="edu-counterup-2 text-center">
                                 <div class="inner">
                                     <div class="icon">
@@ -244,6 +245,15 @@
                     </div>
                 </div>
             </div>
+
+        -->
+
+
+
+
+
+
+
             <div class="edu-course-area eduvibe-home-three-course counterup-overlay-top bg-image edu-section-gapTop edu-section-gapBottom">
                 <div class="container eduvibe-animated-shape">
                     <div class="row">
@@ -257,39 +267,41 @@
 
                     <div class="row g-5 mt--25">
                         <!-- Start Single Card  -->
+                        @forelse ($courses as $course)
+                            
+                        
                         <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                             <div class="edu-card card-type-1 bg-white radius-small">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a href="course-details.html">
-                                            <img class="w-100" src="{{ asset('frontend/assets/images/course/course-01/course-01.jpg')}}" alt="Course Meta">
-                                        </a>
+                                        
+                                          <a href="course-details.html" style="height: 270px;width:370px">
+                                <img class="w-100" src="{{ asset("storage/".$course->image) }}" alt="Course Meta">
+                            </a> 
                                         <div class="top-position status-group left-top">
-                                            <span class="eduvibe-status status-01">Intermediate</span>
+                                            <span class="eduvibe-status status-01">{{$course->type->name}}</span>
                                         </div>
-                                        <div class="wishlist-top-right">
-                                            <button class="wishlist-btn"><i class="icon-Heart"></i></button>
-                                        </div>
+                                        
                                     </div>
                                     <div class="content">
+                                        <h6 class="title">
+                                            <a href="course-details.html">{{ $course->title }}</a>
+                                        </h6>
                                         <ul class="edu-meta meta-01">
                                             <li><i class="icon-file-list-4-line"></i>35 Lessons</li>
                                             <li><i class="icon-time-line"></i>18h 15m 44s</li>
                                         </ul>
-                                        <h6 class="title"><a href="course-details.html">Competitive Strategy law for all students</a>
-                                        </h6>
-                                        <div class="edu-rating rating-default">
-                                            <div class="rating">
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                            </div>
-                                            <span class="rating-count">(18 Review)</span>
-                                        </div>
+                                        
+                                        
                                         <div class="card-bottom">
-                                            <div class="badge-transparent">Free</div>
+                                            <div class="price-list price-style-03">
+                                                @if ($course->is_free)
+                                                    <div class="price current-price">Free</div>
+                                                @else
+                                                    <div class="price current-price">{{ $course->price }}</div>
+                                                   
+                                                @endif
+                                            </div>
                                             <ul class="edu-meta meta-01">
                                                 <li><i class="icon-account-circle-line"></i>47 Students</li>
                                             </ul>
@@ -297,245 +309,18 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+                        @empty
+                        <tr>
+                            <th colspan="5" class="text-center">
+                                There isn't any course yet
+                            </th>
+                        </tr>
+                        @endforelse
                         <!-- End Single Card  -->
 
-                        <!-- Start Single Card  -->
-                        <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">
-                            <div class="edu-card card-type-1 bg-white radius-small">
-                                <div class="inner">
-                                    <div class="thumbnail">
-                                        <a href="course-details.html">
-                                            <img class="w-100" src="assets/images/course/course-01/course-02.jpg" alt="Course Meta">
-                                        </a>
-                                        <div class="top-position status-group left-top">
-                                            <span class="eduvibe-status status-01">Advanced</span>
-                                        </div>
-                                        <div class="wishlist-top-right">
-                                            <button class="wishlist-btn"><i class="icon-Heart"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <ul class="edu-meta meta-01">
-                                            <li><i class="icon-file-list-4-line"></i>48 Lessons</li>
-                                            <li><i class="icon-time-line"></i>15h 38m 14s</li>
-                                        </ul>
-                                        <h6 class="title"><a href="course-details.html">Machine Learning A-Z: Hands-On Python and
-                                                java</a>
-                                        </h6>
-                                        <div class="edu-rating rating-default">
-                                            <div class="rating">
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                            </div>
-                                            <span class="rating-count">(38 Review)</span>
-                                        </div>
-                                        <div class="card-bottom">
-                                            <div class="price-list price-style-03">
-                                                <div class="price current-price">$29.00</div>
-                                                <div class="price old-price">$39.00</div>
-                                            </div>
-                                            <ul class="edu-meta meta-01">
-                                                <li><i class="icon-account-circle-line"></i>65 Students</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Card  -->
-
-                        <!-- Start Single Card  -->
-                        <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
-                            <div class="edu-card card-type-1 bg-white radius-small">
-                                <div class="inner">
-                                    <div class="thumbnail">
-                                        <a href="course-details.html">
-                                            <img class="w-100" src="assets/images/course/course-01/course-03.jpg" alt="Course Meta">
-                                        </a>
-                                        <div class="top-position status-group left-top">
-                                            <span class="eduvibe-status status-01">Basic</span>
-                                        </div>
-                                        <div class="wishlist-top-right">
-                                            <button class="wishlist-btn"><i class="icon-Heart"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <ul class="edu-meta meta-01">
-                                            <li><i class="icon-file-list-4-line"></i>80 Lessons</li>
-                                            <li><i class="icon-time-line"></i>23h 13m 41s</li>
-                                        </ul>
-                                        <h6 class="title"><a href="course-details.html">Achieving Advanced in Insights with Big</a>
-                                        </h6>
-                                        <div class="edu-rating rating-default">
-                                            <div class="rating">
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                            </div>
-                                            <span class="rating-count">(28 Review)</span>
-                                        </div>
-                                        <div class="card-bottom">
-                                            <div class="price-list price-style-03">
-                                                <div class="price current-price">$59.00</div>
-                                                <div class="price old-price">$69.00</div>
-                                            </div>
-                                            <ul class="edu-meta meta-01">
-                                                <li><i class="icon-account-circle-line"></i>42 Students</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Card  -->
-
-                        <!-- Start Single Card  -->
-                        <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="300" data-sal="slide-up" data-sal-duration="800">
-                            <div class="edu-card card-type-1 bg-white radius-small">
-                                <div class="inner">
-                                    <div class="thumbnail">
-                                        <a href="course-details.html">
-                                            <img class="w-100" src="assets/images/course/course-01/course-04.jpg" alt="Course Meta">
-                                        </a>
-                                        <div class="top-position status-group left-top">
-                                            <span class="eduvibe-status status-01">Intermediate</span>
-                                        </div>
-                                        <div class="wishlist-top-right">
-                                            <button class="wishlist-btn"><i class="icon-Heart"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <ul class="edu-meta meta-01">
-                                            <li><i class="icon-file-list-4-line"></i>31 Lessons</li>
-                                            <li><i class="icon-time-line"></i>14h 40m 20s</li>
-                                        </ul>
-                                        <h6 class="title"><a href="course-details.html">Education Makes A Person A Responsible
-                                                Citizen</a>
-                                        </h6>
-                                        <div class="edu-rating rating-default">
-                                            <div class="rating">
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                            </div>
-                                            <span class="rating-count">(23 Review)</span>
-                                        </div>
-                                        <div class="card-bottom">
-                                            <div class="price-list price-style-03">
-                                                <div class="price current-price">$49.00</div>
-                                                <div class="price old-price">$59.00</div>
-                                            </div>
-                                            <ul class="edu-meta meta-01">
-                                                <li><i class="icon-account-circle-line"></i>46 Students</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Card  -->
-
-                        <!-- Start Single Card  -->
-                        <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">
-                            <div class="edu-card card-type-1 bg-white radius-small">
-                                <div class="inner">
-                                    <div class="thumbnail">
-                                        <a href="course-details.html">
-                                            <img class="w-100" src="assets/images/course/course-01/course-05.jpg" alt="Course Meta">
-                                        </a>
-                                        <div class="top-position status-group left-top">
-                                            <span class="eduvibe-status status-01">Advanced</span>
-                                        </div>
-                                        <div class="wishlist-top-right">
-                                            <button class="wishlist-btn"><i class="icon-Heart"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <ul class="edu-meta meta-01">
-                                            <li><i class="icon-file-list-4-line"></i>36 Lessons</li>
-                                            <li><i class="icon-time-line"></i>20h 25m 28s</li>
-                                        </ul>
-                                        <h6 class="title"><a href="course-details.html">Building A Better World One Student At A
-                                                Time</a>
-                                        </h6>
-                                        <div class="edu-rating rating-default">
-                                            <div class="rating">
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                            </div>
-                                            <span class="rating-count">(31 Review)</span>
-                                        </div>
-                                        <div class="card-bottom">
-                                            <div class="badge-transparent">Free</div>
-                                            <ul class="edu-meta meta-01">
-                                                <li><i class="icon-account-circle-line"></i>91 Students</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Card  -->
-
-                        <!-- Start Single Card  -->
-                        <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="400" data-sal="slide-up" data-sal-duration="800">
-                            <div class="edu-card card-type-1 bg-white radius-small">
-                                <div class="inner">
-                                    <div class="thumbnail">
-                                        <a href="course-details.html">
-                                            <img class="w-100" src="assets/images/course/course-01/course-06.jpg" alt="Course Meta">
-                                        </a>
-                                        <div class="top-position status-group left-top">
-                                            <span class="eduvibe-status status-01">Basic</span>
-                                        </div>
-                                        <div class="wishlist-top-right">
-                                            <button class="wishlist-btn"><i class="icon-Heart"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <ul class="edu-meta meta-01">
-                                            <li><i class="icon-file-list-4-line"></i>21 Lessons</li>
-                                            <li><i class="icon-time-line"></i>12h 45m 50s</li>
-                                        </ul>
-                                        <h6 class="title"><a href="course-details.html">Education is About Forming Faithful
-                                                Disciples</a>
-                                        </h6>
-                                        <div class="edu-rating rating-default">
-                                            <div class="rating">
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                                <i class="icon-Star"></i>
-                                            </div>
-                                            <span class="rating-count">(35 Review)</span>
-                                        </div>
-                                        <div class="card-bottom">
-                                            <div class="price-list price-style-03">
-                                                <div class="price current-price">$79.00</div>
-                                                <div class="price old-price">$89.00</div>
-                                            </div>
-                                            <ul class="edu-meta meta-01">
-                                                <li><i class="icon-account-circle-line"></i>22 Students</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Card  -->
-                    </div>
+                      
 
                     <div class="row">
                         <div class="col-lg-12">
@@ -629,14 +414,14 @@
         @endif
 
 
-        <div class="eduvibe-home-three-testimonial edu-testimonial-area testimonial-four-wrapper edu-section-gap bg-image">
+      <!--  <div class="eduvibe-home-three-testimonial edu-testimonial-area testimonial-four-wrapper edu-section-gap bg-image">
             <div class="container eduvibe-animated-shape">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-8">
                         <div class="testimonial-activation pr--55 pr_lg--0 pr_md--0 pr_sm--0">
 
                             <!-- Start Tastimonial Card  -->
-                            <div class="testimonial-card-box variation-2">
+                         <!--   <div class="testimonial-card-box variation-2">
                                 <div class="eduvibe-testimonial-three inner testimonial-card-activation-1 slick-arrow-style-2">
                                     <div class="single-card">
                                         <div class="rating">
@@ -701,7 +486,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                 <!--   <div class="col-lg-4">
                         <div class="testimonial-four-right-content">
                             <div class="section-title text-start" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                 <span class="pre-title">Testimonials</span>
@@ -713,7 +498,7 @@
 
                             <div class="row g-5">
                                 <!-- Start Single Feature  -->
-                                <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                             <!--   <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                     <div class="feature-style-3">
                                         <div class="feature-content">
                                             <h6 class="feature-title">90%</h6>
@@ -724,7 +509,7 @@
                                 <!-- End Single Feature  -->
 
                                 <!-- Start Single Feature  -->
-                                <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                              <!--  <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                     <div class="feature-style-3">
                                         <div class="feature-content">
                                             <h6 class="feature-title">9/10</h6>
@@ -737,8 +522,9 @@
                         </div>
                     </div>
                 </div>
+            
 
-                <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+               <!-- <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
                     <div class="shape-image shape-image-1">
                         <img src="{{ asset('frontend/assets/images/shapes/shape-04-03.png')}}" alt="Shape Thumb" />
                     </div>
@@ -751,9 +537,10 @@
                     <div class="shape-image shape-image-4">
                         <img src="{{ asset('frontend/assets/images/shapes/shape-16-01.png')}}" alt="Shape Thumb" />
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
+    
     @endsection
 
 

@@ -176,11 +176,11 @@ class CoursesController extends Controller
                 }
             }
             DB::commit();
-            return redirect()->route('courses.index');
+            return redirect()->route('courses.index')->with('success' , 'Course updated successfully.');;
 
             }catch(Exception $e){
                 Log::info($e->getMessage());
-                return redirect()->back();
+                return redirect()->back()->with('error' , 'Something went wrong!');;
             }
 
 
@@ -195,7 +195,7 @@ class CoursesController extends Controller
     {
 
         $course->delete();
-        return redirect()->back();
+        return redirect()->back()->with('danger' , 'Course deleted!');
 
     }
 }
