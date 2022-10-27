@@ -198,4 +198,7 @@ class CoursesController extends Controller
         return redirect()->back()->with('danger' , 'Course deleted!');
 
     }
+    public function add_curriculum(Course $course){
+        
+    }
 }

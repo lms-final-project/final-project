@@ -4,10 +4,10 @@
             <div class="col-lg-6 col-xl-2 col-md-6 col-6">
                 <div class="logo">
                     <a href="{{ route('home') }}">
-                        <img class="logo-light" src="{{ asset('frontend/assets/images/logo/test.jpeg')}}" alt="Site Logo">
+                        <img class="logo-light" style="" src="{{ asset('frontend/assets/images/logo/Capture.PNG')}}" alt="Site Logo">
                         
                     </a>
-                    <p>Knowledge </p>
+                   
                 </div>
             
             </div>

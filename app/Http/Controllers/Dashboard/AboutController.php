@@ -44,7 +44,7 @@ class AboutController extends Controller
             'answer'       => $request->answer,
         ]);
 
-        return redirect()->route('dashboard.about.index')->with('success' , 'Question added succesffully');;
+        return redirect()->route('dashboard.about.index')->with('success' , 'Question added succesffully');
     }
 
     /**

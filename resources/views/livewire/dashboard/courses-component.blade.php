@@ -14,7 +14,12 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-3">3</div>
+                    <div class="col-3">  <select wire:model='course_type_id'>
+                        <option value="" selected >Select One</option>
+                        @foreach ($courseTypes as $coursetype)
+                            <option value="{{ $coursetype->id }}"> {{ $coursetype->name }} </option>
+                        @endforeach
+                    </select></div>
                     <div class="col-3">4</div>
                 </div>
             </div>
@@ -62,13 +67,13 @@
                                     <td>
                                         @if ($course->status == 'pinned')
                                             <button class="btn btn-sm btn-outline-info rounded" wire:click='acceptCourse({{$course->id}})'>Accept</button>
-                                            <button class="btn btn-sm btn-outline-danger rounded" wire:click='rejectCourse'>Reject</button>
+                                            <button class="btn btn-sm btn-outline-danger rounded" wire:click='rejectCourse({{$course->id}})'>Reject</button>
                                         @endif
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <th colspan="5">No users yet</th>
+                                    <th colspan="5">No courses yet</th>
                                 </tr>
                             @endforelse
                         </tbody>

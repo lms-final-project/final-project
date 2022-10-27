@@ -2,7 +2,7 @@
 
 
     @section('index')
-        <!-- Start Sldier Area  -->
+        <!-- Start Sldier Area --> 
         <div class="slider-area banner-style-3 bg-image">
             <div class="d-flex align-items-center height-940">
                 <div class="container eduvibe-animated-shape">
@@ -86,7 +86,7 @@
                             <p>no categories yet</p>
                         </div>
                     @endforelse
-                    <!-- End Service Grid  -->
+                   <!--  End Service Grid  -->
 
                 </div>
                 <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
@@ -104,7 +104,7 @@
     @endsection
 
     @section('content')
-       <!-- <div class="home-three-about edu-about-area about-style-4 bg-color-white edu-section-gapBottom">
+        <div class="home-three-about edu-about-area about-style-4 bg-color-white edu-section-gapBottom">
             <div class="container eduvibe-animated-shape">
                 <div class="row g-lg-5 g-md-5 g-sm-5">
                     <div class="col-lg-12 col-xl-6">
@@ -121,35 +121,24 @@
                                 <h3 class="title">We Offer The Best Carrier</h3>
                             </div>
                             <div class="feature-style-6 mt--40">
-                                <div class="edu-feature-list color-variation-1" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                                    <div class="icon">
-                                        <img src="{{ asset('frontend/assets/images/icons/student.png')}}" alt="Icons Images">
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="title">Industry Expert Instructor</h6>
-                                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmoded tempor incididunt dolore magna aliqua.</p>
-                                    </div>
-                                </div>
+                              
 
-                                <div class="edu-feature-list color-variation-2" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                                    <div class="icon">
-                                        <img src="{{ asset('frontend/assets/images/icons/book.png')}}" alt="Icons Images">
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="title">Up-to-Date Course Content</h6>
-                                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmoded tempor incididunt dolore magna aliqua.</p>
-                                    </div>
-                                </div>
+                               @forelse ($services as $service)
+                                   
+                              
 
                                 <div class="edu-feature-list color-variation-3" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                     <div class="icon">
-                                        <img src="{{ asset('frontend/assets/images/icons/reward.png')}}" alt="Icons Images">
+                                        <img src="{{ asset("storage/".$service->image) }}" alt="Icons Images">
                                     </div>
                                     <div class="content">
-                                        <h6 class="title">Biggest Student Community</h6>
-                                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmoded tempor incididunt dolore magna aliqua.</p>
+                                        <h6 class="title">{{$service->title}}</h6>
+                                        <p class="description">{{$service->description}}</p>
                                     </div>
                                 </div>
+                                @empty
+                                   
+                                @endforelse
                             </div>
                             <div class="read-more-btn mt--30" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                 <a class="edu-btn" href="about-us-1.html">Know About Us <i class="icon-arrow-right-line-right"></i></a>
@@ -162,16 +151,16 @@
                     <div class="shape-image shape-image-2"><img src="{{ asset('frontend/assets/images/shapes/shape-27.png')}}" alt="Shape Thumb" /></div>
                 </div>
             </div>
-        </div>-->
+        </div>
 
 
-        <!-- Start Counterup Area  -->
+        <!-- Start Counterup Area --> 
        <div class="edu-counterup-and-course-area">
-        <!--
+        
            <div class="container">
                 <div class="counterup-style-2 bg-color-primary radius-small ptb--80 ">
                     <div class="row g-5">
-                        <!-- Start Single Counter  -->
+                       <!--  Start Single Counter  -->
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 line-separator">
                             <div class="edu-counterup-2 text-center">
                                 <div class="inner">
@@ -187,9 +176,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Counter  -->
+                        <!-- End Single Counter --> 
 
-                        <!-- Start Single Counter  -->
+                        <!-- Start Single Counter-->  
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 line-separator">
                             <div class="edu-counterup-2 text-center">
                                 <div class="inner">
@@ -207,7 +196,7 @@
                         </div>
                         <!-- End Single Counter  -->
 
-                        <!-- Start Single Counter  -->
+                        <!-- Start Single Counter --> 
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 line-separator">
                             <div class="edu-counterup-2 text-center">
                                 <div class="inner">
@@ -223,9 +212,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Counter  -->
+                        <!-- End Single Counter-->  
 
-                        <!-- Start Single Counter  -->
+                        <!-- Start Single Counter --> 
                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 line-separator">
                             <div class="edu-counterup-2 text-center">
                                 <div class="inner">
@@ -245,8 +234,8 @@
                     </div>
                 </div>
             </div>
-
-        -->
+       </div>
+        
 
 
 
@@ -266,7 +255,7 @@
                     </div>
 
                     <div class="row g-5 mt--25">
-                        <!-- Start Single Card  -->
+                        <!-- Start Single Card-->  
                         @forelse ($courses as $course)
                             
                         
@@ -350,7 +339,7 @@
                 </div>
             </div>
         </div>
-        <!-- End Counterup Area  -->
+       <!--  End Counterup Area  -->
 
         @if ($about->count()>0)
         <!-- Start Accordion Area  -->
@@ -414,14 +403,14 @@
         @endif
 
 
-      <!--  <div class="eduvibe-home-three-testimonial edu-testimonial-area testimonial-four-wrapper edu-section-gap bg-image">
+        <div class="eduvibe-home-three-testimonial edu-testimonial-area testimonial-four-wrapper edu-section-gap bg-image">
             <div class="container eduvibe-animated-shape">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-8">
                         <div class="testimonial-activation pr--55 pr_lg--0 pr_md--0 pr_sm--0">
 
                             <!-- Start Tastimonial Card  -->
-                         <!--   <div class="testimonial-card-box variation-2">
+                            <div class="testimonial-card-box variation-2">
                                 <div class="eduvibe-testimonial-three inner testimonial-card-activation-1 slick-arrow-style-2">
                                     <div class="single-card">
                                         <div class="rating">
@@ -482,11 +471,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Tastimonial Card  -->
+                           <!--  End Tastimonial Card  -->
                         </div>
                     </div>
 
-                 <!--   <div class="col-lg-4">
+                    <div class="col-lg-4">
                         <div class="testimonial-four-right-content">
                             <div class="section-title text-start" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                 <span class="pre-title">Testimonials</span>
@@ -497,8 +486,8 @@
                             <h6 class="subtitle" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">People Love To Learn With Us</h6>
 
                             <div class="row g-5">
-                                <!-- Start Single Feature  -->
-                             <!--   <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                 <!--Start Single Feature  -->
+                                <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                     <div class="feature-style-3">
                                         <div class="feature-content">
                                             <h6 class="feature-title">90%</h6>
@@ -506,10 +495,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Single Feature  -->
+                                <!-- End Single Feature --> 
 
-                                <!-- Start Single Feature  -->
-                              <!--  <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <!-- Start Single Feature-->  
+                                <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                     <div class="feature-style-3">
                                         <div class="feature-content">
                                             <h6 class="feature-title">9/10</h6>
@@ -517,14 +506,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Single Feature  -->
+                                <!-- End Single Feature --> 
                             </div>
                         </div>
                     </div>
                 </div>
             
 
-               <!-- <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+                <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
                     <div class="shape-image shape-image-1">
                         <img src="{{ asset('frontend/assets/images/shapes/shape-04-03.png')}}" alt="Shape Thumb" />
                     </div>
@@ -537,7 +526,7 @@
                     <div class="shape-image shape-image-4">
                         <img src="{{ asset('frontend/assets/images/shapes/shape-16-01.png')}}" alt="Shape Thumb" />
                     </div>
-                </div>-->
+                </div>
             </div>
         </div>
     
