@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\CoursesController;
 
 Route::get('/', [ HomeController::class , 'index' ])->name('home');
 Route::get('/courses/{category}', [CoursesController::class , 'index'])->name('front.courses');
+Route::get('/course/{course}/details' , [CoursesController::class , 'show'])->name('course_details');
 
 
 

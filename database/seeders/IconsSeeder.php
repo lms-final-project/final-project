@@ -28,7 +28,6 @@ class IconsSeeder extends Seeder
                 'name' => 'web',
                 'class' => 'ri-window-fill'
             ],
-
         ];
 
         foreach ($icons as $icon ) {

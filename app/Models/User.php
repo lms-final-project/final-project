@@ -53,6 +53,12 @@ class User extends Authenticatable
             get: fn ($value) => Carbon::parse($value)->format('d/m/Y'),
         );
     }
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => ucfirst($value),
+        );
+    }
 
 
     // relations

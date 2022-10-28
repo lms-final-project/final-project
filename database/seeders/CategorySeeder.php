@@ -25,20 +25,21 @@ class CategorySeeder extends Seeder
             [
 
                 [
-                    'name' => 'ui/ux',
-'icon_id'=>'1'
+                    'name'          => 'ui/ux',
+                    'icon_id'       =>'1',
+                    'is_removable'  => false
 
                 ],
                 [
-                    'name' => 'web',
-                    'icon_id'=>'3'
+                    'name'          => 'web',
+                    'icon_id'       =>'3',
+                    'is_removable'  => false
                 ],
                 [
-                    'name' => 'mobile',
-                    'icon_id'=>'2'
+                    'name'          => 'mobile',
+                    'icon_id'       =>'2',
+                    'is_removable'  => false
                 ],
-
-
             ]
 
 
