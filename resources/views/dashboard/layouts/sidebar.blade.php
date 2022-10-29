@@ -65,7 +65,7 @@
                 <li class="nav-item pcoded-hasmenu">
                     <a href="{{route('dashboard.service.index')}}" @class(['active' =>$active_button == 'service'])>
                         <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
-                        <span class="pcoded-mtext">ٍServices</span>
+                       <span class="pcoded-mtext">Services</span>
                     </a>
 
                 </li>

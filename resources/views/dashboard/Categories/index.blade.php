@@ -3,7 +3,7 @@
     'active_button' => 'category',
     'page_title'    => 'category page'
 ])
-
+ 
 @section('content')
     <div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
