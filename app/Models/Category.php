@@ -23,6 +23,6 @@ class Category extends Model
         return $this->belongsTo(Icon::class);
     }
     public function courses(){
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Course::class , 'category_id' , 'id');
     }
 }

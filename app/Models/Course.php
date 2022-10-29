@@ -5,12 +5,14 @@ namespace App\Models;
 use App\Models\CourseType;
 use App\Models\CourseTopic;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course extends Model
 {
     use HasFactory;
     public $guarded = [];
+
 
     // Scopes
     public function scopeStatus($query , $arg='accepted'){
@@ -36,4 +38,11 @@ class Course extends Model
     public function category(){
         return $this->belongsTo(Category::class, 'category_id' , 'id');
     }
+    public function instructor(){
+        return $this->belongsTo(User::class , 'instructor_id' , 'id');
+    }
+    public function courseType(){
+        return $this->belongsTo(CourseType::class);
+    }
+
 }

@@ -91,7 +91,10 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $category=Category::findorfail($id);
+        $category = Category::withCount('courses')->findorfail($id);
+        if($category->courses_count > 0){
+            return redirect()->route('dashboard.category.index')->with('danger' , "Sorry we can't delete this category, because it has courses related");
+        }
         $category->delete();
         return redirect()->route('dashboard.category.index')->with('danger' , 'Category deleted!');
     }

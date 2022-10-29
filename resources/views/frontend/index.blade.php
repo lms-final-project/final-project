@@ -2,7 +2,7 @@
 
 
     @section('index')
-        <!-- Start Sldier Area --> 
+        <!-- Start Sldier Area -->
         <div class="slider-area banner-style-3 bg-image">
             <div class="d-flex align-items-center height-940">
                 <div class="container eduvibe-animated-shape">
@@ -86,7 +86,7 @@
                             <p>no categories yet</p>
                         </div>
                     @endforelse
-                   <!--  End Service Grid  -->
+                    <!--  End Service Grid  -->
 
                 </div>
                 <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
@@ -121,11 +121,11 @@
                                 <h3 class="title">We Offer The Best Carrier</h3>
                             </div>
                             <div class="feature-style-6 mt--40">
-                              
 
-                               @forelse ($services as $service)
-                                   
-                              
+
+                            @forelse ($services as $service)
+
+
 
                                 <div class="edu-feature-list color-variation-3" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                     <div class="icon">
@@ -137,7 +137,7 @@
                                     </div>
                                 </div>
                                 @empty
-                                   
+
                                 @endforelse
                             </div>
                             <div class="read-more-btn mt--30" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
@@ -154,9 +154,9 @@
         </div>
 
 
-        <!-- Start Counterup Area --> 
+        <!-- Start Counterup Area -->
        <div class="edu-counterup-and-course-area">
-        
+
            <div class="container">
                 <div class="counterup-style-2 bg-color-primary radius-small ptb--80 ">
                     <div class="row g-5">
@@ -176,9 +176,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Counter --> 
+                        <!-- End Single Counter -->
 
-                        <!-- Start Single Counter-->  
+                        <!-- Start Single Counter-->
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 line-separator">
                             <div class="edu-counterup-2 text-center">
                                 <div class="inner">
@@ -196,7 +196,7 @@
                         </div>
                         <!-- End Single Counter  -->
 
-                        <!-- Start Single Counter --> 
+                        <!-- Start Single Counter -->
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 line-separator">
                             <div class="edu-counterup-2 text-center">
                                 <div class="inner">
@@ -212,9 +212,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Counter-->  
+                        <!-- End Single Counter-->
 
-                        <!-- Start Single Counter --> 
+                        <!-- Start Single Counter -->
                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 line-separator">
                             <div class="edu-counterup-2 text-center">
                                 <div class="inner">
@@ -235,7 +235,7 @@
                 </div>
             </div>
        </div>
-        
+
 
 
 
@@ -255,40 +255,40 @@
                     </div>
 
                     <div class="row g-5 mt--25">
-                        <!-- Start Single Card-->  
+                        <!-- Start Single Card-->
                         @forelse ($courses as $course)
-                            
-                        
+
+
                         <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                             <div class="edu-card card-type-1 bg-white radius-small">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        
-                                          <a href="course-details.html" style="height: 270px;width:370px">
-                                <img class="w-100" src="{{ asset("storage/".$course->image) }}" alt="Course Meta">
-                            </a> 
+
+                                        <a href="{{ route('course_details' , $course->id) }}" style="height: 270px;width:370px">
+                                            <img class="w-100" src="{{ asset("storage/".$course->image) }}" alt="Course Meta">
+                                        </a>
                                         <div class="top-position status-group left-top">
                                             <span class="eduvibe-status status-01">{{$course->type->name}}</span>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="content">
                                         <h6 class="title">
-                                            <a href="course-details.html">{{ $course->title }}</a>
+                                            <a href="{{ route('course_details' , $course->id) }}">{{ $course->title }}</a>
                                         </h6>
                                         <ul class="edu-meta meta-01">
                                             <li><i class="icon-file-list-4-line"></i>35 Lessons</li>
                                             <li><i class="icon-time-line"></i>18h 15m 44s</li>
                                         </ul>
-                                        
-                                        
+
+
                                         <div class="card-bottom">
                                             <div class="price-list price-style-03">
                                                 @if ($course->is_free)
                                                     <div class="price current-price">Free</div>
                                                 @else
                                                     <div class="price current-price">{{ $course->price }}</div>
-                                                   
+
                                                 @endif
                                             </div>
                                             <ul class="edu-meta meta-01">
@@ -309,7 +309,7 @@
                         @endforelse
                         <!-- End Single Card  -->
 
-                      
+
 
                     <div class="row">
                         <div class="col-lg-12">
@@ -495,9 +495,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Single Feature --> 
+                                <!-- End Single Feature -->
 
-                                <!-- Start Single Feature-->  
+                                <!-- Start Single Feature-->
                                 <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                     <div class="feature-style-3">
                                         <div class="feature-content">
@@ -506,12 +506,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Single Feature --> 
+                                <!-- End Single Feature -->
                             </div>
                         </div>
                     </div>
                 </div>
-            
+
 
                 <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
                     <div class="shape-image shape-image-1">
@@ -529,7 +529,7 @@
                 </div>
             </div>
         </div>
-    
+
     @endsection
 
 
