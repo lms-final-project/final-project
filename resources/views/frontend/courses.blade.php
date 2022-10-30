@@ -31,7 +31,7 @@
                     <div class="edu-card card-type-1 radius-small">
                         <div class="inner">
                             <div class="thumbnail">
-                                <a href="course-details.html">
+                                <a href="{{ route('course_details' , $course->id) }}">
                                     <img class="w-100" src="{{ asset('storage/'.$course->image) }}" alt="Course Meta" style="height: 250px">
                                 </a>
                                 <div class="top-position status-group left-top shadow">
@@ -43,7 +43,7 @@
                                     <li><i class="icon-file-list-4-line"></i>29 Lessons</li>
                                     <li><i class="icon-time-line"></i>19h 15m 26s</li>
                                 </ul>
-                                <h6 class="title"><a href="course-details.html">Competitive Strategy law for all students</a>
+                                <h6 class="title"><a href="{{ route('course_details' , $course->id) }}">{{$course->title}}</a>
                                 </h6>
 
                                 <div class="card-bottom">

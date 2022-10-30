@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Instructor_Details;
+use instructor;
+use App\Models\Course;
 use Illuminate\Http\Request;
+use App\Models\Instructor_Details;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreProfileRequest;
 
 class InstructorDetailsController extends Controller
 {
@@ -13,8 +17,12 @@ class InstructorDetailsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { $instructor_detailes=instructor_Details::get();
+        $courses = Course::instructor(Auth::user()->id)->status()->with('type')->get();
+        //dd($instructor_detailes);
+
+        return view('frontend.instructor.panel.profile.index',compact('instructor_detailes','courses'));
+
     }
 
     /**
@@ -24,7 +32,7 @@ class InstructorDetailsController extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend.instructor.panel.profile.create');
     }
 
     /**
@@ -34,8 +42,25 @@ class InstructorDetailsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {//you should use StoreProfileRequest
+        if($request->hasFile('image')){
+            $file=$request->file('image');
+            $path=$file->store('Profile','public');
+
+
+        }
+        instructor_Details::create([
+            'instructor_id'          =>Auth::user()->id ,
+            'job_title'       => $request->description,
+            'image'=>$path,
+            'phone'=>$request->phone,
+            'description'=>$request->description,
+            'social_links'=>$request->social,
+        ]);
+
+        return redirect()->route('instrector_details.index');
+        //dd($request->all());
+
     }
 
     /**
@@ -57,7 +82,7 @@ class InstructorDetailsController extends Controller
      */
     public function edit(Instructor_Details $instructor_Details)
     {
-        //
+
     }
 
     /**

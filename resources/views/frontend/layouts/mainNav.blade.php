@@ -5,11 +5,11 @@
                 <div class="logo">
                     <a href="{{ route('home') }}">
                         <img class="logo-light" style="" src="{{ asset('frontend/assets/images/logo/Capture.PNG')}}" alt="Site Logo">
-                        
+
                     </a>
-                   
+
                 </div>
-            
+
             </div>
             <div class="col-lg-8 d-none d-xl-block">
                 <nav class="mainmenu-nav d-none d-lg-block">
@@ -134,17 +134,28 @@
                                     </button>
                                 </form>
                             @endif
-                            <form action="{{ route('logout') }}" method="POST">
-                                <div class="quote-icon d-none d-md-block" id="user-btn">
-                                    <a class="edu-btn btn-medium left-icon header-button fs-5" >
-                                        @csrf
-                                        <i class="ri-user-line"></i>
-                                        <span>
-                                            {{ auth()->user()->name }}
-                                        </span>
-                                    </a>
-                                </div>
-                            </form>
+                            <div class="dropdown">
+                                <a style="margin-left: 10px;padding:15px;font-size:10px;bold" class=" rounded-lg btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+
+
+                                        {{ auth()->user()->name }}
+
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                  <li><a class="" href="#"><form action="{{ route('logout') }}" method="POST">
+                                    <div class="  " id="user-btn">
+                                        <a class="dropdown-item  edu-btn btn-medium left-icon header-button fs-5" >
+                                            @csrf
+                                            LogOut
+                                        </a>
+                                    </div>
+                                </form></a></li>
+                                  <li><a class="dropdown-item edu-btn btn-medium left-icon header-button fs-5 " href="{{route('edit_profile')}}">Profile</a></li>
+
+                                </ul>
+                              </div>
+
                         @endauth
                         @guest
                             <div class="quote-icon quote-user d-none d-md-block ml--15 ml_sm--5">

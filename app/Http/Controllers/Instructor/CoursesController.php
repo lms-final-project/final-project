@@ -26,7 +26,8 @@ class CoursesController extends Controller
      */
     public function index()
     {$instructor_id=Auth::user()->id;
-        $courses = Course::instructor($instructor_id)->with('type')->get();
+        //dd($instructor_id);
+$courses = Course::instructor($instructor_id)->with('type')->get();
        // dd($courses);
         return view('frontend.instructor.panel.courses.index',compact('courses'));
 
@@ -199,6 +200,6 @@ class CoursesController extends Controller
 
     }
     public function add_curriculum(Course $course){
-        
+
     }
 }

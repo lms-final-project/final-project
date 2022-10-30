@@ -14,12 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('instructor__details', function (Blueprint $table) {
-            $table->id()->primary()->foreignId('id')->constrained('users');
+            $table->foreignId('instructor_id')->constrained('users')->onDelete('cascade');
             $table->string('job_title');
+            $table->string('description');
             $table->string('image');
             $table->string('phone');
             $table->json('social_links');
             $table->timestamps();
+            $table->primary('instructor_id');
         });
     }
 
