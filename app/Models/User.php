@@ -6,6 +6,7 @@ namespace App\Models;
 use instructor;
 use Carbon\Carbon;
 use App\Models\Role;
+use App\Models\InstructorDetails;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -67,12 +68,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-   /* public function instructor_details()
-        {
-            return $this->hasOne(instructor_Details::class,'id' , 'instructor_id');
-        }*/
-         public function instructor_details()
-        {
-            return $this->hasOne(instructor_Details::class,'id' , 'instructor_id')->withDefault();
-        }
+
+    public function instructor_details()
+    {
+        return $this->hasOne(InstructorDetails::class,'instructor_id' , 'id');
+    }
 }

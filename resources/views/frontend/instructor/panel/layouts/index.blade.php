@@ -41,12 +41,6 @@
                                     show all courses
                                 </a>
                             </li>
-                          <!--  <li  @class(['active' => $active_btn == 'profile'])>
-                                <a href="{{ route('instrector_details.create') }}" class="d-flex justify-center items-center">
-                                    <i class="ri-slideshow-line"></i>
-Create Profile
-                                </a>
-                            </li>-->
                         </ul>
                     </div>
                 </div>

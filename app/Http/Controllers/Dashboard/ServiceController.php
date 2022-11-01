@@ -88,22 +88,17 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-
-
-
         $old_image = $service->image;
         if($request->hasFile('image')){
             $file = $request->file('image');
             $path = $file->store('Services' , 'public');
         }
 
-      $service->update([
-'image'=>$path,
-        'title'                 => $request->title,
-        'description'           => $request->description,
-
-
-    ]);
+        $service->update([
+            'image'         => $path ?? $old_image,
+            'title'         => $request->title,
+            'description'   => $request->description,
+        ]);
 
         if($old_image && $request->hasFile('image')){
             Storage::disk('public')->delete($old_image);

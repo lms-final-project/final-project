@@ -43,7 +43,7 @@
 
             @enderror
                         </div>
-                        
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -101,7 +101,7 @@
                                         <h5 class="modal-title" id="exampleModalLiveLabel">Edit Service {{$loop->iteration  }}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form action="{{ route('dashboard.service.update' , $service->id) }}" method="POST">
+                                    <form action="{{ route('dashboard.service.update' , $service->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('put')
                                         <div class="modal-body">
@@ -124,14 +124,14 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                      
-                                               
-                                              
+
+
+
                                                 <div class="col-12">
                                                     <div>
                                                         <label for="image" class="preview-img">
                                                         @if ($service->image)
-                                                        
+
                                                         <img class="rounded" style="width:60px;height:60px"
                                                         src="{{ asset("storage/".$service->image) }}" alt="Course Meta">
                                                     @else
@@ -142,7 +142,7 @@
                                                         <input type="file" name="image" required class="custom-file-input" id="image" style="opacity: 0" accept="image/*">
                                                         @error('image')
                                     <span class="invalid-feedback">{{ $message }}</span>
-                        
+
                                     @enderror
                                                     </div>
                                                 </div>

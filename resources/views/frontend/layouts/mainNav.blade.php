@@ -143,18 +143,20 @@
                                 </a>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                  <li><a class="" href="#"><form action="{{ route('logout') }}" method="POST">
-                                    <div class="  " id="user-btn">
-                                        <a class="dropdown-item  edu-btn btn-medium left-icon header-button fs-5" >
-                                            @csrf
-                                            LogOut
-                                        </a>
-                                    </div>
-                                </form></a></li>
-                                  <li><a class="dropdown-item edu-btn btn-medium left-icon header-button fs-5 " href="{{route('edit_profile')}}">Profile</a></li>
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            <div class="  " id="user-btn">
+                                                <a class="dropdown-item  edu-btn btn-medium left-icon header-button fs-5" >
+                                                    @csrf
+                                                    LogOut
+                                                </a>
+                                            </div>
+                                        </form>
+                                    </li>
+                                    <li><a class="dropdown-item edu-btn btn-medium left-icon header-button fs-5 " href="{{route('edit_profile')}}">Profile</a></li>
 
                                 </ul>
-                              </div>
+                            </div>
 
                         @endauth
                         @guest
