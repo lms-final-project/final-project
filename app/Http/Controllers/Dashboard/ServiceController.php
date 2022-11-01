@@ -89,25 +89,25 @@ class ServiceController extends Controller
     public function update(UpdateServiceRequest $request, Service $service)
     {
 
+//dd($request->all());
+
+$old_image = $service->image;
+if($request->hasFile('image')){
+    $file = $request->file('image');
+    $path = $file->update('Services' , 'public');
+    dd($path);
+}
+
+$service->update([
+'image'   => $path,
+'title'                 => $request->title,
+'description'           => $request->description,
 
 
-        $old_image = $service->image;
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $path = $file->store('Services' , 'public');
-        }
-
-      $service->update([
-'image'=>$path,
-        'title'                 => $request->title,
-        'description'           => $request->description,
-
-
-    ]);
-
-        if($old_image && $request->hasFile('image')){
-            Storage::disk('public')->delete($old_image);
-        }
+]);
+if($old_image && $request->hasFile('image')){
+    Storage::disk('public')->delete($old_image);
+}
         return redirect()->route('dashboard.service.index')->with('success' , 'Service updated succesffully');
     }
 
