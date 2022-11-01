@@ -7,7 +7,6 @@ use App\Models\Course;
 use App\Models\Category;
 use App\Models\CourseType;
 use App\Models\CourseTopic;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -25,12 +24,9 @@ class CoursesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {$instructor_id=Auth::user()->id;
-        //dd($instructor_id);
-$courses = Course::instructor($instructor_id)->with('type')->get();
-       // dd($courses);
+    {
+        $courses = Course::owner(Auth::user()->id)->with('type')->get();
         return view('frontend.instructor.panel.courses.index',compact('courses'));
-
     }
 
     /**
@@ -131,13 +127,7 @@ $courses = Course::instructor($instructor_id)->with('type')->get();
      */
     public function update(UpdateCourseRequest $request, Course $course)
 
-    {//you should use UpdateCourceRequest instead Request
-       // dd($request->all());
-
-
-
-//dd($course->topics()->delete());
-
+    {
         DB::beginTransaction();
         try{
 
@@ -147,19 +137,18 @@ $courses = Course::instructor($instructor_id)->with('type')->get();
                 $path = $file->store('instructors/courses' , 'public');
             }
 
-          $course ->update([
-
-            'title'                 => $request->title,
-            'description'           => $request->description,
-            'is_free'               => $request->boolean('is_free'),
-            'price'                 => $request->price,
-            'price_after_discount'  => $request->price_after_discount,
-            'has_certificate'       => $request->boolean('has_certificate'),
-            'certification'         => $request->certification,
-            'course_type_id'        => $request->course_type_id,
-            'category_id'           => $request->category_id,
-
-        ]);
+            $course->update([
+                'image'                 => $path ?? $old_image,
+                'title'                 => $request->title,
+                'description'           => $request->description,
+                'is_free'               => $request->boolean('is_free'),
+                'price'                 => $request->price,
+                'price_after_discount'  => $request->price_after_discount,
+                'has_certificate'       => $request->boolean('has_certificate'),
+                'certification'         => $request->certification,
+                'course_type_id'        => $request->course_type_id,
+                'category_id'           => $request->category_id,
+            ]);
 
             if($old_image && $request->hasFile('image')){
                 Storage::disk('public')->delete($old_image);

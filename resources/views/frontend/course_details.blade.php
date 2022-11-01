@@ -34,16 +34,12 @@
                         <div class="course-details-content">
                             <div class="content-top">
                                 <div class="author-meta">
-                                    @foreach ( $instructor_detailes as $instructor)
-
-
                                     <div class="author-thumb">
-                                        <a href="{{route('profile_index')}}">
-                                            <img src="{{asset('storage/'.$instructor->image)}}" alt="Author Images">
-                                            <span class="author-title">By {{ $course->iinstructor->name }}</span>
+                                        <a href="{{ route('instructor_profile' , $course->instructor->id) }}">
+                                            <img src="{{asset('storage/'.$course->instructor->instructor_details->image)}}" alt="Author Images">
+                                            <span class="author-title">By {{ $course->instructor->name }}</span>
                                         </a>
                                     </div>
-                                    @endforeach
                                 </div>
                             </div>
 
@@ -199,27 +195,33 @@
                                 <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
                                     <div class="course-tab-content">
                                         <div class="course-author-wrapper">
-                                            @foreach ( $instructor_detailes as $instructor)
-
-
                                             <div style="height: 100px;width:100px" class="thumbnail">
-                                                <img src="{{asset('storage/'.$instructor->image)}}" alt="Author Images">
+                                                <img src="{{asset('storage/'.$course->instructor->instructor_details->image)}}" alt="Author Images">
                                             </div>
 
                                             <div class="author-content">
                                                 <h6 class="title">
-                                                    <a href="">{{ $course->iinstructor->name }}</a>
+                                                    <a href="{{ route('instructor_profile' , $course->instructor->id) }}">
+                                                        {{ $course->instructor->name }}
+                                                    </a>
                                                 </h6>
-                                                <span class="subtitle">{{$instructor->job_title}}</span>
-                                                <p>{{$instructor->description}}</p>
-                                                <ul class="social-share border-style">
-                                                    <li><a href="{{$instructor->social_links[0]}}"><i class="icon-Fb"></i></a></li>
-                                                    <li><a href="{{$instructor->social_links[1]}}"><i class="icon-linkedin"></i></a></li>
+                                                <span class="subtitle">{{$course->instructor->instructor_details->job_title}}</span>
+                                                <p>{{$course->instructor->instructor_details->description}}</p>
+                                                @if ($course->instructor->instructor_details->social_links)
+                                                    <ul class="social-share border-style">
+                                                        @if ($course->instructor->instructor_details->social_links['facebook'])
+                                                            <li><a href="{{$course->instructor->instructor_details->social_links['facebook']}}"><i class="icon-Fb"></i></a></li>
+                                                        @endif
+                                                        @if ($course->instructor->instructor_details->social_links['linkedin'])
+                                                            <li><a href="{{$course->instructor->instructor_details->social_links['linkedin']}}"><i class="icon-linkedin"></i></a></li>
+                                                        @endif
+                                                        @if ($course->instructor->instructor_details->social_links['twitter'])
+                                                            <li><a href="{{$course->instructor->instructor_details->social_links['twitter']}}"><i class="icon-Twitter"></i></a></li>
+                                                        @endif
+                                                    </ul>
+                                                @endif
 
-                                                    <li><a href="{{$instructor->social_links[2]}}"><i class="icon-Twitter"></i></a></li>
-                                                </ul>
                                             </div>
-                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -254,7 +256,7 @@
 
                                                 {{-- <li><span><i class="icon-calendar-2-line"></i> Deadline</span><span>25 Dec, 2022</span></li> --}}
 
-                                                <li><span><i class="icon-user-2-line_tie"></i> Instructor</span><span>{{ $course->iinstructor->name }}</span></li>
+                                                <li><span><i class="icon-user-2-line_tie"></i> Instructor</span><span>{{ $course->instructor->name }}</span></li>
                                             </ul>
 
                                             <div class="read-more-btn mt--45">

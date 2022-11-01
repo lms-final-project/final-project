@@ -101,7 +101,7 @@
                                         <h5 class="modal-title" id="exampleModalLiveLabel">Edit Service {{$loop->iteration  }}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form action="{{ route('dashboard.service.update' , $service->id) }}" method="POST">
+                                    <form action="{{ route('dashboard.service.update' , $service->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('put')
                                         <div class="modal-body">
@@ -139,7 +139,15 @@
                                                     <p>upload image</p>
                                                 @endif
                                                         </label>
+<<<<<<< HEAD
                                                         <input type="file" name="image" class="custom-file-input" id="image" style="opacity: 0" accept="image/*">
+=======
+                                                        <input type="file" name="image" required class="custom-file-input" id="image" style="opacity: 0" accept="image/*">
+                                                        @error('image')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+
+                                    @enderror
+>>>>>>> ab7dadac78000679dee8ec6fafbf606f52633f91
                                                     </div>
                                                 </div>
                                             </div>

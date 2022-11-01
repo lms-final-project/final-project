@@ -15,14 +15,14 @@ class Course extends Model
 
 
     // Scopes
-    public function scopeStatus($query , $arg='accepted'){
+    public function scopeStatus($query , $arg = 'accepted'){
         return $query->where('status', $arg);
     }
 
     public function scopeCategory($query , $arg){
         return $query->where('category_id', $arg);
     }
-    public function scopeInstructor($query , $arg){
+    public function scopeOwner($query , $arg){
         return $query->where('instructor_id', $arg);
     }
 
@@ -38,7 +38,7 @@ class Course extends Model
     public function category(){
         return $this->belongsTo(Category::class, 'category_id' , 'id');
     }
-    public function iinstructor(){
+    public function instructor(){
         return $this->belongsTo(User::class , 'instructor_id' , 'id');
     }
     public function courseType(){

@@ -287,7 +287,7 @@
                                                 @if ($course->is_free)
                                                     <div class="price current-price">Free</div>
                                                 @else
-                                                    <div class="price current-price">{{ $course->price }}</div>
+                                                    <div class="price current-price">{{'$'. $course->price }}</div>
 
                                                 @endif
                                             </div>
