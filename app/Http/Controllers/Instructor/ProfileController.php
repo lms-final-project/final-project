@@ -23,15 +23,29 @@ class ProfileController extends Controller
         return view('frontend.instructor.panel.profile.index',compact('instructor_details','courses'));
     }
 
+    public function create(){
+        $details = Auth()->user()->instructor_details;
+        if($details == null){
+        return view('frontend.instructor.panel.profile.create');
+        }
+        else{
+            return redirect()->route('instructor_profile');
+        }
+
+
+    }
     public function edit(){
         $details = Auth()->user()->instructor_details;
         return view('frontend.instructor.panel.profile.edit',compact('details'));
-    }
+        }
+
+
+
 
     public function update(Request $request){
-        $instructor_details =  Auth()->user()->instructor_details;
+       $instructor_details =  Auth()->user()->instructor_details;
 
-        if($instructor_details && $instructor_details->instructor_id != null){
+
             $old_image = $instructor_details->image;
             if($request->hasFile('image')){
                 $file = $request->file('image');
@@ -47,8 +61,12 @@ class ProfileController extends Controller
             if($old_image && $request->hasFile('image')){
                 Storage::disk('public')->delete($old_image);
             }
+            return redirect()->route('instructor_profile');
         }
-        else{
+
+
+    public function store(Request $request){
+
             if($request->hasFile('image')){
                 $file=$request->file('image');
                 $path=$file->store('Profile','public');
@@ -57,12 +75,13 @@ class ProfileController extends Controller
             InstructorDetails::create([
                 'instructor_id' => Auth::user()->id,
                 'job_title'     => $request->description,
-                'image'         => $path,
+                'image'         => $path ,
                 'phone'         => $request->phone,
                 'description'   => $request->description,
                 'social_links'  => $request->social,
             ]);
+            return redirect()->route('instructor_profile');
         }
-        return redirect()->route('instructor_profile');
-    }
+
+
 }
