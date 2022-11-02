@@ -14,9 +14,10 @@
         <!-- End Search Popup  -->
 
         @yield('index')
+        @yield('breadcrump')
+        @yield('content')
     </div>
 
-    @yield('content')
 
     <!-- Start Footer Area  -->
     @include('frontend.layouts.footer')
@@ -27,12 +28,29 @@
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg>
     </div>
+    @php
+        $name = 'ahmad'
+    @endphp
+
+
     <!-- JS ============================================ -->
     @include('frontend.layouts.js')
     <script>
         $('#user-btn').on('click' , ()=> {
             $('#user-btn').closest('form').submit();
         })
+    </script>
+
+    <script>
+        alertify.set('notifier','position', 'top-right');
+
+        @if ( Session::has('success') )
+            alertify.notify("{{ Session::get('success') }}", 'success', 3);
+        @endif
+
+        @if ( Session::has('danger') )
+            alertify.notify("{{ Session::get('danger') }}", 'error', 3);
+        @endif
     </script>
     @stack('scripts')
 </body>

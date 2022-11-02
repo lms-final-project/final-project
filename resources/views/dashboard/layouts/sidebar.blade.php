@@ -30,8 +30,8 @@
                 <li class="nav-item pcoded-menu-caption">
                     <label>Navigation</label>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link "><span class="pcoded-micon">
+                <li  @class(['nav-item', 'active' => $active_button == 'dashboard'])>
+                    <a href="{{ route('dashboard.home') }}" class="nav-link"><span class="pcoded-micon">
                         <i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span>
                     </a>
                 </li>
@@ -41,12 +41,33 @@
                         <span class="pcoded-mtext">Courses</span>
                     </a>
                     <ul class="pcoded-submenu">
+                        <li @class(['active' =>$active_button == 'courses'])>
+                            <a href="{{ route('dashboard.courses') }}" >
+                                Show All
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pcoded-submenu">
                         <li @class(['active' =>$active_button == 'category'])>
-                            <a href="{{ route('category.index') }}" >
+                            <a href="{{ route('dashboard.category.index') }}" >
                                 Categories
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item pcoded-hasmenu">
+                    <a href="{{route('dashboard.about.index')}}" @class(['active' =>$active_button == 'about'])>
+                        <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+                        <span class="pcoded-mtext">About</span>
+                    </a>
+
+                </li>
+                <li class="nav-item pcoded-hasmenu">
+                    <a href="{{route('dashboard.service.index')}}" @class(['active' =>$active_button == 'service'])>
+                        <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+                       <span class="pcoded-mtext">Services</span>
+                    </a>
+
                 </li>
             </ul>
         </div>

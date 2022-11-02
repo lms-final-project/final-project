@@ -1,11 +1,9 @@
 
 @extends('dashboard.layouts.app',[
-
     'active_button' => 'category',
     'page_title'    => 'category page'
-
 ])
-
+ 
 @section('content')
     <div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -14,7 +12,7 @@
                     <h5 class="modal-title" id="exampleModalLiveLabel">Create Category</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.category.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
                         <div class="card-body">
@@ -78,11 +76,13 @@
                                 <div class="d-flex">
 
                                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModalLive{{ $category->id }}">Update</button>
-                                    <form action="{{ route('category.destroy' , $category->id) }}" method="post" class="ml-2 delete-form">
-                                        @csrf
-                                        @method('delete')
-                                        <input type="button" class="btn btn-sm btn-outline-danger delete-btn" value="Delete">
-                                    </form>
+                                    @if ( $category->is_removable )
+                                        <form action="{{ route('dashboard.category.destroy' , $category->id) }}" method="post" class="ml-2 delete-form">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="button" class="btn btn-sm btn-outline-danger delete-btn" value="Delete">
+                                        </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
@@ -95,7 +95,7 @@
                                         <h5 class="modal-title" id="exampleModalLiveLabel">Edit {{ $category->name }}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form action="{{ route('category.update' , $category->id) }}" method="POST">
+                                    <form action="{{ route('dashboard.category.update' , $category->id) }}" method="POST">
                                         @csrf
                                         @method('put')
                                         <div class="modal-body">
@@ -152,7 +152,7 @@
 
 @push('scripts')
     <script>
-        $('.delete-btn').on('click' , ()=>{
+        $('.delete-btn').on('click' , function(){
             Swal.fire({
                 title: 'Are you sure to delete this service?',
                 text: "You won't be able to revert this!",
@@ -163,7 +163,7 @@
                 confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    $('.delete-btn').closest('.delete-form').submit();
+                    $(this).closest('.delete-form').submit();
                 }
             })
         })

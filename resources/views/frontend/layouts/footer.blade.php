@@ -6,7 +6,7 @@
                     <div class="edu-footer-widget">
                         <div class="logo">
                             <a href="index.html">
-                                <img class="logo-light" src="assets/images/logo/logo-white.png" alt="Site Logo">
+                                <img class="logo-light" src="{{ asset('frontend/assets/images/logo/Capture.PNG') }}" alt="Site Logo">
                             </a>
                         </div>
                         <p class="description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
@@ -25,11 +25,11 @@
                         <div class="inner">
                             <ul class="footer-link link-hover">
                                 <li><a href="about-us-1.html"><i class="icon-Double-arrow"></i>About Us</a></li>
-                                <li><a href="event-list.html"><i class="icon-Double-arrow"></i>Upcoming Events</a></li>
-                                <li><a href="blog-standard.html"><i class="icon-Double-arrow"></i>Blog & News</a></li>
-                                <li><a href="faq.html"><i class="icon-Double-arrow"></i>FAQ Question</a></li>
-                                <li><a href="testimonial.html"><i class="icon-Double-arrow"></i>Testimonial</a></li>
-                                <li><a href="privacy-policy.html"><i class="icon-Double-arrow"></i>Privacy Policy</a></li>
+                                <li><a href="event-list.html"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="blog-standard.html"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="faq.html"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="testimonial.html"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="privacy-policy.html"><i class="icon-Double-arrow"></i>Test</a></li>
                             </ul>
                         </div>
                     </div>
@@ -41,11 +41,11 @@
                         <div class="inner">
                             <ul class="footer-link link-hover">
                                 <li><a href="contact-us.html"><i class="icon-Double-arrow"></i>Contact Us</a></li>
-                                <li><a href="pricing.html"><i class="icon-Double-arrow"></i>Pricing Plan</a></li>
-                                <li><a href="instructor-profile.html"><i class="icon-Double-arrow"></i>Instructor Profile</a></li>
-                                <li><a href="faq.html"><i class="icon-Double-arrow"></i>FAQ</a></li>
-                                <li><a href="course-style-3.html"><i class="icon-Double-arrow"></i>Popular Courses</a></li>
-                                <li><a href="purchase-guide.html"><i class="icon-Double-arrow"></i>Terms & Conditions</a></li>
+                                <li><a href="pricing.html"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="instructor-profile.html"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="faq.html"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="course-style-3.html"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="purchase-guide.html"><i class="icon-Double-arrow"></i>Test</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,12 +57,11 @@
                         <div class="inner">
                             <div class="widget-information">
                                 <ul class="information-list">
-                                    <li><i class="icon-map-pin-line"></i>275 Quadra Street Victoria Road, New York
+                                    <li><i class="icon-map-pin-line"></i>Palestine, Nablus 
                                     </li>
-                                    <li><i class="icon-phone-fill"></i><a href="tel: + 1 (237) 382-2839">+ 1 (237) 382-2839</a></li>
-                                    <li><i class="icon-phone-fill"></i><a href="tel: + 1 (237) 382-2840">+ 1 (237) 382-2840</a></li>
-                                    <li><i class="icon-mail-line-2"></i><a target="_blank" href="mailto:yourmailaddress@example.com">yourmailaddress@example.com</a></li>
-                                </ul>
+                                    <li><i class="icon-phone-fill"></i><a href="">+9720569020059</a></li>
+                                    <li><i class="icon-phone-fill"></i><a href="">+9720568592265</a></li>
+                                    <li><i class="icon-mail-line-2"></i><a target="_blank" href="">AnwarTest@gmail.com</a></li>
                             </div>
                         </div>
                     </div>
@@ -79,15 +78,15 @@
             </div>
         </div>
     </div>
-    <div class="copyright-area copyright-default">
+   <!-- <div class="copyright-area copyright-default">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner text-center">
-                        <p>Copyright 2022 <a href="#">EduVibe</a> Designed By <a href="https://themeforest.net/user/devsvibe">DevsVibe</a>. All Rights Reserved</p>
+                        <p>Copyright 2022 <a href="#">Test</a>Test <a href="https://themeforest.net/user/devsvibe">DevsVibe</a>. All Rights Reserved</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </footer>

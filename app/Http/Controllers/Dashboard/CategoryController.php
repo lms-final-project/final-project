@@ -44,7 +44,7 @@ class CategoryController extends Controller
             'icon_id'       => $request->icon_id,
         ]);
 
-        return redirect()->route('category.index');
+        return redirect()->route('dashboard.category.index')->with('success' , 'Category created successfully');
     }
 
     /**
@@ -66,10 +66,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
-        $icons = Icon::all();
 
-        return view('dashboard.Categories.edit' , compact('category' , 'icons'));
     }
 
     /**
@@ -88,14 +85,17 @@ class CategoryController extends Controller
             'icon_id'       => $request->icon_id
         ]);
 
-        return redirect()->route('category.index');
+        return redirect()->route('dashboard.category.index')->with('success' , 'Category updated successfully.');
     }
 
 
     public function destroy($id)
     {
-        $category=Category::findorfail($id);
+        $category = Category::withCount('courses')->findorfail($id);
+        if($category->courses_count > 0){
+            return redirect()->route('dashboard.category.index')->with('danger' , "Sorry we can't delete this category, because it has courses related");
+        }
         $category->delete();
-        return redirect()->route('category.index');
+        return redirect()->route('dashboard.category.index')->with('danger' , 'Category deleted!');
     }
 }
