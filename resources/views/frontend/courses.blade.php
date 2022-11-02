@@ -52,7 +52,7 @@
                                         <div class="price current-price">Free</div>
 
                                         @else
-                                        <div class="price current-price">$45.00</div>
+                                        <div class="price current-price">{{'$'.$course->price}}</div>
 
                                         @endif
                                     </div>

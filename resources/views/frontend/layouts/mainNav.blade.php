@@ -1,3 +1,6 @@
+
+
+
 <header class="edu-header disable-transparent  header-sticky">
     <div class="container">
         <div class="row align-items-center">
@@ -134,26 +137,27 @@
                                     </button>
                                 </form>
                             @endif
-                            <div class="dropdown">
-                                <a style="margin-left: 10px;padding:15px;font-size:10px;bold" class=" rounded-lg btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="has-droupdown" >
+                               <a style="  background-color: #525ee171;margin-left:5px;padding:10px;font-size:15px;font-weight:bold" class="rounded btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
 
 
                                         {{ auth()->user()->name }}
 
                                 </a>
 
+
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <li>
                                         <form action="{{ route('logout') }}" method="POST">
-                                            <div class="  " id="user-btn">
-                                                <a class="dropdown-item  edu-btn btn-medium left-icon header-button fs-5" >
+                                            <div  id="user-btn">
+                                                <a  style="color:#525ee1fd;font-size:10px;font-weight:bold"class="dropdown-item   btn-medium left-icon header-button fs-5" >
                                                     @csrf
                                                     LogOut
                                                 </a>
                                             </div>
                                         </form>
                                     </li>
-                                    <li><a class="dropdown-item edu-btn btn-medium left-icon header-button fs-5 " href="{{route('edit_profile')}}">Profile</a></li>
+                                    <li><a class="dropdown-item  btn-medium left-icon header-button fs-5 "style="color:#525ee1fd;font-size:10px;font-weight:bold" href="{{route('create_profile')}}">Profile</a></li>
 
                                 </ul>
                             </div>

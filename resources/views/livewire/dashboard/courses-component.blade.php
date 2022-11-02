@@ -4,22 +4,33 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-3">
-                        <input type="text" class="form-control" wire:model='title'>
+                        <input type="text" class="form-control" placeholder="Search title course"wire:model='title'>
                     </div>
                     <div class="col-3">
-                        <select wire:model='category_id'>
-                            <option value="" selected >Select One</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"> {{ $category->name }} </option>
-                            @endforeach
-                        </select>
+                        <div class="form-group">
+
+                            <select  wire:model='category_id'class="form-control" id="exampleFormControlSelect1">
+                                <option value="" placeholder="Search category name" selected >Select Category </option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                     </div>
-                    <div class="col-3">  <select wire:model='course_type_id'>
-                        <option value="" selected >Select One</option>
-                        @foreach ($courseTypes as $coursetype)
-                            <option value="{{ $coursetype->id }}"> {{ $coursetype->name }} </option>
-                        @endforeach
-                    </select></div>
+                    <div class="col-3">
+                        <div class="form-group">
+
+                            <select  wire:model='course_type_id'class="form-control" id="exampleFormControlSelect1">
+                                <option value="" placeholder="Search course-type name" selected >Select Course_type </option>
+                                @foreach ($courseTypes as $coursetype)
+                                <option value="{{ $coursetype->id }}"> {{ $coursetype->name }} </option>
+                            @endforeach
+                            </select>
+                        </div>
+
+                    </div>
+
                     <div class="col-3">4</div>
                 </div>
             </div>
@@ -33,6 +44,7 @@
                                 <th>Description</th>
                                 <th>Status</th>
                                 <th>Category</th>
+                                <th>Instructor Name</th>
                                 <th>Type</th>
                                 <th>Operations</th>
                             </tr>
@@ -63,7 +75,9 @@
                                         </td>
                                     @endif
                                     <td>{{ $course->category->name ?? 'test' }}</td>
+                                    <td>{{ $course->instructor->name }}</td>
                                     <td>{{ $course->type->name  }}</td>
+
                                     <td>
                                         @if ($course->status == 'pinned')
                                             <button class="btn btn-sm btn-outline-info rounded" wire:click='acceptCourse({{$course->id}})'>Accept</button>

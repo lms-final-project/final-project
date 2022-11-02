@@ -55,8 +55,11 @@
                                     <li><a href="{{$instructor_details->social_links['twitter']}}"><i class="icon-Twitter"></i></a></li>
                                 @endif
                             </ul>
-                            <div class="contact-btn">
-                                <a class="edu-btn" href="contact-me.html">Contact Me<i class="icon-arrow-right-line-right"></i></a>
+                            <div class="d-flex">
+
+                               <div style="background-color: #525FE1;margin-right:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="{{route('edit_profile')}}">Edit Profile</a></div>
+
+                                <div style="background-color: #525FE1;margin-left:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="">Contact Me</a></div>
                             </div>
                         </div>
                     </div>
@@ -190,7 +193,7 @@
                                                         <div class="price current-price">Free</div>
 
                                                         @else
-                                                        <div class="price current-price">$45.00</div>
+                                                        <div class="price current-price">{{'$'.$course->price}}</div>
 
                                                         @endif
                                                     </div>

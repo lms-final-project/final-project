@@ -54,8 +54,8 @@
                                     @if ($course->is_free)
                                         <div class="price current-price">Free</div>
                                     @else
-                                        <div class="price current-price">{{ $course->price }}</div>
-                                        <div class="price old-price">$69.00</div>
+                                        <div class="price current-price">{{ '$'.$course->price }}</div>
+
                                     @endif
                                 </div>
                                 <ul class="edu-meta meta-01">
@@ -64,31 +64,31 @@
 
                             </div>
                             <div class="d-flex">
-                               
-                                    
-                               
+
+
+
                                 <form action="{{ route('courses.edit', $course->id) }}" method="get">
                                     @csrf
                                     @if ($course->status != 'rejected'  )
                                     <button class="btn btn-info btn-sm rounded-3"style="font-size: 12px">Edit</button>
                                     @endif
                                 </form>
-                             
+
                                 <form class="ms-3"  action="{{ route('courses.destroy', $course->id) }}" method="POST" >
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger btn-sm rounded-3"style="font-size: 12px" >Delete</button>
                                 </form>
-                                
+
                                 <form class="ms-3"  action="{{ route('courses.add_curriculum', $course->id) }}" method="POST" >
                                     @csrf
-                                   
+
                                     @if ($course->status =='accepted')
-                                    
-                                
+
+
                                     <button class="btn btn-success btn-sm rounded-3"style="font-size: 10px" >Add to Curriculum</button>
                                     @endif
-                                    
+
                                 </form>
 
                             </div>

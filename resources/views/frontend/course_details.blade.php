@@ -264,7 +264,7 @@
                                                     @if ($course->is_free)
                                                         Free
                                                     @else
-                                                        {{$course->price}}
+                                                        {{'$'.$course->price}}
                                                     @endif
                                                 </a>
                                             </div>

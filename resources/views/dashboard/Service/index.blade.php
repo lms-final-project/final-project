@@ -19,7 +19,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Service</label>
-                                <input type="text" name="title" @class(['form-control' , 'is-invalid' => $errors->has('question')])  id="question" value="{{ old('question') }}" placeholder="Enter Service ">
+                                <input type="text" name="title" @class(['form-control' , 'is-invalid' => $errors->has('title')])  id="question" value="{{ old('title') }}" placeholder="Enter Service ">
                                 @error('title')
                                     <span class="invalid-feedback">
                                         {{ $message }}
@@ -28,7 +28,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Description</label>
-                                <input type="text" name="description" @class(['form-control' , 'is-invalid' => $errors->has('answer')])  id="answer" value="{{ old('answer') }}" placeholder="Enter Description ">
+                                <input type="text" name="description" @class(['form-control' , 'is-invalid' => $errors->has('description')])  id="description" value="{{ old('description') }}" placeholder="Enter Description ">
                                 @error('description')
                                     <span class="invalid-feedback">
                                         {{ $message }}
@@ -139,11 +139,15 @@
                                                     <p>upload image</p>
                                                 @endif
                                                         </label>
+<<<<<<< HEAD
+                                                        <input type="file" name="image" class="custom-file-input" id="image" style="opacity: 0" accept="image/*">
+=======
                                                         <input type="file" name="image" required class="custom-file-input" id="image" style="opacity: 0" accept="image/*">
                                                         @error('image')
                                     <span class="invalid-feedback">{{ $message }}</span>
 
                                     @enderror
+>>>>>>> ab7dadac78000679dee8ec6fafbf606f52633f91
                                                     </div>
                                                 </div>
                                             </div>
