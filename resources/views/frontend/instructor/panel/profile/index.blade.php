@@ -56,10 +56,14 @@
                                 @endif
                             </ul>
                             <div class="d-flex">
-
-                               <div style="background-color: #525FE1;margin-right:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="{{route('edit_profile')}}">Edit Profile</a></div>
-
-                                <div style="background-color: #525FE1;margin-left:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="">Contact Me</a></div>
+                                @if ($instructor_details->instructor_id == auth()->user()->id)
+                                    <div style="background-color: #525FE1;margin-right:5px; padding:3px" class="rounded mt-3">
+                                        <a class="btn" style="font-size:20px;color:white"href="{{route('edit_profile')}}">Edit Profile</a>
+                                    </div>
+                                @endif
+                                <div style="background-color: #525FE1;margin-left:5px; padding:3px" class="rounded m-auto mt-3">
+                                    <a class="btn" style="font-size:20px;color:white"href="">Contact Me</a>
+                                </div>
                             </div>
                         </div>
                     </div>

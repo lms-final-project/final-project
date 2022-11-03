@@ -14,5 +14,6 @@ Route::prefix('instructor')->middleware('checkInstructor:instructor')->group(fun
     Route::get('/edit/profile' , [ProfileController::class , 'edit'])->name('edit_profile');
     Route::post('/updateprofile' , [ProfileController::class , 'update'])->name('update_profile');
 
+    // Route::resource()
     Route::post('/add_curriculum/{course}', [CoursesController::class,'add_curriculum' ])->name('courses.add_curriculum');
 });
