@@ -56,11 +56,9 @@
                                 @endif
                             </ul>
                             <div class="d-flex">
-@auth
-
 
                                <div style="background-color: #525FE1;margin-right:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="{{route('edit_profile')}}">Edit Profile</a></div>
-                               @endauth
+
                                 <div style="background-color: #525FE1;margin-left:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="">Contact Me</a></div>
                             </div>
                         </div>

@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Instructor\CourseContentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Instructor\CoursesController;
+use App\Http\Controllers\Instructor\CurriculumController;
 use App\Http\Controllers\Instructor\ProfileController;
 use App\Http\Controllers\Instructor\DashboardController;
+use App\Models\CourseContent;
 
 Route::prefix('instructor')->middleware('checkInstructor:instructor')->group(function(){
     Route::get('/panel' , [DashboardController::class , 'index'])->name('instructor.panel');
@@ -14,5 +17,6 @@ Route::prefix('instructor')->middleware('checkInstructor:instructor')->group(fun
     Route::get('/edit/profile' , [ProfileController::class , 'edit'])->name('edit_profile');
     Route::post('/updateprofile' , [ProfileController::class , 'update'])->name('update_profile');
 
-    Route::post('/add_curriculum/{course}', [CoursesController::class,'add_curriculum' ])->name('courses.add_curriculum');
+    Route::resource('curriculum' , CurriculumController::class);
+    Route::resource('course/heading-content' , CourseContentController::class);
 });
