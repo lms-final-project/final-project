@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\CourseType;
 use App\Models\CourseTopic;
+use App\Models\CourseContent;
+use App\Models\CourseHeading;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,7 +33,6 @@ class Course extends Model
     public function topics(){
         return $this->hasMany(CourseTopic::class);
     }
-
     public function type(){
         return $this->belongsTo(CourseType::class, 'course_type_id' , 'id');
     }
@@ -43,6 +44,12 @@ class Course extends Model
     }
     public function courseType(){
         return $this->belongsTo(CourseType::class);
+    }
+    public function courseHeadings(){
+        return $this->hasMany( CourseHeading::class , 'course_id' , 'id');
+    }
+    public function courseContents(){
+        return $this->hasManyThrough(CourseHeading::class , CourseContent::class , 'course_heading_id', 'course_id');
     }
 
 }

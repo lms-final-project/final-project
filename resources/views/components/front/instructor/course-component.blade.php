@@ -48,7 +48,7 @@
                         @method('delete')
                         <button class="btn btn-danger btn-sm rounded-3"style="font-size: 12px">Delete</button>
                     </form>
-                    <form class="ms-3" action="{{ route('courses.add_curriculum', $course->id) }}" method="POST">
+                    <form class="ms-3" action="{{ route('curriculum.show', $course->id) }}" method="get">
                         @csrf
                         @if ($course->status == 'accepted')
                             <button class="btn btn-success btn-sm rounded-3"style="font-size: 10px">Add
