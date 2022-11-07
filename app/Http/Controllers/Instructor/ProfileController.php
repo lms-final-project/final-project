@@ -65,6 +65,7 @@ class ProfileController extends Controller
 
 
     public function store(Request $request){
+
         if($request->hasFile('image')){
             $file=$request->file('image');
             $path=$file->store('Profile','public');
@@ -72,7 +73,7 @@ class ProfileController extends Controller
 
         InstructorDetails::create([
             'instructor_id' => Auth::user()->id,
-            'job_title'     => $request->description,
+            'job_title'     => $request->job_title,
             'image'         => $path ,
             'phone'         => $request->phone,
             'description'   => $request->description,

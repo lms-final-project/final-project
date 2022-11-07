@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('image');
+            $table->string('file')->nullable();
             $table->string('title');
             $table->string('description');
             $table->boolean('is_free')->default(false);

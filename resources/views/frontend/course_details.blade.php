@@ -77,117 +77,48 @@
                                 <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
                                     <div class="course-tab-content">
                                         <div class="edu-accordion-02" id="accordionExample1">
-                                            <div class="edu-accordion-item">
-                                                <div class="edu-accordion-header" id="headingOne">
-                                                    <button class="edu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                        The First Steps
-                                                    </button>
-                                                </div>
-                                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample1">
-                                                    <div class="edu-accordion-body">
-                                                        <ul>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Introduction</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Course Overview</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Local Development Environment Tools</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Course Excercise</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Embedding PHP in HTML</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Using Dynamic Data</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="edu-accordion-item">
-                                                <div class="edu-accordion-header" id="headingTwo">
-                                                    <button class="edu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                        Data Types and More
-                                                    </button>
-                                                </div>
-                                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample1">
-                                                    <div class="edu-accordion-body">
-                                                        <ul>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Introduction</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Course Overview</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Local Development Environment Tools</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Course Excercise</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Embedding PHP in HTML</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Using Dynamic Data</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+@forelse ($courseHeading as $heading)
+
+
                                             <div class="edu-accordion-item">
                                                 <div class="edu-accordion-header" id="headingThree">
-                                                    <button class="edu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                        Control Structure
-                                                    </button>
+
+                                                    <button class="edu-accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#flush-{{$heading->id}}" aria-expanded="false" aria-controls="flush-{{$heading->id}}">
+                                                    {{$heading->title}}
+                                                </button>
                                                 </div>
-                                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample1">
+                                                <div id="flush-{{$heading->id}}" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample1">
                                                     <div class="edu-accordion-body">
+                                                        @if (count($heading->contents)> 0)
+
+
+
                                                         <ul>
+                                                            @foreach ($heading->contents as $content)
                                                             <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Introduction</div>
+                                                                <div class="text"><i class="icon-draft-line"></i> <a href="{{$content->title}}">Session{{ $loop->iteration }} </a></div>
                                                                 <div class="icon"><i class="icon-lock-password-line"></i></div>
                                                             </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Course Overview</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Local Development Environment Tools</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Course Excercise</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Embedding PHP in HTML</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> Using Dynamic Data</div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
+                                                            @endforeach
+
                                                         </ul>
+
+
+
+                                                        @else
+                                                        <div class="" style="font-size: 20px">
+                                                            <span>No Content Yet</span></div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
+                                            @empty
+                                            <div style="font-size: 20px">
+                                                <span>No Curriculm Yet</span>
+                                            </div>
+                                            @endforelse
                                         </div>
                                     </div>
                                 </div>
@@ -271,10 +202,12 @@
 
                                             <div class="read-more-btn mt--15">
                                                 @guest
-                                                    <a class="edu-btn w-100 text-center" href="{{ route('login') }}">Buy Now</a>
+                                                    <a class="edu-btn w-100 text-center " href="{{ route('login') }}">Buy Now</a>
+                                                    <a class="edu-btn w-100 text-center"style="margin-top:10px" href="">Show Outline</a>
                                                 @endguest
                                                 @auth
                                                     <a class="edu-btn w-100 text-center" href="#">Buy Now</a>
+                                                    <a class="edu-btn w-100 text-center"style="margin-top:10px" href="{{route('show_outline',['file'=>$course->file])}}">Show Outline</a>
                                                 @endauth
                                             </div>
 

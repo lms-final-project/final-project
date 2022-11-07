@@ -46,7 +46,7 @@
                     @if (count($heading->contents) > 0)
                         <ul>
                             @foreach ($heading->contents as $content)
-                                <li>{{ $content->title }}</li>
+                               <a href="{{ $content->title }}"> <li>Session{{ $loop->iteration }}</li></a>
                             @endforeach
                         </ul>
 

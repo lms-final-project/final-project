@@ -22,6 +22,7 @@ use App\Http\Controllers\Instructor\ProfileController;
 Route::get('/', [ HomeController::class , 'index' ])->name('home');
 Route::get('/courses/{category}', [CoursesController::class , 'index'])->name('front.courses');
 Route::get('/course/{course}/details' , [CoursesController::class , 'show'])->name('course_details');
+Route::get('/download/{file}' , [CoursesController::class , 'download'])->name('show_outline');
 // instructor profile
 Route::get('/profile/{id?}' , [ProfileController::class , 'index'])->name('instructor_profile');
 
