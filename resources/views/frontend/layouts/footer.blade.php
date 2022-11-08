@@ -5,7 +5,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="edu-footer-widget">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="#">
                                 <img class="logo-light" src="{{ asset('frontend/assets/images/logo/Capture.PNG') }}" alt="Site Logo">
                             </a>
                         </div>
@@ -24,12 +24,12 @@
                         <h5 class="widget-title">Explore</h5>
                         <div class="inner">
                             <ul class="footer-link link-hover">
-                                <li><a href="about-us-1.html"><i class="icon-Double-arrow"></i>About Us</a></li>
-                                <li><a href="event-list.html"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="blog-standard.html"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="faq.html"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="testimonial.html"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="privacy-policy.html"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>About Us</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
                             </ul>
                         </div>
                     </div>
@@ -40,12 +40,12 @@
                         <h5 class="widget-title">Useful Links</h5>
                         <div class="inner">
                             <ul class="footer-link link-hover">
-                                <li><a href="contact-us.html"><i class="icon-Double-arrow"></i>Contact Us</a></li>
-                                <li><a href="pricing.html"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="instructor-profile.html"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="faq.html"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="course-style-3.html"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="purchase-guide.html"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Contact Us</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                         <div class="inner">
                             <div class="widget-information">
                                 <ul class="information-list">
-                                    <li><i class="icon-map-pin-line"></i>Palestine, Nablus 
+                                    <li><i class="icon-map-pin-line"></i>Palestine, Nablus
                                     </li>
                                     <li><i class="icon-phone-fill"></i><a href="">+9720569020059</a></li>
                                     <li><i class="icon-phone-fill"></i><a href="">+9720568592265</a></li>
