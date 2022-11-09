@@ -36,7 +36,12 @@
                                 <div class="author-meta">
                                     <div class="author-thumb">
                                         <a href="{{ route('instructor_profile' , $course->instructor->id) }}">
-                                            <img src="{{asset('storage/'.$course->instructor->instructor_details->image)}}" alt="Author Images">
+
+                                            @if ($course->instructor->instructor_details && $course->instructor->instructor_details->image)
+                                                <img src="{{asset('storage/'.$course->instructor->instructor_details->image)}}" alt="Author Images">
+                                            @else
+                                                <img src="{{asset('assets/images/default_instructor_image.png')}}" alt="Author Images">
+                                            @endif
                                             <span class="author-title">By {{ $course->instructor->name }}</span>
                                         </a>
                                     </div>
@@ -78,46 +83,44 @@
                                     <div class="course-tab-content">
                                         <div class="edu-accordion-02" id="accordionExample1">
 
-@forelse ($courseHeading as $heading)
+                                            @forelse ($courseHeading as $heading)
+                                                <div class="edu-accordion-item">
+                                                    <div class="edu-accordion-header" id="headingThree">
 
-
-                                            <div class="edu-accordion-item">
-                                                <div class="edu-accordion-header" id="headingThree">
-
-                                                    <button class="edu-accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#flush-{{$heading->id}}" aria-expanded="false" aria-controls="flush-{{$heading->id}}">
-                                                    {{$heading->title}}
-                                                </button>
-                                                </div>
-                                                <div id="flush-{{$heading->id}}" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample1">
-                                                    <div class="edu-accordion-body">
-                                                        @if (count($heading->contents)> 0)
-
-
-
-                                                        <ul>
-                                                            @foreach ($heading->contents as $content)
-                                                            <li>
-                                                                <div class="text"><i class="icon-draft-line"></i> <a href="{{$content->title}}">Session{{ $loop->iteration }} </a></div>
-                                                                <div class="icon"><i class="icon-lock-password-line"></i></div>
-                                                            </li>
-                                                            @endforeach
-
-                                                        </ul>
+                                                        <button class="edu-accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#flush-{{$heading->id}}" aria-expanded="false" aria-controls="flush-{{$heading->id}}">
+                                                        {{$heading->title}}
+                                                    </button>
+                                                    </div>
+                                                    <div id="flush-{{$heading->id}}" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample1">
+                                                        <div class="edu-accordion-body">
+                                                            @if (count($heading->contents)> 0)
 
 
 
-                                                        @else
-                                                        <div class="" style="font-size: 20px">
-                                                            <span>No Content Yet</span></div>
-                                                        @endif
+                                                            <ul>
+                                                                @foreach ($heading->contents as $content)
+                                                                <li>
+                                                                    <div class="text"><i class="icon-draft-line"></i> <a href="{{$content->title}}">Session{{ $loop->iteration }} </a></div>
+                                                                    <div class="icon"><i class="icon-lock-password-line"></i></div>
+                                                                </li>
+                                                                @endforeach
+
+                                                            </ul>
+
+
+
+                                                            @else
+                                                            <div class="" style="font-size: 20px">
+                                                                <span>No Content Yet</span></div>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             @empty
-                                            <div style="font-size: 20px">
-                                                <span>No Curriculm Yet</span>
-                                            </div>
+                                                <div style="font-size: 20px">
+                                                    <span>No Curriculm Yet</span>
+                                                </div>
                                             @endforelse
                                         </div>
                                     </div>
@@ -126,8 +129,12 @@
                                 <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
                                     <div class="course-tab-content">
                                         <div class="course-author-wrapper">
-                                            <div style="height: 100px;width:100px" class="thumbnail">
-                                                <img src="{{asset('storage/'.$course->instructor->instructor_details->image)}}" alt="Author Images">
+                                            <div class="thumbnail">
+                                                @if ($course->instructor->instructor_details && $course->instructor->instructor_details->image)
+                                                    <img src="{{asset('storage/'.$course->instructor->instructor_details->image)}}" alt="Author Images" class="img-fluid">
+                                                @else
+                                                    <img src="{{asset('assets/images/default_instructor_image.png')}}" alt="Author Images">
+                                                @endif
                                             </div>
 
                                             <div class="author-content">
@@ -136,9 +143,13 @@
                                                         {{ $course->instructor->name }}
                                                     </a>
                                                 </h6>
-                                                <span class="subtitle">{{$course->instructor->instructor_details->job_title}}</span>
-                                                <p>{{$course->instructor->instructor_details->description}}</p>
-                                                @if ($course->instructor->instructor_details->social_links)
+                                                @if ($course->instructor->instructor_details && $course->instructor->instructor_details->job_title)
+                                                    <span class="subtitle">{{$course->instructor->instructor_details->job_title}}</span>
+                                                @endif
+                                                @if ($course->instructor->instructor_details && $course->instructor->instructor_details->description)
+                                                    <p>{{$course->instructor->instructor_details->description}}</p>
+                                                @endif
+                                                @if ($course->instructor->instructor_details && $course->instructor->instructor_details->social_links)
                                                     <ul class="social-share border-style">
                                                         @if ($course->instructor->instructor_details->social_links['facebook'])
                                                             <li><a href="{{$course->instructor->instructor_details->social_links['facebook']}}"><i class="icon-Fb"></i></a></li>
@@ -203,12 +214,14 @@
                                             <div class="read-more-btn mt--15">
                                                 @guest
                                                     <a class="edu-btn w-100 text-center " href="{{ route('login') }}">Buy Now</a>
-                                                    <a class="edu-btn w-100 text-center"style="margin-top:10px" href="">Show Outline</a>
+                                                    <a class="edu-btn w-100 text-center"style="margin-top:10px" href="#">Show Outline</a>
                                                 @endguest
                                                 @auth
                                                     <a class="edu-btn w-100 text-center" href="#">Buy Now</a>
-                                                    <a class="edu-btn w-100 text-center"style="margin-top:10px" href="{{route('show_outline',['file'=>$course->file])}}">Show Outline</a>
                                                 @endauth
+                                                @if ($course->file)
+                                                    <a class="edu-btn w-100 text-center"style="margin-top:10px" href="{{ route('download' , $course->file) }}">Show Outline</a>
+                                                @endif
                                             </div>
 
                                             {{-- <div class="read-more-btn mt--30 text-center">

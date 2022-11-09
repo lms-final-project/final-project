@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="section-title text-center" data-sal-delay="50" data-sal="slide-up" data-sal-duration="800">
                     <span class="pre-title">All Courses</span>
-                    <h3 class="title">Our All Courses</h3>
+                    <h3 class="title">My Courses</h3>
                 </div>
             </div>
         </div>
@@ -21,11 +21,9 @@
                 <!-- Start Single Card  -->
                 <x-front.instructor.course-component :course="$course" />
             @empty
-                <tr>
-                    <th colspan="5" class="text-center">
-                        There isn't any course yet
-                    </th>
-                </tr>
+                <h5 class="text-center">
+                    There isn't any course yet
+                </h5>
             @endforelse
         </div>
     </div>
