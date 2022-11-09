@@ -10750,7 +10750,8 @@ button.edu-btn {
     position: relative;
     text-align: center;
     margin-right: 120px;
-    margin-left: -50px;
+    /*This is not work must be fixed*/
+    margin-left: 50px !important;
     z-index: 2; }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .about-style-4 .gallery-wrapper {
@@ -14546,7 +14547,8 @@ Gallery Item
   position: relative;
   z-index: 1;
   overflow: hidden;
-  background-image: url(../images/bg/home-three-banner.jpg); }
+  /*Background changes but not work*/
+  background-image: url(../images/bg/Dashboard_images.jpg); }
   @media only screen and (max-width: 991px) {
     .banner-style-3 {
       padding: 160px 0 100px; }
