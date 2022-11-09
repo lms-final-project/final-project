@@ -96,4 +96,9 @@ class CourseContentController extends Controller
     {
         //
     }
+
+    public function addLink(Request $request , CourseContent $content){
+        $content->update($request->all());
+        return redirect()->back()->with('success' , "link addded to $content->title successfully");
+    }
 }

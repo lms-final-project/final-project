@@ -22,35 +22,20 @@ use App\Http\Controllers\Instructor\ProfileController;
 Route::get('/', [ HomeController::class , 'index' ])->name('home');
 Route::get('/courses/{category}', [CoursesController::class , 'index'])->name('front.courses');
 Route::get('/course/{course}/details' , [CoursesController::class , 'show'])->name('course_details');
-Route::get('/download/{file}' , [CoursesController::class , 'download'])->name('show_outline');
+Route::get('/download/{file}', [CoursesController::class , 'download'])->where('file', '.*')->name('download');
+
 // instructor profile
 Route::get('/profile/{id?}' , [ProfileController::class , 'index'])->name('instructor_profile');
 
 Route::get('test' , function(){
-    $data = [
-        'facebook'  => 'facebook.com',
-        'twitter'   => 'twitter.com',
-        'linkedin'  => 'linkedin.com',
-    ];
-    // when store the data   => encode them
-    $data = json_encode($data);
-    // when restore the data => decode them
-    $data = json_decode($data, true);
-
-
-    dd($data['facebook']);
+        return view('test');
 });
-
-
-
 
 // ==== Dashboard Routes ====
 require __DIR__.'/admin.php';
 
-
 // ==== Frontend Routes ====
 require __DIR__.'/instructor.php';
 require __DIR__.'/student.php';
-
 
 require __DIR__.'/auth.php';

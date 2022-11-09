@@ -56,13 +56,13 @@ class CoursesController extends Controller
                 $file = $request->file('image');
                 $path = $file->store('instructors/courses' , 'public');
             }
-            if($request->hasFile('courseFile')){
-                $filefile = $request->file('courseFile');
-                $pathfile = $filefile->store('instructors/courses' , 'public');
+            if($request->hasFile('file')){
+                $filefile = $request->file('file');
+                $pathfile = $filefile->store('instructors/courses/files' , 'public');
             }
             $course = Course::create([
                 'image'                 => $path,
-                'file'                 => $pathfile,
+                'file'                  => $pathfile ?? null,
                 'title'                 => $request->title,
                 'description'           => $request->description,
                 'is_free'               => $request->boolean('is_free'),

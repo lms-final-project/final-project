@@ -19,4 +19,5 @@ Route::prefix('instructor')->middleware('checkInstructor:instructor')->group(fun
 
     Route::resource('curriculum' , CurriculumController::class);
     Route::resource('course/heading-content' , CourseContentController::class);
+    Route::post('/courses/content/{content}/add-link' , [CourseContentController::class , 'addLink'])->name('content.add_link');
 });
