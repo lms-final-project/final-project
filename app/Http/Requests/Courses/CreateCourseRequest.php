@@ -25,6 +25,7 @@ class CreateCourseRequest extends FormRequest
     {
         return [
             'image'             => ['required'],
+            'courseFile'             => ['required'],
             'title'             => ['required' , 'string'],
             'description'       => ['required' , 'string'],
             'price'             => ['required_if:is_free,false'],

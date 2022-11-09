@@ -19,6 +19,14 @@
                     <input type="file" name="image" required class="custom-file-input" id="image" style="opacity: 0" accept="image/*">
                 </div>
             </div>
+            <div class="col-12">
+
+                <div class="mb-3">
+                    <label for="courseFile" class="form-label">Upload file</label>
+                    <input type="file" name="courseFile" class="form-control" id="courseFile">
+
+                </div>
+            </div>
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 {{-- <input type="text" class="form-control" required id="title" name="title" placeholder="course title"> --}}

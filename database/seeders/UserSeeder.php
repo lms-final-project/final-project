@@ -16,11 +16,20 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name'      => 'admin',
-            'email'     => 'admin@gmail.com',
-            'password'  => Hash::make(123456789),
-            'role_id'   => 1 //for admin
+        User::insert([
+            [
+                'name'      => 'admin',
+                'email'     => 'admin@gmail.com',
+                'password'  =>  Hash::make(123456789),
+                'role_id'   =>  1 //for admin
+            ],
+            // todo : remove ahmad
+            [
+                'name'      => 'ahmad',
+                'email'     => 'ahmad@gmail.com',
+                'password'  =>  Hash::make(123456789),
+                'role_id'   =>  2 //for instructor
+            ]
         ]);
     }
 }

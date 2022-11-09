@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Courses\CreateCourseRequest;
 use App\Http\Requests\Courses\UpdateCourseRequest;
@@ -55,9 +56,13 @@ class CoursesController extends Controller
                 $file = $request->file('image');
                 $path = $file->store('instructors/courses' , 'public');
             }
-
+            if($request->hasFile('courseFile')){
+                $filefile = $request->file('courseFile');
+                $pathfile = $filefile->store('instructors/courses' , 'public');
+            }
             $course = Course::create([
                 'image'                 => $path,
+                'file'                 => $pathfile,
                 'title'                 => $request->title,
                 'description'           => $request->description,
                 'is_free'               => $request->boolean('is_free'),
@@ -128,17 +133,25 @@ class CoursesController extends Controller
     public function update(UpdateCourseRequest $request, Course $course)
 
     {
+
         DB::beginTransaction();
         try{
-
+           // $decrypted = Crypt::decryptString($course->courseFile);
+           // dd($decrypted);
             $old_image = $course->image;
+            $old_file=$course->courseFile;
             if($request->hasFile('image')){
                 $file = $request->file('image');
                 $path = $file->store('instructors/courses' , 'public');
             }
+            if($request->hasFile('courseFile')){
+                $filefile = $request->file('courseFile');
+                $pathfile = $filefile->store('instructors/courses' , 'public');
+            }
 
             $course->update([
                 'image'                 => $path ?? $old_image,
+                'file'                 => $pathfile ?? $old_file,
                 'title'                 => $request->title,
                 'description'           => $request->description,
                 'is_free'               => $request->boolean('is_free'),
@@ -186,9 +199,6 @@ class CoursesController extends Controller
 
         $course->delete();
         return redirect()->back()->with('danger' , 'Course deleted!');
-
-    }
-    public function add_curriculum(Course $course){
 
     }
 }

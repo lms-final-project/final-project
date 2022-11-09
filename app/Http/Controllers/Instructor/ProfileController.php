@@ -37,51 +37,50 @@ class ProfileController extends Controller
     public function edit(){
         $details = Auth()->user()->instructor_details;
         return view('frontend.instructor.panel.profile.edit',compact('details'));
+    }
+
+
+
+
+    public function update(Request  $request){
+        $instructor_details =  Auth()->user()->instructor_details;
+
+        $old_image = $instructor_details->image;
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $path = $file->store('Profile' , 'public');
         }
-
-
-
-
-    public function update(Request $request){
-       $instructor_details =  Auth()->user()->instructor_details;
-
-
-            $old_image = $instructor_details->image;
-            if($request->hasFile('image')){
-                $file = $request->file('image');
-                $path = $file->store('Profile' , 'public');
-            }
-            $instructor_details->update([
-                'job_title'     => $request->job_title,
-                'image'         => $path ?? $old_image,
-                'phone'         => $request->phone,
-                'description'   => $request->description,
-                'social_links'  => $request->social,
-            ]);
-            if($old_image && $request->hasFile('image')){
-                Storage::disk('public')->delete($old_image);
-            }
-            return redirect()->route('instructor_profile');
+        $instructor_details->update([
+            'job_title'     => $request->job_title,
+            'image'         => $path ?? $old_image,
+            'phone'         => $request->phone,
+            'description'   => $request->description,
+            'social_links'  => $request->social,
+        ]);
+        if($old_image && $request->hasFile('image')){
+            Storage::disk('public')->delete($old_image);
         }
+        return redirect()->route('instructor_profile')->with('success' , 'profile updated successfully');
+    }
 
 
     public function store(Request $request){
 
-            if($request->hasFile('image')){
-                $file=$request->file('image');
-                $path=$file->store('Profile','public');
-            }
-
-            InstructorDetails::create([
-                'instructor_id' => Auth::user()->id,
-                'job_title'     => $request->description,
-                'image'         => $path ,
-                'phone'         => $request->phone,
-                'description'   => $request->description,
-                'social_links'  => $request->social,
-            ]);
-            return redirect()->route('instructor_profile');
+        if($request->hasFile('image')){
+            $file=$request->file('image');
+            $path=$file->store('Profile','public');
         }
+
+        InstructorDetails::create([
+            'instructor_id' => Auth::user()->id,
+            'job_title'     => $request->job_title,
+            'image'         => $path ,
+            'phone'         => $request->phone,
+            'description'   => $request->description,
+            'social_links'  => $request->social,
+        ]);
+        return redirect()->route('instructor_profile')->with('success' , 'profile created successfully');
+    }
 
 
 }

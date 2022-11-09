@@ -20,6 +20,22 @@
                     <input type="file" name="image" class="custom-file-input" id="image" style="opacity: 0" accept="image/*">
                 </div>
             </div>
+            <div class="col-12">
+
+                <div class="mb-3">
+                    <label for="courseFile" class="form-label">
+                        @if ($course->file)
+                        <span>File is:{{$course->file}}</span>
+
+                    @else
+                        <i class=""></i>
+                        <p>upload file</p>
+                    @endif
+                    </label>
+                    <input type="file" name="courseFile" class="form-control" id="courseFile">
+
+                </div>
+            </div>
             <div class="mb-3">
                 <label for="title" class="form-label" >Title</label>
                 <x-form.text-input name='title' placeholder="course title" value='{{ $course->title }}' />
