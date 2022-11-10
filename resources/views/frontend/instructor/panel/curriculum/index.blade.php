@@ -39,6 +39,7 @@
                         <button class="btn btn-sm ms-3 my-2 btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Content-{{ $heading->id }}">
                             <i class="ri-play-list-add-line fs-3"></i>
                         </button>
+
                     </div>
                 </h2>
                 <div id="flush-{{$heading->id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
@@ -46,10 +47,44 @@
                     @if (count($heading->contents) > 0)
                         <ul>
                             @foreach ($heading->contents as $content)
-                               <a href="{{ $content->title }}"> <li>Session{{ $loop->iteration }}</li></a>
+                            <li>
+                                <div class="d-flex justify-content-between align-items-center w-75 pe-4">
+                                    <p>{{ $content->title }}</p>
+                                    <div class="d-flex align-items-center">
+                                        @if ($content->link)
+                                            <a href="{{ $content->link }}" target="_blank" class="btn btn-sm btn-outline-secondary">
+                                                <i class="ri-links-line fs-5"></i>
+                                            </a>
+                                        @endif
+                                        <button class="btn btn-outline-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#Content-link-{{ $content->id }}">
+                                            <i class="ri-add-line fs-5"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Add Link To Content -->
+                            <div class="modal fade" id="Content-link-{{ $content->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-2" id="exampleModalLabel">Add link to - {{ $content->title }}</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form action="{{ route('content.add_link' , $content->id) }}" method="POST">
+                                            @csrf
+                                            <div class="modal-body content-section">
+                                                <x-form.text-input name='link' placeholder="google drive link" value="{{ $content->link }}"/>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary fs-5" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary fs-5">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                             @endforeach
                         </ul>
-
                     @else
                         <div class="text-center pt-3">
                             <h5>No Content Yet</h5>
@@ -69,7 +104,7 @@
                         <form action="{{ route('curriculum.update' , $heading->id) }}" method="POST">
                             @csrf
                             @method('put')
-                            <div class="modal-body">
+                            <div class="modal-body ms">
                                 <x-form.text-input name='title' placeholder="heading title" value="{{ $heading->title }}"/>
                             </div>
                             <div class="modal-footer">
@@ -119,6 +154,8 @@
                     </div>
                 </div>
             </div>
+
+
         @empty
             <div class="card-body border rounded text-center">
                 <h5>There isn't any outline yet</h5>

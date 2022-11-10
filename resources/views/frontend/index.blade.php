@@ -20,10 +20,10 @@
                         <div class="col-lg-6">
                             <div class="banner-image">
                                 <div class="banner-main-image">
-                                    <img class="img-01" data-sal-delay="150" data-sal="fade" data-sal-duration="800" src="{{ asset('frontend/assets/images/banner/banner-03/image-01.png')}}" alt="Banner Images" />
+                                    <img class="img-01" data-sal-delay="150" data-sal="fade" data-sal-duration="800" src="{{ asset('frontend/assets/images/banner/banner-03/image-05.png')}}" alt="Banner Images" />
                                 </div>
-                                <img class="img-02" data-sal-delay="150" data-sal="fade" data-sal-duration="800" src="{{ asset('frontend/assets/images/banner/banner-03/image-02.png')}}" alt="Banner Images" />
-                                <img class="img-03" data-sal-delay="150" data-sal="fade" data-sal-duration="800" src="{{ asset('frontend/assets/images/banner/banner-03/image-03.png')}}" alt="Banner Images" />
+                                <img class="img-02" data-sal-delay="150" data-sal="fade" data-sal-duration="800" src="{{ asset('frontend/assets/images/banner/banner-03/image-06.png')}}" alt="Banner Images" />
+                                <img class="img-03" data-sal-delay="150" data-sal="fade" data-sal-duration="800" src="{{ asset('frontend/assets/images/banner/banner-03/image-08.png')}}" alt="Banner Images" />
                             </div>
                         </div>
                     </div>
@@ -109,9 +109,9 @@
                 <div class="row g-lg-5 g-md-5 g-sm-5">
                     <div class="col-lg-12 col-xl-6">
                         <div class="gallery-wrapper">
-                            <img class="image-1" src="{{ asset('frontend/assets/images/about/about-05/about-group-01.jpg')}}" alt="About Images">
-                            <img class="image-2" src="{{ asset('frontend/assets/images/about/about-05/about-group-02.jpg')}}" alt="About Images">
-                            <img class="image-3" data-parallax='{"x": 0, "y": -120}' src="{{ asset('frontend/assets/images/about/about-05/about-group-03.jpg')}}" alt="About Images">
+                            <img class="image-1" src="{{ asset('frontend/assets/images/about/about-05/about-group-10.jpg')}}" alt="About Images">
+                            <img class="image-2" src="{{ asset('frontend/assets/images/about/about-05/about-group-11.jpg')}}" alt="About Images">
+                            <img class="image-3" data-parallax='{"x": 0, "y": -120}' src="{{ asset('frontend/assets/images/about/about-05/about-group-12.jpg')}}" alt="About Images">
                         </div>
                     </div>
                     <div class="col-lg-12 col-xl-6">
@@ -350,15 +350,15 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="thumbnail" data-sal-delay="150" data-sal="fade" data-sal-duration="800">
-                                    <img class="radius-small w-100" src="{{ asset('frontend/assets/images/about/about-02/accordion-gallery-01.jpg')}}" alt="Shape Images">
+                                    <img class="radius-small w-100" src="{{ asset('frontend/assets/images/about/about-02/accordion-gallery-13.jpg')}}" alt="Shape Images">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 mt--35 mt_sm--15">
                                 <div class="thumbnail" data-sal-delay="150" data-sal="fade" data-sal-duration="800">
-                                    <img class="radius-small w-100" src="{{ asset('frontend/assets/images/about/about-02/accordion-gallery-02.jpg')}}" alt="Shape Images">
+                                    <img class="radius-small w-100" src="{{ asset('frontend/assets/images/about/about-02/accordion-gallery-14.jpg')}}" alt="Shape Images">
                                 </div>
                                 <div class="thumbnail mt--15" data-sal-delay="150" data-sal="fade" data-sal-duration="800">
-                                    <img class="radius-small w-100" src="{{ asset('frontend/assets/images/about/about-02/accordion-gallery-03.jpg')}}" alt="Shape Images">
+                                    <img class="radius-small w-100" src="{{ asset('frontend/assets/images/about/about-02/accordion-gallery-15.jpg')}}" alt="Shape Images">
                                 </div>
                             </div>
                         </div>

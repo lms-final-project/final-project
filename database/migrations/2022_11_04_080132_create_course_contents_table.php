@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             // $table->enum('content_type' , ['file' , 'link']);
             // $table->string('file')->nullable();
-             $table->string('link')->nullable();
+            // $table->string('link')->nullable();
             $table->timestamps();
         });
     }

@@ -23,7 +23,7 @@
 
                 <div class="mb-3">
                     <label for="courseFile" class="form-label">Upload file</label>
-                    <input type="file" name="courseFile" class="form-control" id="courseFile">
+                    <input type="file" name="file" class="form-control" id="courseFile">
 
                 </div>
             </div>

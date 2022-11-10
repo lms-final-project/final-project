@@ -50,6 +50,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                           
                             @forelse ($courses as $course)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
