@@ -14,10 +14,5 @@ class EncryptCookies extends Middleware
     protected $except = [
         //
     ];
-  /*  protected function decryptCookie($name, $cookie)
-    {
-        return is_array($cookie)
-                        ? $this->decryptArray($cookie)
-                        : $this->encrypter->decrypt(urldecode($cookie), static::serialized($name));
-    }*/
+  
 }

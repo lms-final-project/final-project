@@ -133,14 +133,14 @@ file
                                 <form action="{{ route('instructor.panel') }}" method="GET">
                                     @csrf
                                     <button class="edu-btn btn-medium left-icon header-button ms-3 fs-5" >
-                                        Panel
+                                        InstructorPanel
                                     </button>
                                 </form>
                                 @else
                                 <form action="{{ route('student.panel') }}" method="GET">
                                     @csrf
                                     <button class="edu-btn btn-medium left-icon header-button ms-3 fs-5" ">
-                                        MyCourses
+                                        StudentPanel
                                     </button>
                                 </form>
                             @endif

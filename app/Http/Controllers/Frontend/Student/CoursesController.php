@@ -10,7 +10,6 @@ class CoursesController extends Controller
 {
     public function index()
     {
-        $courses = Course::with('type')->get();
-        return view('frontend.student.panel.courses.index',compact('courses'));
+      //get all courses after student enrolled 
     }
 }

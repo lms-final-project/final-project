@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\StudentProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 
 class StudentProfileController extends Controller
 {
@@ -17,7 +19,9 @@ class StudentProfileController extends Controller
      */
     public function index()
     {
-        
+            $student_details = Auth()->user()->profile_student;
+
+        return view('frontend.student.panel.profile.index',compact('student_details'));
     }
 
     /**
@@ -27,8 +31,6 @@ class StudentProfileController extends Controller
      */
     public function create()
     {
-
-       //dd( $decrypted = Crypt::decrypt(Auth::user()->password));
         $details = Auth()->user()->profile_student;
         if($details == null){
         return view('frontend.student.panel.profile.create');
@@ -46,7 +48,6 @@ class StudentProfileController extends Controller
      */
     public function store(Request $request)
     {
-
         if($request->hasFile('image')){
             $file=$request->file('image');
             $path=$file->store('Profile','public');
@@ -82,7 +83,10 @@ class StudentProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student_details=StudentProfile::owner($id)->first();
+
+        return view('frontend.student.panel.profile.edit',compact('student_details'));
+
     }
 
     /**
@@ -94,7 +98,25 @@ class StudentProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $student_details=StudentProfile::owner($id)->first();
+
+
+        $old_image = $student_details->image;
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $path = $file->store('Profile' , 'public');
+        }
+        $student_details->update([
+
+            'image'         => $path ?? $old_image,
+            'phone'         => $request->phone,
+            'social_links'  => $request->social,
+        ]);
+        if($old_image && $request->hasFile('image')){
+            Storage::disk('public')->delete($old_image);
+        }
+        return redirect()->route('profile.index')->with('success' , 'profile updated successfully');
     }
 
     /**
@@ -106,5 +128,25 @@ class StudentProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function change_password(Request $request){
+
+       // $old_password=Auth()->user()->password;
+$old_password=Hash::make($request->password);
+       $student=Auth()->user();
+       if(!Hash::check($request->new_password, $old_password)){
+$student->update([
+'password' =>$request->new_password,
+]);
+return view('auth.signin');
+       }
+       else{
+       return redirect()->route('student.panel');}
+
+    }
+
+    public function password(){
+        return view('frontend.student.panel.profile.password');
     }
 }

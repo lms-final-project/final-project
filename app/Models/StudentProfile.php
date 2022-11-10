@@ -12,6 +12,9 @@ class StudentProfile extends Model
     use HasFactory;
     public $guarded = [];
     protected $primaryKey='student_id';
+    public function scopeOwner($query , $arg){
+        return $query->where('student_id', $arg);
+    }
      // Sccessors and mutators
      protected function socialLinks(): Attribute
      {

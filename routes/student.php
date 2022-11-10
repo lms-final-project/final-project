@@ -9,4 +9,6 @@ Route::prefix('student')->middleware('checkStudent:student')->group(function(){
     Route::get('/panel' , [DashboardController::class , 'index'])->name('student.panel');
     Route::get('/courses' , [CoursesController::class , 'index'])->name('student.courses');
     Route::resource('/profile', StudentProfileController::class);
+    Route::get('/password',[StudentProfileController::class , 'password'])->name('password');
+    Route::post('/password',[StudentProfileController::class , 'change_password'])->name('change_password');
 });
