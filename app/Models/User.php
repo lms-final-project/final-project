@@ -6,8 +6,10 @@ namespace App\Models;
 use instructor;
 use Carbon\Carbon;
 use App\Models\Role;
+use App\Models\StudentProfile;
 use App\Models\InstructorDetails;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -61,6 +63,15 @@ class User extends Authenticatable
             get: fn ($value) => ucfirst($value),
         );
     }
+  /*  protected function password(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Crypt::decrypt($value),
+
+
+
+        );
+    }*/
 
 
     // relations
@@ -72,5 +83,9 @@ class User extends Authenticatable
     public function instructor_details()
     {
         return $this->hasOne(InstructorDetails::class,'instructor_id' , 'id');
+    }
+    public function profile_student()
+    {
+        return $this->hasOne(StudentProfile::class,'student_id' , 'id');
     }
 }

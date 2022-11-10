@@ -152,13 +152,22 @@
         function addContent(){
             let content = `   <div class="d-flex mb-2">
                                 <input type="text" class="form-control" id="topic" name="contents[]" placeholder="course content" required>
-                                <button type="button" class="btn btn-danger rounded-full ms-2 remove-btn" >X</button>
+                                <button type="button" class="btn btn-danger rounded-full ms-2 remove1-btn" >X</button>
+
+                            </div>
+                            <div class="d-flex mb-2">
+                                <input type="text" class="form-control" id="link" name="links[]" placeholder="course content" required>
+                                <button type="button" class="btn btn-danger rounded-full ms-2 remove2-btn" >X</button>
                             </div>`;
 
             $('.content-section').append(content);
         }
         // Remove an content input
-        $('.content-section').on('click' , 'button.remove-btn' , function() {
+        $('.content-section').on('click' , 'button.remove1-btn' , function() {
+            $(this).parent().remove();
+        })
+        // Remove an link  input
+        $('.content-section').on('click' , 'button.remove2-btn' , function() {
             $(this).parent().remove();
         })
     </script>

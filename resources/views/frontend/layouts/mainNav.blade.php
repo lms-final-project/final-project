@@ -66,7 +66,7 @@
                                         <li><a href="gallery-masonry.html">Gallery Masonry</a></li>
                                     </ul>
                                 </li>
-
+file
                                 <li class="has-droupdown"><a href="#">Instructor</a>
                                     <ul class="submenu">
                                         <li><a href="instructor-one.html">Instructor 1</a></li>
@@ -136,7 +136,15 @@
                                         Panel
                                     </button>
                                 </form>
+                                @else
+                                <form action="{{ route('student.panel') }}" method="GET">
+                                    @csrf
+                                    <button class="edu-btn btn-medium left-icon header-button ms-3 fs-5" ">
+                                        MyCourses
+                                    </button>
+                                </form>
                             @endif
+
                             <div class="has-droupdown" >
                                <a style="  background-color: #525ee171;margin-left:5px;padding:10px;font-size:15px;font-weight:bold" class="rounded btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -157,7 +165,15 @@
                                             </div>
                                         </form>
                                     </li>
-                                    <li><a class="dropdown-item  btn-medium left-icon header-button fs-5 "style="color:#525ee1fd;font-size:10px;font-weight:bold" href="{{route('create_profile')}}">Profile</a></li>
+                                    <li>
+                                        @if (auth()->user()->role->name == 'instructor')
+                                        <a class="dropdown-item  btn-medium left-icon header-button fs-5 "style="color:#525ee1fd;font-size:10px;font-weight:bold" href="{{route('create_profile')}}">Profile</a>
+                                        @else
+                                        <a class="dropdown-item  btn-medium left-icon header-button fs-5 "style="color:#525ee1fd;font-size:10px;font-weight:bold" href="{{route('profile.create')}}">Profile</a>
+                                        @endif
+
+                                    </li>
+
 
                                 </ul>
                             </div>
