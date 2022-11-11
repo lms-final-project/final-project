@@ -35,7 +35,7 @@
 <!-- [ auth-signup ] start -->
 <div class="auth-wrapper">
 	<div class="auth-content text-center">
-		<img src="{{ asset('dashboard/assets/images/Knowledgeacademy1.png')}}" alt="" class="img-fluid mb-4">
+		<img src="{{ asset('dashboard/assets/images/Knowledgeacademy1.png')}}" alt="" class="img-fluid mb-4 KnwoledgeBordr">
 		<div class="card borderless">
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
