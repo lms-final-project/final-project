@@ -16,19 +16,33 @@
 
 	<!-- vendor css -->
 	<link rel="stylesheet" href="{{ asset('dashboard/assets/css/style.css')}}">
+    <style>
+        .auth-wrapper {
+            background-image: url({{asset('dashboard/assets/images/auth/knwoledgeBackGround.jpg')}});
+        }
+        .card.borderless {
+    border: 3px solid #231F40;
+
+}
+.KnwoledgeBordr{
+    border: 3px solid #231F40;
+}
+
+    </style>
 </head>
 
 <!-- [ auth-signin ] start -->
 <div class="auth-wrapper">
 	<div class="auth-content text-center">
-		<img src="{{ asset('dashboard/assets/images/logo.png')}}" alt="" class="img-fluid mb-4">
+		<img src="{{ asset('dashboard/assets/images/Knowledgeacademy1.png')}}" alt="" class="img-fluid mb-4 KnwoledgeBordr ">
 		<div class="card borderless">
+        
 			<div class="row align-items-center ">
 				<div class="col-md-12">
                     <div class="card-body">
                         <form  method="POST" action="{{ route('login') }}">
                             @csrf
-                            <h4 class="mb-3 f-w-400">Signin</h4>
+                            <h4 class="mb-3 f-w-600">Signin</h4>
                             <hr>
                             <div class="form-group mb-3">
                                 <input type="text" class="form-control" name="email" id="Email" placeholder="Email address">
@@ -40,16 +54,21 @@
                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                                 <label class="custom-control-label" for="customCheck1">Save credentials.</label>
                             </div>
-                            <button class="btn btn-block btn-primary mb-4">Signin</button>
+                            <button class="btn btn-block btn-dark mb-4">Signin</button>
                         </form>
                             <hr>
                             <p class="mb-0 text-muted">Don’t have an account? <a href="{{ route('register') }}" class="f-w-400">Signup</a></p>
                         </div>
 				</div>
+                
 			</div>
+            
 		</div>
+     
 	</div>
+   
 </div>
+
 <!-- [ auth-signin ] end -->
 
     <!-- Required Js -->
