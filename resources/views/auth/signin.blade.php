@@ -27,7 +27,16 @@
 .KnwoledgeBordr{
     border: 3px solid #231F40;
 }
-
+.form-control:focus {
+    
+    border-color: #df99b9;
+    
+}
+.btn-dark:hover {
+    color: #231F40;
+    background-color: #df99b9;
+    border-color: #df99b9;
+}
     </style>
 </head>
 
@@ -54,7 +63,7 @@
                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                                 <label class="custom-control-label" for="customCheck1">Save credentials.</label>
                             </div>
-                            <button class="btn btn-block btn-dark mb-4">Signin</button>
+                            <button class="btn btn-block btn-dark mb-4 f-w-600">Signin</button>
                         </form>
                             <hr>
                             <p class="mb-0 text-muted">Don’t have an account? <a href="{{ route('register') }}" class="f-w-400">Signup</a></p>
