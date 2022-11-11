@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('course_contents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_heading_id')->constrained('course_headings')->cascadeOnDelete();
+            $table->foreignId('course_heading_id')->constrained('course_headings')->onDelete('cascade');
             $table->string('title');
-            $table->string('link')->nullable();
+            // $table->enum('content_type' , ['file' , 'link']);
+            // $table->string('file')->nullable();
+            // $table->string('link')->nullable();
             $table->timestamps();
         });
     }
