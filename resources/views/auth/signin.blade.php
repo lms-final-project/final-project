@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="{{ asset('dashboard/assets/css/style.css')}}">
     <style>
         .auth-wrapper {
+            background-size: cover;
             background-image: url({{asset('dashboard/assets/images/auth/knwoledgeBackGround.jpg')}});
         }
         .card.borderless {
@@ -28,9 +29,9 @@
     border: 3px solid #231F40;
 }
 .form-control:focus {
-    
+
     border-color: #df99b9;
-    
+
 }
 .btn-dark:hover {
     color: #231F40;
@@ -45,7 +46,7 @@
 	<div class="auth-content text-center">
 		<img src="{{ asset('dashboard/assets/images/Knowledgeacademy1.png')}}" alt="" class="img-fluid mb-4 KnwoledgeBordr ">
 		<div class="card borderless">
-        
+
 			<div class="row align-items-center ">
 				<div class="col-md-12">
                     <div class="card-body">
@@ -69,13 +70,13 @@
                             <p class="mb-0 text-muted">Don’t have an account? <a href="{{ route('register') }}" class="f-w-400">Signup</a></p>
                         </div>
 				</div>
-                
+
 			</div>
-            
+
 		</div>
-     
+
 	</div>
-   
+
 </div>
 
 <!-- [ auth-signin ] end -->
