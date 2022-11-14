@@ -1,5 +1,30 @@
 
+<Style>
+    .edu-header .logo a img {
+    max-height: 107px;
+}
+.mainmenu-nav .mainmenu > li > a {
+    color: #232B87;
+    font-size: 20px;
+    font-weight: 1000;
+   
+}
 
+.edu-btn{
+    color: #232B87 !important;
+}
+
+a.edu-btn:hover, button.edu-btn:hover {
+    background: var(--color-dark);
+    color: var(--color-white) !important;
+}
+
+
+a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
+    
+    border: 2px solid #232B87 !important;
+}
+</style>
 
 <header class="edu-header disable-transparent  header-sticky">
     <div class="container">
@@ -7,7 +32,7 @@
             <div class="col-lg-6 col-xl-2 col-md-6 col-6">
                 <div class="logo">
                     <a href="{{ route('home') }}">
-                        <img class="logo-light" style="" src="{{ asset('frontend/assets/images/logo/Capture.PNG')}}" alt="Site Logo">
+                        <img class="logo-light" style="" src="{{ asset('frontend/assets/images/logo/Knowldge Logo 1.png')}}" alt="Site Logo">
 
                     </a>
 

@@ -1,9 +1,16 @@
+<style>
+    .edu-header .logo a img {
+    max-height: 50px;
+}
+
+
+</style>
 <div class="popup-mobile-menu">
     <div class="inner">
         <div class="header-top">
             <div class="logo">
                 <a href="index.html">
-                    <img src="{{ asset('frontend/assets/images/logo/logo.png') }}" alt="Site Logo">
+                    <img src="{{ asset('frontend/assets/images/logo/Knowldge Logo 1.png') }}" alt="Site Logo">
                 </a>
             </div>
             <div class="close-menu">
@@ -77,7 +84,7 @@
                             <li><a href="#">Contact Us</a></li>
                             <li><a href="contact-me.html">Contact Me</a></li>
                         </ul>
-                    </li>
+                    </li>*/
 
                     <li><a href="faq.html">FAQ Page</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
@@ -86,7 +93,7 @@
                     <li><a href="testimonial.html">Testimonial</a></li>
                     <li><a href="coming-soon.html">Comming Soon</a></li>
                     <li><a href="login-register.html">Login/Register</a></li>
-                    <li><a href="404.html">404 Error</a></li>
+                    <li><a href="404.html">404 Error</a></li> 
                 </ul>-->
             </li>
             <li class="has-droupdown"><a href="#">Test</a>
