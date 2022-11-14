@@ -5,7 +5,9 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\InstructorDetails;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProfileRequest;
 

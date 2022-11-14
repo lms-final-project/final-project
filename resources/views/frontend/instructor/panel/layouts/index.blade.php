@@ -42,7 +42,7 @@
                                 </a>
                             </li>
                             <li  @class(['active' => $active_btn == 'profile_password'])>
-                                <a href="{{route('password')}}" class="d-flex justify-center items-center">
+                                <a href="{{route('edit_password')}}" class="d-flex justify-center items-center">
                                     <i class="ri-profile-line"></i>
                                     Edit Password
                                 </a>

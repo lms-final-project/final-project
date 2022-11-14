@@ -16,7 +16,7 @@ Route::prefix('instructor')->middleware('checkInstructor:instructor')->group(fun
     Route::post('/store/profile' , [ProfileController::class , 'store'])->name('store_profile');
     Route::get('/edit/profile' , [ProfileController::class , 'edit'])->name('edit_profile');
     Route::post('/updateprofile' , [ProfileController::class , 'update'])->name('update_profile');
-    Route::get('/password',[ProfileController::class , 'password'])->name('password');
+    Route::get('/password',[ProfileController::class , 'password'])->name('edit_password');
     Route::post('/change_password',[ProfileController::class , 'change_password'])->name('change_passwordd');
 
     Route::resource('curriculum' , CurriculumController::class);
