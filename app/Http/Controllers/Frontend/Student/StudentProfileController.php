@@ -131,17 +131,25 @@ class StudentProfileController extends Controller
     public function change_password(Request $request)
     {
 
-       // $old_password=Auth()->user()->password;
-$old_password=Hash::make($request->password);
-       $student=Auth()->user();
-       if(!Hash::check($request->new_password, $old_password)){
-$student->update([
-'password' =>$request->new_password,
-]);
-return view('auth.signin');
-       }
-       else{
-       return redirect()->route('student.panel');}
+
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("danger", "Old Password Doesn't match!");
+        }
+
+
+
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("success", "Password changed successfully!");
 
     }
 
