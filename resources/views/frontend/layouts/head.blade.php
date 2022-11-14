@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor/animation.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor/jqueru-ui-min.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/alertify.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-confirm.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css')}}">
     <style>
         #user-btn:hover{
