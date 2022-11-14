@@ -16,23 +16,45 @@
 
 	<!-- vendor css -->
 	<link rel="stylesheet" href="{{ asset('dashboard/assets/css/style.css')}}">
+    <style>
+        .auth-wrapper {
+            background-image: url({{asset('dashboard/assets/images/auth/knwoledgeBackGround.jpg')}});
+        }
+        .card.borderless {
+    border: 3px solid #231F40;
+
+}
+.KnwoledgeBordr{
+    border: 3px solid #231F40;
+}
+.form-control:focus {
+    
+    border-color: #df99b9;
+    
+}
+.btn-dark:hover {
+    color: #231F40;
+    background-color: #df99b9;
+    border-color: #df99b9;
+}
+    </style>
 </head>
 
 
 <!-- [ auth-signup ] start -->
 <div class="auth-wrapper">
 	<div class="auth-content text-center">
-		<img src="assets/images/logo.png" alt="" class="img-fluid mb-4">
+		<img src="{{ asset('dashboard/assets/images/Knowledgeacademy1.png')}}" alt="" class="img-fluid mb-4 KnwoledgeBordr">
 		<div class="card borderless">
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="card-body">
-                            <h4 class="f-w-400">Sign up</h4>
+                            <h4 class="f-w-600">Sign up</h4>
                             <hr>
                             <div class="form-group mb-3">
-                                <input type="text" class="form-control" name="name" id="Username" placeholder="Username">
+                                <input type="text" class="form-control" name="name" id="Username" placeholder="User name">
                                 <x-input_error :messages="$errors->get('name')" class="mt-2" />
                             </div>
                             <div class="form-group mb-3">
@@ -47,7 +69,7 @@
                                 <x-input_error :messages="$errors->get('password')" class="mt-2" />
                                 <x-input_error :messages="$errors->get('password_confirmation')" class="mt-2" />
                             </div>
-                            <button class="btn btn-primary btn-block mb-4">Sign up</button>
+                            <button class="btn btn-dark btn-block mb-4 f-w-600">Sign up</button>
                             <hr>
                             <p class="mb-2">Already have an account? <a href="{{ route('login') }}" class="f-w-400">Signin</a></p>
                         </div>

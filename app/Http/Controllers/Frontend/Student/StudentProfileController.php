@@ -20,9 +20,9 @@ class StudentProfileController extends Controller
      */
     public function index()
     {
-            $student_details = Auth()->user()->profile_student;
+        $student_details = Auth()->user()->profile_student;
 
-        return view('frontend.student.panel.profile.index',compact('student_details'));
+        return view('frontend.student.panel.profile.index', compact('student_details'));
     }
 
     /**
@@ -33,10 +33,9 @@ class StudentProfileController extends Controller
     public function create()
     {
         $details = Auth()->user()->profile_student;
-        if($details == null){
-        return view('frontend.student.panel.profile.create');
-        }
-        else{
+        if ($details == null) {
+            return view('frontend.student.panel.profile.create');
+        } else {
             return redirect()->route('profile.index');
         }
     }
@@ -49,20 +48,19 @@ class StudentProfileController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('image')){
-            $file=$request->file('image');
-            $path=$file->store('Profile','public');
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = $file->store('Profile', 'public');
         }
 
         StudentProfile::create([
             'student_id' => Auth::user()->id,
-            'image'         => $path ,
+            'image'         => $path,
             'phone'         => $request->phone,
             'social_links'  => $request->social,
         ]);
-        return redirect()->route('profile.index')->with('success' , 'profile created successfully');
-
-}
+        return redirect()->route('profile.index')->with('success', 'profile created successfully');
+    }
 
 
     /**
@@ -84,10 +82,9 @@ class StudentProfileController extends Controller
      */
     public function edit($id)
     {
-        $student_details=StudentProfile::owner($id)->first();
+        $student_details = StudentProfile::owner($id)->first();
 
-        return view('frontend.student.panel.profile.edit',compact('student_details'));
-
+        return view('frontend.student.panel.profile.edit', compact('student_details'));
     }
 
     /**
@@ -100,13 +97,13 @@ class StudentProfileController extends Controller
     public function update(Request $request, $id)
     {
 
-        $student_details=StudentProfile::owner($id)->first();
+        $student_details = StudentProfile::owner($id)->first();
 
 
         $old_image = $student_details->image;
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $path = $file->store('Profile' , 'public');
+            $path = $file->store('Profile', 'public');
         }
         $student_details->update([
 
@@ -114,10 +111,10 @@ class StudentProfileController extends Controller
             'phone'         => $request->phone,
             'social_links'  => $request->social,
         ]);
-        if($old_image && $request->hasFile('image')){
+        if ($old_image && $request->hasFile('image')) {
             Storage::disk('public')->delete($old_image);
         }
-        return redirect()->route('profile.index')->with('success' , 'profile updated successfully');
+        return redirect()->route('profile.index')->with('success', 'profile updated successfully');
     }
 
     /**
@@ -131,25 +128,25 @@ class StudentProfileController extends Controller
         //
     }
 
-    public function change_password(Request $request){
+    public function change_password(Request $request)
+    {
 
-        $request->validate([
-            'old_password' => 'required',
-            'new_password' => 'required|confirmed',
-        ]);
-
-        if(!Hash::check($request->old_password, auth()->user()->password)){
-              return back()->with("danger", "Old Password Doesn't match!");
-          }
-        User::whereId(auth()->user()->id)->update([
-              'password' => Hash::make($request->new_password)
-                  ]);
-
-        return back()->with("success", "Password changed successfully!");
+       // $old_password=Auth()->user()->password;
+$old_password=Hash::make($request->password);
+       $student=Auth()->user();
+       if(!Hash::check($request->new_password, $old_password)){
+$student->update([
+'password' =>$request->new_password,
+]);
+return view('auth.signin');
+       }
+       else{
+       return redirect()->route('student.panel');}
 
     }
 
-    public function password(){
+    public function password()
+    {
         return view('frontend.student.panel.profile.password');
     }
 }

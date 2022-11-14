@@ -43,11 +43,11 @@
                             <button class="btn btn-info btn-sm rounded-3"style="font-size: 12px">Edit</button>
                         @endif
                     </form>
-                    <form class="ms-3" action="{{ route('courses.destroy', $course->id) }}" method="POST">
+                    <form class="ms-3 delete-form" action="{{ route('courses.destroy', $course->id) }}" method="POST">
                         @csrf
                         @method('delete')
-                        <button class="btn btn-danger btn-sm rounded-3"style="font-size: 12px">Delete</button>
                     </form>
+                    <button class="btn btn-danger btn-sm rounded-3 delete-btn"style="font-size: 12px">Delete</button>
                     <form class="ms-3" action="{{ route('curriculum.show', $course->id) }}" method="get">
                         @csrf
                         @if ($course->status == 'accepted')
