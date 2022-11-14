@@ -6230,8 +6230,8 @@ body.sal-disabled [data-sal|='flip'] {
       position: relative; }
       .mainmenu-nav .mainmenu li.has-droupdown > a::after {
         position: absolute;
-        content: "\e969";
-        font-family: 'icomoon';
+         /* content: "\e969";
+        font-family: 'icomoon';  */
         right: 6px;
         top: 50%;
         transform: translateY(-50%);
