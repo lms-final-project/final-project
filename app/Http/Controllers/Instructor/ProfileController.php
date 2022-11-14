@@ -5,8 +5,11 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\InstructorDetails;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -42,7 +45,7 @@ class ProfileController extends Controller
 
 
 
-    public function update(Request  $request){
+    public function update(StoreProfileRequest  $request){
         $instructor_details =  Auth()->user()->instructor_details;
 
         $old_image = $instructor_details->image;
@@ -64,7 +67,7 @@ class ProfileController extends Controller
     }
 
 
-    public function store(Request $request){
+    public function store(StoreProfileRequest $request){
 
         if($request->hasFile('image')){
             $file=$request->file('image');
@@ -82,5 +85,31 @@ class ProfileController extends Controller
         return redirect()->route('instructor_profile')->with('success' , 'profile created successfully');
     }
 
+    public function change_password(Request $request){
 
+
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("danger", "Old Password Doesn't match!");
+        }
+
+
+
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("success", "Password changed successfully!");
+
+    }
+
+    public function password(){
+        return view('frontend.instructor.panel.profile.password');
+    }
 }

@@ -37,11 +37,19 @@ class CourseContentController extends Controller
      */
     public function store(Request $request )
     {
-        CourseContent::Create([
-            'course_heading_id' => $request->course_heading_id,
-            'title'             => $request->content,
-        ]);
-        return redirect()->back()->with('success' , 'content added successfully');
+        $course_heading = CourseHeading::find($request->course_heading_id);
+
+        if(count($course_heading->contents) > 0){
+            $course_heading->contents()->delete();
+        }
+
+        foreach( $request->contents as $key => $value ){
+            CourseContent::Create([
+                'course_heading_id' => $request->course_heading_id,
+                'title'             => $value
+            ]);
+        }
+        return redirect()->back()->with('success' , 'contents added successfully');
     }
 
     /**

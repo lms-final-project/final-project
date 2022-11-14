@@ -48,9 +48,9 @@ class StudentProfileController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $path = $file->store('Profile', 'public');
+        if($request->hasFile('image')){
+            $file=$request->file('image');
+            $path=$file->store('Profile','public');
         }
 
         StudentProfile::create([
@@ -148,7 +148,6 @@ class StudentProfileController extends Controller
         User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->new_password)
         ]);
-
         return back()->with("success", "Password changed successfully!");
 
     }
