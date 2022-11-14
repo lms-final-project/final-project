@@ -83,5 +83,31 @@ class ProfileController extends Controller
         return redirect()->route('instructor_profile')->with('success' , 'profile created successfully');
     }
 
+    public function change_password(Request $request){
 
+
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("danger", "Old Password Doesn't match!");
+        }
+
+
+
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("success", "Password changed successfully!");
+
+    }
+
+    public function password(){
+        return view('frontend.instructor.panel.profile.password');
+    }
 }
