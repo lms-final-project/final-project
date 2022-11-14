@@ -24,6 +24,7 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
     
     border: 2px solid #232B87 !important;
 }
+
 </style>
 
 <header class="edu-header disable-transparent  header-sticky">
