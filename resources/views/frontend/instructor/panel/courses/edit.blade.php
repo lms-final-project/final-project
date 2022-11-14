@@ -1,7 +1,11 @@
 @extends('frontend.instructor.panel.layouts.index', ['active_btn' => 'courses'])
 
 @section('instructor_panel')
-
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <p class="text-danger">{{$error}}</p>
+    @endforeach
+@endif
     <form action="{{route('courses.update', $course->id)  }}" enctype="multipart/form-data" method="POST">
         @csrf
         @method('put')

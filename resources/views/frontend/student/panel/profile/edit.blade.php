@@ -1,6 +1,11 @@
 @extends('frontend.student.panel.layouts.index', ['active_btn' => 'profile'])
 
 @section('student_panel')
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <p class="text-danger">{{$error}}</p>
+    @endforeach
+@endif
 <div class="border border-light">
     <form action="{{route('profile.update',$student_details->student_id)}}" enctype="multipart/form-data" method="POST">
         @csrf

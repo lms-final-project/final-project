@@ -7,6 +7,7 @@ use App\Models\InstructorDetails;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -42,7 +43,7 @@ class ProfileController extends Controller
 
 
 
-    public function update(Request  $request){
+    public function update(StoreProfileRequest  $request){
         $instructor_details =  Auth()->user()->instructor_details;
 
         $old_image = $instructor_details->image;
@@ -64,7 +65,7 @@ class ProfileController extends Controller
     }
 
 
-    public function store(Request $request){
+    public function store(StoreProfileRequest $request){
 
         if($request->hasFile('image')){
             $file=$request->file('image');

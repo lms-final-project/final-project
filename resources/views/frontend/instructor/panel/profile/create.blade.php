@@ -1,7 +1,11 @@
 @extends('frontend.instructor.panel.layouts.index', ['active_btn' => 'profile'])
 
 @section('instructor_panel')
-
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <p class="text-danger">{{$error}}</p>
+    @endforeach
+@endif
     <form action="{{route('store_profile')}}" enctype="multipart/form-data" method="POST">
         @csrf
        @method('post')

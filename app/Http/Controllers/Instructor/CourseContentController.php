@@ -37,6 +37,11 @@ class CourseContentController extends Controller
      */
     public function store(Request $request )
     {
+
+        $request->validate([
+            'title' => 'required|string|min:3|max:50',
+
+        ]);
         $course_heading = CourseHeading::find($request->course_heading_id);
 
         if(count($course_heading->contents) > 0){

@@ -49,6 +49,15 @@ class StudentProfileController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+'image'             => 'required',
+
+'phone'=>'required|numeric',
+
+'social_links'=>'required|string',
+
+
+        ]);
         if($request->hasFile('image')){
             $file=$request->file('image');
             $path=$file->store('Profile','public');
