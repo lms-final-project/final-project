@@ -28,3 +28,27 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.delete-btn').on('click' , function(){
+            let delete_btn = $(this)
+            $.confirm({
+                title: 'Course will be deleted !',
+                type: 'red',
+                typeAnimated: true,
+                buttons: {
+                    tryAgain: {
+                        text: 'Delete',
+                        btnClass: 'btn-red',
+                        action: function(){
+                            delete_btn.siblings('.delete-form').first().submit();
+                        }
+                    },
+                    close: function () {
+                    }
+                }
+            });
+        })
+    </script>
+@endpush

@@ -1,6 +1,11 @@
 @extends('frontend.student.panel.layouts.index', ['active_btn' => 'profile_password'])
 
 @section('student_panel')
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <p class="text-danger">{{$error}}</p>
+    @endforeach
+@endif
 
 <div class="border border-light">
     <form action="{{route('change_password')}}"  method="POST">
@@ -14,7 +19,7 @@
                 <label for="oldPasswordInput" class="form-label">Old Password</label>
                 <input name="old_password" type="password" class="form-control " id="oldPasswordInput"
                     placeholder="Old Password">
-               
+            </div>
             <div class="mb-3">
                 <label for="newPasswordInput" class="form-label">New Password</label>
                 <input name="new_password" type="password" class="form-control" id="newPasswordInput"

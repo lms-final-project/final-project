@@ -37,11 +37,6 @@ class CourseContentController extends Controller
      */
     public function store(Request $request )
     {
-
-        $request->validate([
-            'title' => 'required|string|min:3|max:50',
-
-        ]);
         $course_heading = CourseHeading::find($request->course_heading_id);
 
         if(count($course_heading->contents) > 0){
@@ -88,7 +83,8 @@ class CourseContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        CourseContent::find($id)->update($request->all());
+        return redirect()->back()->with('success' , 'content updated successfully');
     }
 
     /**
@@ -99,7 +95,8 @@ class CourseContentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CourseContent::find($id)->delete();
+        return redirect()->back()->with('danger' , 'course content deleted!');
     }
 
     public function addLink(Request $request , CourseContent $content){
