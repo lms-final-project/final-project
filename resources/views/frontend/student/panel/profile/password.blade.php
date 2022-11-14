@@ -16,12 +16,20 @@
             <h5 class="text-left  " style="font-size: 25px;color:rgba(38, 0, 255, 0.822)">Edit Password</h5>
 
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <x-form.text-input name='password'  placeholder="password" />
+                <label for="oldPasswordInput" class="form-label">Old Password</label>
+                <input name="old_password" type="password" class="form-control " id="oldPasswordInput"
+                    placeholder="Old Password">
             </div>
             <div class="mb-3">
-                <label for="new_password" class="form-label">New Password</label>
-                <x-form.text-input name='new_password' placeholder="new_password" />
+                <label for="newPasswordInput" class="form-label">New Password</label>
+                <input name="new_password" type="password" class="form-control" id="newPasswordInput"
+                    placeholder="New Password">
+
+            </div>
+            <div class="mb-3">
+                <label for="confirmNewPasswordInput" class="form-label">Confirm New Password</label>
+                <input name="new_password_confirmation" type="password" class="form-control" id="confirmNewPasswordInput"
+                    placeholder="Confirm New Password">
             </div>
 
             <div class="text-center f-10 py-4">
