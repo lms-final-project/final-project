@@ -201,28 +201,41 @@
                                                 <li><span><i class="icon-user-2-line_tie"></i> Instructor</span><span>{{ $course->instructor->name }}</span></li>
                                             </ul>
 
-                                            <div class="read-more-btn mt--45">
-                                                <a class="edu-btn btn-bg-alt w-100 text-center" href="#">Price:
-                                                    @if ($course->is_free)
-                                                        Free
-                                                    @else
-                                                        {{'$'.$course->price}}
-                                                    @endif
-                                                </a>
-                                            </div>
+                                            @if (!$is_registered)
+                                                <div class="read-more-btn mt--45">
+                                                    <a class="edu-btn btn-bg-alt w-100 text-center" href="#">Price:
+                                                        @if ($course->is_free)
+                                                            Free
+                                                        @else
+                                                            {{'$'.$course->price}}
+                                                        @endif
+                                                    </a>
+                                                </div>
 
-                                            <div class="read-more-btn mt--15">
-                                                @guest
-                                                    <a class="edu-btn w-100 text-center " href="{{ route('login') }}">Buy Now</a>
-                                                    <a class="edu-btn w-100 text-center"style="margin-top:10px" href="#">Show Outline</a>
-                                                @endguest
-                                                @auth
-                                                    <a class="edu-btn w-100 text-center" href="#">Buy Now</a>
-                                                @endauth
-                                                @if ($course->file)
-                                                    <a class="edu-btn w-100 text-center"style="margin-top:10px" href="{{ route('download' , $course->file) }}">Show Outline</a>
-                                                @endif
-                                            </div>
+                                                <div class="read-more-btn mt--15">
+                                                    @guest
+                                                        <a class="edu-btn w-100 text-center " href="{{ route('login') }}">Buy Now</a>
+                                                        <a class="edu-btn w-100 text-center"style="margin-top:10px" href="#">Show Outline</a>
+                                                    @endguest
+                                                    @auth
+                                                        @if ($course->is_free)
+                                                            <a class="edu-btn w-100 text-center" href="{{ route('payments.free' , $course->id) }}">Buy Now</a>
+                                                        @else
+                                                            <a class="edu-btn w-100 text-center" href="#">Buy Now -</a>
+                                                        @endif
+                                                    @endauth
+                                                    @if ($course->file)
+                                                        <a class="edu-btn w-100 text-center"style="margin-top:10px" href="{{ route('download' , $course->file) }}">Show Outline</a>
+                                                    @endif
+                                                </div>
+                                            @else
+                                                <div class="read-more-btn mt--45">
+                                                    <a class="edu-btn btn-bg-alt w-100 text-center" href="#">
+                                                        Owned
+                                                    </a>
+                                                </div>
+                                            @endif
+
 
                                             {{-- <div class="read-more-btn mt--30 text-center">
                                                 <div class="eduvibe-post-share">

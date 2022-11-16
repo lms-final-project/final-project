@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CoursesController;
 use App\Http\Controllers\Instructor\ProfileController;
 use App\Http\Controllers\Frontend\Student\StudentProfileController;
+use App\Http\Controllers\PaymentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Route::get('/download/{file}', [CoursesController::class , 'download'])->where('
 
 // instructor profile
 Route::get('/profile/{id?}' , [ProfileController::class , 'index'])->name('instructor_profile');
+
+// payments routes
+Route::get('free-course/{course_id}' , [PaymentsController::class , 'freePayment'])->name('payments.free');
 
 
 Route::get('test' , function(){

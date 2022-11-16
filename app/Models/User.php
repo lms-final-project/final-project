@@ -88,4 +88,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(StudentProfile::class,'student_id' , 'id');
     }
+    public function courses(){
+        return $this->belongsToMany( Course::class , 'course_users' );
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\CourseType;
 use App\Models\CourseTopic;
 use App\Models\CourseContent;
@@ -50,6 +51,9 @@ class Course extends Model
     }
     public function courseContents(){
         return $this->hasManyThrough(CourseHeading::class , CourseContent::class , 'course_heading_id', 'course_id');
+    }
+    public function users(){
+        return $this->belongsToMany( User::class , 'course_users' );
     }
 
 }

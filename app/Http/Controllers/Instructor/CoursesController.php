@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Courses\CreateCourseRequest;
 use App\Http\Requests\Courses\UpdateCourseRequest;
+use App\Models\CourseUser;
 
 class CoursesController extends Controller
 {
@@ -75,10 +76,14 @@ class CoursesController extends Controller
                 'instructor_id'         => auth()->user()->id
             ]);
 
-            // todo : search about createMany
-            if($request->topics){
-                // $course->topics()->createMany($request->topics);
+            // To Register The Instructor Directly
+            CourseUser::create([
+                'user_id'   => auth()->user()->id,
+                'course_id' => $course->id,
+            ]);
 
+            // For Topics
+            if($request->topics){
                 foreach($request->topics as $topic){
                     CourseTopic::create([
                         'course_id' => $course->id,

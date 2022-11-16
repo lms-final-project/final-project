@@ -14,12 +14,24 @@ class CoursesController extends Controller
         return view('frontend.courses' , compact('category', 'courses'));
     }
 
-    public function show(Course $course){
+    public function show($course_id){
+        $course = Course::findOrFail($course_id);
 
+        $courseHeading = $course->courseHeadings;
         $courses = Course::with('type')->category($course->category_id )->status('accepted')->get();
-        $courseHeading=$course->courseHeadings;
 
-        return view('frontend.course_details' , compact('course','courses','courseHeading'));
+
+        $registered_courses = [];
+        $is_registered = false;
+        foreach (auth()->user()->courses as $single_course) {
+            $registered_courses[] = $single_course->id;
+        }
+        // dd(auth()->user()->courses);
+        if(in_array($course->id , $registered_courses)){
+            $is_registered = true;
+        }
+
+        return view('frontend.course_details' , compact('course','courses','courseHeading' , 'is_registered'));
     }
 
     public function download($file){
