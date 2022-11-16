@@ -221,7 +221,7 @@
                                                         @if ($course->is_free)
                                                             <a class="edu-btn w-100 text-center" href="{{ route('payments.free' , $course->id) }}">Buy Now</a>
                                                         @else
-                                                            <a class="edu-btn w-100 text-center" href="#">Buy Now -</a>
+                                                            <a class="edu-btn w-100 text-center" href="{{ route('paypal.payment' , $course->id) }}">Buy Now</a>
                                                         @endif
                                                     @endauth
                                                     @if ($course->file)

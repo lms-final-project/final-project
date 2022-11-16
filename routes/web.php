@@ -31,6 +31,9 @@ Route::get('/profile/{id?}' , [ProfileController::class , 'index'])->name('instr
 
 // payments routes
 Route::get('free-course/{course_id}' , [PaymentsController::class , 'freePayment'])->name('payments.free');
+Route::get('payment/{course_id?}' , [PaymentsController::class , 'payment'])->name('paypal.payment');
+Route::get('payment/cancel/{course_id?}' , [PaymentsController::class , 'cancel'])->name('paypal.cancel');
+Route::get('payment/success/{course_id?}' , [PaymentsController::class , 'success'])->name('paypal.success');
 
 
 Route::get('test' , function(){
