@@ -17,9 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('course_heading_id')->constrained('course_headings')->onDelete('cascade');
             $table->string('title');
-            // $table->enum('content_type' , ['file' , 'link']);
-            // $table->string('file')->nullable();
-            // $table->string('link')->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }
