@@ -80,16 +80,5 @@
                 </div>
             </div>
         </div>
-    </div>
-   <!-- <div class="copyright-area copyright-default">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="inner text-center">
-                        <p>Copyright 2022 <a href="#">Test</a>Test <a href="https://themeforest.net/user/devsvibe">DevsVibe</a>. All Rights Reserved</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
+    
 </footer>

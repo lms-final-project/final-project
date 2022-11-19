@@ -25,6 +25,7 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
     border: 2px solid #232B87 !important;
 }
 
+
 </style>
 
 <header class="edu-header disable-transparent  header-sticky">
@@ -87,7 +88,7 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
                             @endif
 
                             <div class="has-droupdown" >
-                               <a style="  background-color: #525ee171;margin-left:5px;padding:10px;font-size:15px;font-weight:bold" class="rounded btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                               <a class=" dropdown-toggle edu-btn btn-medium left-icon header-button ms-3 fs-5" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
 
 
                                         {{ auth()->user()->name }}
