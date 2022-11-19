@@ -1,3 +1,25 @@
+<style>
+    .text-start {
+     margin-bottom: 325px;
+    }
+    .banner-style-3 .banner-image .banner-main-image{
+        margin-bottom: -75px !important;
+    }
+    .banner-style-3 .banner-image .img-02 {
+     bottom: 375px !important;
+    }
+    .banner-style-3 .banner-image .img-03 {
+        bottom: 675px !important;
+
+    }
+    .section-title .pre-title{
+        font-size: 22px !important;
+
+    }
+    .section-title .title{
+        font-size: 44px !important;
+    }
+</style>
 @extends('frontend.layouts.app')
 
 
@@ -12,7 +34,7 @@
                                 <div class="content text-start">
                                     <span class="pre-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Better Learning Future With Us</span>
                                     <h1 class="title" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">Real Knowledge Build a Life</h1>
-                                    <p class="description" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800"></p>
+                                    <p class="description" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">Learning is a life-long journey that in fact we never find the terminate stop. Stop searching, enjoy the process.</p>
                                     <a class="edu-btn" href="#" data-sal-delay="450" data-sal="slide-up" data-sal-duration="800">Must return to page <i class="icon-arrow-right-line-right"></i></a>
                                 </div>
                             </div>

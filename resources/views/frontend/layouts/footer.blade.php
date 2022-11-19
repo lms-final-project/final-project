@@ -1,3 +1,8 @@
+<style>
+    .social-share li a {
+        padding-top:15px !important;
+    }
+</style>
 <footer class="eduvibe-footer-one edu-footer footer-style-default">
     <div class="footer-top">
         <div class="container eduvibe-animated-shape">
@@ -6,7 +11,7 @@
                     <div class="edu-footer-widget">
                         <div class="logo">
                             <a href="#">
-                                <img class="logo-light" src="{{ asset('frontend/assets/images/logo/Capture.PNG') }}" alt="Site Logo">
+                                <img class="logo-light" src="{{ asset('frontend/assets/images/logo/Knowldge Logo 1.png') }}" alt="Site Logo">
                             </a>
                         </div>
                         <p class="description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
@@ -25,11 +30,10 @@
                         <div class="inner">
                             <ul class="footer-link link-hover">
                                 <li><a href="#"><i class="icon-Double-arrow"></i>About Us</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Categories</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Coueses</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>FAQs</a></li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -41,11 +45,10 @@
                         <div class="inner">
                             <ul class="footer-link link-hover">
                                 <li><a href="#"><i class="icon-Double-arrow"></i>Contact Us</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Test</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Facebook</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>Twitter</a></li>
+                                <li><a href="#"><i class="icon-Double-arrow"></i>WhatsApp</a></li>
+                             
                             </ul>
                         </div>
                     </div>
@@ -61,7 +64,7 @@
                                     </li>
                                     <li><i class="icon-phone-fill"></i><a href="">+9720569020059</a></li>
                                     <li><i class="icon-phone-fill"></i><a href="">+9720568592265</a></li>
-                                    <li><i class="icon-mail-line-2"></i><a target="_blank" href="">AnwarTest@gmail.com</a></li>
+                                    <li><i class="icon-mail-line-2"></i><a target="_blank" href="">KnowledgeAcademy@gmail.com</a></li>
                             </div>
                         </div>
                     </div>
