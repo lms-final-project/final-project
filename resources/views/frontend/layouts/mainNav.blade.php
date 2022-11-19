@@ -2,6 +2,7 @@
 <Style>
     .edu-header .logo a img {
     max-height: 107px;
+    margin-top: 15px !important;
 }
 .mainmenu-nav .mainmenu > li > a {
     color: #232B87;
