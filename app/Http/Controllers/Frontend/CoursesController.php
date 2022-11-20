@@ -5,6 +5,7 @@ use App\Models\Course;
 use App\Models\Category;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CoursesController extends Controller
 {
@@ -19,11 +20,10 @@ class CoursesController extends Controller
 
         $courseHeading = $course->courseHeadings;
         $courses = Course::with('type')->category($course->category_id )->status('accepted')->get();
-
-
-        $registered_courses = [];
         $is_registered = false;
-        foreach (auth()->user()->courses as $single_course) {
+        if(Auth::user()){
+           $registered_courses = [];
+           foreach (auth()->user()->courses as $single_course) {
             $registered_courses[] = $single_course->id;
         }
         // dd(auth()->user()->courses);
@@ -31,9 +31,12 @@ class CoursesController extends Controller
             $is_registered = true;
         }
 
-        return view('frontend.course_details' , compact('course','courses','courseHeading' , 'is_registered'));
-    }
+           return view('frontend.course_details' , compact('course','courses','courseHeading' , 'is_registered'));}
 
+        else{
+           return view('frontend.course_details' , compact('course','courses','courseHeading','is_registered' ));
+           }
+    }
     public function download($file){
         return response()->download(public_path('storage/'.$file));
     }

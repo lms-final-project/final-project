@@ -101,8 +101,14 @@
                                                             <ul>
                                                                 @foreach ($heading->contents as $content)
                                                                 <li>
-                                                                    <div class="text"><i class="icon-draft-line"></i> <a href="{{$content->title}}">Session{{ $loop->iteration }} </a></div>
+                                                                    <div class="text"><i class="icon-draft-line"></i> <a href="{{$content->link}}">{{$content->title}} </a></div>
+
+                                                                    @if ($is_registered)
+                                                                    <div class="icon"> <i class="ri-lock-unlock-line"></i></div>
+
+                                                                    @else
                                                                     <div class="icon"><i class="icon-lock-password-line"></i></div>
+                                                                    @endif
                                                                 </li>
                                                                 @endforeach
 
@@ -199,6 +205,8 @@
                                                 {{-- <li><span><i class="icon-calendar-2-line"></i> Deadline</span><span>25 Dec, 2022</span></li> --}}
 
                                                 <li><span><i class="icon-user-2-line_tie"></i> Instructor</span><span>{{ $course->instructor->name }}</span></li>
+                                                <li><span><i class="icon-user-2"></i> Enrolled</span><span>{{$course->users->count()-1}}</span></li>
+
                                             </ul>
 
                                             @if (!$is_registered)
@@ -215,7 +223,7 @@
                                                 <div class="read-more-btn mt--15">
                                                     @guest
                                                         <a class="edu-btn w-100 text-center " href="{{ route('login') }}">Buy Now</a>
-                                                        <a class="edu-btn w-100 text-center"style="margin-top:10px" href="#">Show Outline</a>
+
                                                     @endguest
                                                     @auth
                                                         @if ($course->is_free)
@@ -279,7 +287,7 @@
                                                         </div>
                                                         <div class="content">
                                                             <ul class="edu-meta meta-01">
-                                                                <li><i class="icon-file-list-4-line"></i>29 Lessons</li>
+                                                                <li><i class="icon-file-list-4-line"></i>{{$course->courseContents->count()}}</li>
                                                                 <li><i class="icon-time-line"></i>19h 15m 26s</li>
                                                             </ul>
                                                             <h6 class="title"><a href="{{ route('course_details' , $course->id) }}">{{$course->title}}</a>
@@ -291,12 +299,12 @@
                                                                     <div class="price current-price">Free</div>
 
                                                                     @else
-                                                                    <div class="price current-price">$45.00</div>
+                                                                    <div class="price current-price">{{$course->price}}</div>
 
                                                                     @endif
                                                                 </div>
                                                                 <ul class="edu-meta meta-01">
-                                                                    <li><i class="icon-account-circle-line"></i>85 Students</li>
+                                                                    <li><i class="icon-account-circle-line"></i>{{$course->users->count()-1}}</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
