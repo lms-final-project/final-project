@@ -42,7 +42,7 @@
 
                                 <ul class="edu-meta meta-01">
                                     <li><i class="icon-account-circle-line"></i>
-{{$course->users->count()-1}}
+                                      {{$course->users->count()-1}}
 
                                 </li>
                                 </ul>

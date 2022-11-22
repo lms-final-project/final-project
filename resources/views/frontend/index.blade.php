@@ -299,7 +299,7 @@
                                             <a href="{{ route('course_details' , $course->id) }}">{{ $course->title }}</a>
                                         </h6>
                                         <ul class="edu-meta meta-01">
-                                            <li><i class="icon-file-list-4-line"></i>35 Lessons</li>
+                                            <li><i class="icon-file-list-4-line"></i>{{$course->courseContents->count()}}</li>
                                             <li><i class="icon-time-line"></i>18h 15m 44s</li>
                                         </ul>
 
