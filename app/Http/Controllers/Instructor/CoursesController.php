@@ -184,11 +184,11 @@ class CoursesController extends Controller
                 }
             }
             DB::commit();
-            return redirect()->route('courses.index')->with('success' , 'Course updated successfully.');;
+            return redirect()->route('courses.index')->with('success' , 'Course updated successfully.');
 
             }catch(Exception $e){
                 Log::info($e->getMessage());
-                return redirect()->back()->with('error' , 'Something went wrong!');;
+                return redirect()->back()->with('error' , 'Something went wrong!');
             }
 
 

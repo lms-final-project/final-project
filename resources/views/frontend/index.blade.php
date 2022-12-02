@@ -190,7 +190,7 @@
                                         <i class="icon-Bag"></i>
                                     </div>
                                     <div class="content">
-                                        <h3 class="counter"><span class="odometer" data-count="500">00</span>
+                                        <h3 class="counter"><span class="odometer" data-count="{{$studentEnrolled->count()}}">00</span>
                                             <span class="after-icon">+</span>
                                         </h3>
                                         <span class="subtitle">Students Enrolled</span>
@@ -226,10 +226,10 @@
                                         <i class="icon-Open-book"></i>
                                     </div>
                                     <div class="content">
-                                        <h3 class="counter"><span class="odometer" data-count="300">00</span>
+                                        <h3 class="counter"><span class="odometer" data-count="{{$courses->count()}}">00</span>
                                             <span class="after-icon">+</span>
                                         </h3>
-                                        <span class="subtitle">Academic Programs</span>
+                                        <span class="subtitle">Academic COURSES</span>
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +244,7 @@
                                         <i class="icon-presentation"></i>
                                     </div>
                                     <div class="content">
-                                        <h3 class="counter"><span class="odometer" data-count="150">00</span>
+                                        <h3 class="counter"><span class="odometer" data-count="{{$instructors}}">00</span>
                                             <span class="after-icon">+</span>
                                         </h3>
                                         <span class="subtitle">Online Instructor</span>
@@ -434,6 +434,7 @@
                             <!-- Start Tastimonial Card  -->
                             <div class="testimonial-card-box variation-2">
                                 <div class="eduvibe-testimonial-three inner testimonial-card-activation-1 slick-arrow-style-2">
+                                    @forelse ($feedbacks as $feedback)
                                     <div class="single-card">
                                         <div class="rating">
                                             <i class="on icon-Star"></i>
@@ -442,55 +443,30 @@
                                             <i class="on icon-Star"></i>
                                             <i class="on icon-Star"></i>
                                         </div>
-                                        <p class="description">“Lorem ipsum dolor sit amet, consectetur dloril adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.”</p>
+                                        <p class="description">{{$feedback->feedback}}</p>
                                         <div class="client-info">
+                                            @if ($feedback->user->profile_student)
                                             <div class="thumbnail">
-                                                <img src="assets/images/testimonial/testimonial-04/client-04.png" alt="Client Images">
+                                                <img src="{{ asset('storage/'.$feedback->user->profile_student->image) }}" alt="Client Images">
                                             </div>
+                                            @else
+                                            <div class="thumbnail">
+                                                <img src="{{ asset('storage/Profile/images.png') }}" alt="Client Images">
+                                            </div>
+                                            @endif
                                             <div class="content">
-                                                <h6 class="title">Michle A. Smith</h6>
-                                                <span class="designation">Web Developer</span>
+                                                <h6 class="title">{{$feedback->user->name}}</h6>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="single-card">
-                                        <div class="rating">
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                        </div>
-                                        <p class="description">“Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.”</p>
-                                        <div class="client-info">
-                                            <div class="thumbnail">
-                                                <img src="assets/images/testimonial/testimonial-04/client-01.png" alt="Client Images">
-                                            </div>
-                                            <div class="content">
-                                                <h6 class="title">David M. Bard</h6>
-                                                <span class="designation">Laravel Developer</span>
-                                            </div>
-                                        </div>
+                            
                                     </div>
-                                    <div class="single-card">
-                                        <div class="rating">
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                        </div>
-                                        <p class="description">“Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum finibus bonorum.”</p>
-                                        <div class="client-info">
-                                            <div class="thumbnail">
-                                                <img src="assets/images/testimonial/testimonial-04/client-03.png" alt="Client Images">
-                                            </div>
-                                            <div class="content">
-                                                <h6 class="title">Lorraine D. Raines</h6>
-                                                <span class="designation">WordPress Expert</span>
-                                            </div>
-                                        </div>
+                                    @empty
+                                    <div class="text-center">
+                                        <h5>There isn't any feedback added yet</h5>
                                     </div>
+                                    @endforelse
+
                                 </div>
                             </div>
                            <!--  End Tastimonial Card  -->
@@ -502,7 +478,7 @@
                             <div class="section-title text-start" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                 <span class="pre-title">Testimonials</span>
                                 <h3 class="title">Students Feedback</h3>
-                            </div>
+
                             <p class="description mt--25 mb--25" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, venenatis
                                 dictum et nec.</p>
                             <h6 class="subtitle" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">People Love To Learn With Us</h6>

@@ -47,6 +47,12 @@
                                     Edit Password
                                 </a>
                             </li>
+                            <li  @class(['active' => $active_btn == 'feedback'])>
+                                <a href="{{route('feedback.index')}}" class="d-flex justify-center items-center">
+                                    <i class="ri-feedback-line"></i>
+                                    Add Feedback
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -6,6 +6,7 @@ namespace App\Models;
 use instructor;
 use Carbon\Carbon;
 use App\Models\Role;
+use App\Models\Feedback;
 use App\Models\StudentProfile;
 use App\Models\InstructorDetails;
 use Laravel\Sanctum\HasApiTokens;
@@ -91,4 +92,8 @@ class User extends Authenticatable
     public function courses(){
         return $this->belongsToMany( Course::class , 'course_users' );
     }
+
+    public function feedbacks(){
+        return $this->hasMany( Feedback::class ,'student_id','id' );
+}
 }
