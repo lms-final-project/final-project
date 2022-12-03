@@ -424,92 +424,93 @@
         <!-- End Accordion Area  -->
         @endif
 
+<!--feedback-->
 
-        <div class="eduvibe-home-three-testimonial edu-testimonial-area testimonial-four-wrapper edu-section-gap bg-image">
-            <div class="container eduvibe-animated-shape">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-8">
-                        <div class="testimonial-activation pr--55 pr_lg--0 pr_md--0 pr_sm--0">
+    <div class="eduvibe-home-three-testimonial edu-testimonial-area testimonial-four-wrapper edu-section-gap bg-image">
+        <div class="container eduvibe-animated-shape">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-8">
+                    <div class="testimonial-activation pr--55 pr_lg--0 pr_md--0 pr_sm--0">
 
-                            <!-- Start Tastimonial Card  -->
-                            <div class="testimonial-card-box variation-2">
-                                <div class="eduvibe-testimonial-three inner testimonial-card-activation-1 slick-arrow-style-2">
-                                    @forelse ($feedbacks as $feedback)
-                                    <div class="single-card">
-                                        <div class="rating">
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
-                                            <i class="on icon-Star"></i>
+                        <!-- Start Tastimonial Card  -->
+                        <div class="testimonial-card-box variation-2">
+                            <div class="eduvibe-testimonial-three inner testimonial-card-activation-1 slick-arrow-style-2">
+                                @forelse ($feedbacks as $feedback)
+                                <div class="single-card">
+
+                                    <div class="rating">
+                                        <i class="on icon-Star"></i>
+                                        <i class="on icon-Star"></i>
+                                        <i class="on icon-Star"></i>
+                                        <i class="on icon-Star"></i>
+                                        <i class="on icon-Star"></i>
+                                    </div>
+                                    <p class="description">{{$feedback->feedback}}</p>
+                                    <div class="client-info">
+                                        @if ($feedback->user->profile_student)
+                                        <div class="thumbnail">
+                                            <img src="{{asset('storage/'.$feedback->user->profile_student->image)}}" alt="Client Images">
                                         </div>
-                                        <p class="description">{{$feedback->feedback}}</p>
-                                        <div class="client-info">
-                                            @if ($feedback->user->profile_student)
-                                            <div class="thumbnail">
-                                                <img src="{{ asset('storage/'.$feedback->user->profile_student->image) }}" alt="Client Images">
-                                            </div>
-                                            @else
-                                            <div class="thumbnail">
-                                                <img src="{{ asset('storage/Profile/images.png') }}" alt="Client Images">
-                                            </div>
-                                            @endif
-                                            <div class="content">
-                                                <h6 class="title">{{$feedback->user->name}}</h6>
-                                            </div>
+                                        @else
+                                        <div class="thumbnail">
+                                            <img src="{{asset('storage/Profile/images.png')}}" alt="Client Images">
                                         </div>
-                                    </div>
-                            
-                                    </div>
-                                    @empty
-                                    <div class="text-center">
-                                        <h5>There isn't any feedback added yet</h5>
-                                    </div>
-                                    @endforelse
-
-                                </div>
-                            </div>
-                           <!--  End Tastimonial Card  -->
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="testimonial-four-right-content">
-                            <div class="section-title text-start" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                                <span class="pre-title">Testimonials</span>
-                                <h3 class="title">Students Feedback</h3>
-
-                            <p class="description mt--25 mb--25" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, venenatis
-                                dictum et nec.</p>
-                            <h6 class="subtitle" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">People Love To Learn With Us</h6>
-
-                            <div class="row g-5">
-                                 <!--Start Single Feature  -->
-                                <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                                    <div class="feature-style-3">
-                                        <div class="feature-content">
-                                            <h6 class="feature-title">90%</h6>
-                                            <p class="feature-description">Students Complete Course Successfully </p>
+                                        @endif
+                                        <div class="content">
+                                            <h6 class="title">{{$feedback->name}}</h6>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Single Feature -->
-
-                                <!-- Start Single Feature-->
-                                <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                                    <div class="feature-style-3">
-                                        <div class="feature-content">
-                                            <h6 class="feature-title">9/10</h6>
-                                            <p class="feature-description">Users reported better learning outcomes.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Feature -->
+                                @empty
+                <div class="text-center">
+                    <h5>There isn't any feedback added yet</h5>
+                </div>
+                @endforelse
                             </div>
                         </div>
+                        <!-- End Tastimonial Card  -->
                     </div>
                 </div>
 
+                <div class="col-lg-4">
+                    <div class="testimonial-four-right-content">
+                        <div class="section-title text-start" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <span class="pre-title">Testimonials</span>
+                            <h3 class="title">Students Feedback</h3>
+
+                        <p class="description mt--25 mb--25" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, venenatis
+                            dictum et nec.</p>
+                        <h6 class="subtitle" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">People Love To Learn With Us</h6>
+
+                        <div class="row g-5">
+                            <!-- Start Single Feature  -->
+                            <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <div class="feature-style-3">
+                                    <div class="feature-content">
+                                        <h6 class="feature-title">90%</h6>
+                                        <p class="feature-description">Students Complete Course Successfully </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Feature  -->
+
+                            <!-- Start Single Feature  -->
+                            <div class="col-lg-6 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <div class="feature-style-3">
+                                    <div class="feature-content">
+                                        <h6 class="feature-title">9/10</h6>
+                                        <p class="feature-description">Users reported better learning outcomes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Feature  -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--feedback-->
 
                 <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
                     <div class="shape-image shape-image-1">
