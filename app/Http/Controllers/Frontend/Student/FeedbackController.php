@@ -41,10 +41,12 @@ class FeedbackController extends Controller
     {
         $validated = $request->validate([
             'feedback' => 'required',
+            'rating' => 'required',
         ]);
         Feedback::create([
             'student_id' => Auth::user()->id,
             'feedback'         => $request->feedback,
+            'rating'         => $request->rating,
 
         ]);
         return redirect()->route('feedback.index')->with('success', 'feedback created successfully');
@@ -84,7 +86,8 @@ class FeedbackController extends Controller
     {
         $feedback->update([
 
-          'feedback'=>  $request->feedback]);
+          'feedback'=>  $request->feedback,
+           'rating'=>$request->rating,]);
         return redirect()->route('feedback.index')->with('success', 'feedback updated successfully');
     }
 

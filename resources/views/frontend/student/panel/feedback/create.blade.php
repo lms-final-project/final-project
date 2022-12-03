@@ -20,7 +20,16 @@
                 <input type="text" name="feedback" placeholder="Write feedback">
 
             </div>
-
+            <div class="mb-3">
+            <select name="rating"class="form-select" style="color:#696969;font-weight: 500;border-radius: 10px;border-color:#D3D3D3"aria-label="Default select example">
+                <option selected >Choose the number of stars that represent your rating</option>
+                <option  value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
+              </select>
+            </div>
         </div>
         <div class="text-center py-4">
             <div class="">

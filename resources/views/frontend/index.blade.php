@@ -438,11 +438,9 @@
                                 @forelse ($feedbacks as $feedback)
                                 <div class="single-card">
                                     <div class="rating">
-                                        <i class="on icon-Star"></i>
-                                        <i class="on icon-Star"></i>
-                                        <i class="on icon-Star"></i>
-                                        <i class="on icon-Star"></i>
-                                        <i class="on icon-Star"></i>
+                                         @for ($i=0;$feedback->rating > $i;$i++)
+                                            <i class="on icon-Star"></i>
+                                        @endfor
                                     </div>
                                     <p class="description">{{$feedback->feedback}}</p>
                                     <div class="client-info">

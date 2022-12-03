@@ -20,7 +20,16 @@
                 <input type="text" name="feedback" placeholder="Write feedback" value="{{$feedback->feedback}}">
 
             </div>
-
+            <div class="mb-3">
+                <select name="rating"class="form-select"style="color:#696969;font-weight: 500;border-radius: 10px;border-color:#D3D3D3"aria-label="Default select example">
+                    <option  >Choose the number of stars that represent your rating</option>
+                    <option value="1" {{ old('rating', $feedback->rating) == 1 ? 'selected' : '' }}>One</option>
+                    <option value="2"{{ old('rating', $feedback->rating) == 2 ? 'selected' : '' }}>Two</option>
+                    <option value="3"{{ old('rating', $feedback->rating) == 3 ? 'selected' : '' }}>Three</option>
+                    <option value="4"{{ old('rating', $feedback->rating) == 4 ? 'selected' : '' }}>Four</option>
+                    <option value="5"{{ old('rating', $feedback->rating) == 5 ? 'selected' : '' }}>Five</option>
+                  </select>
+                </div>
         </div>
         <div class="text-center py-4">
             <div class="">

@@ -11,6 +11,7 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Feedback</th>
+                    <th scope="col">Rating</th>
                     <th scope="col">Options</th>
                   </tr>
                 </thead>
@@ -19,6 +20,7 @@
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{$feedback->feedback}}</td>
+                    <td>{{$feedback->rating}}</td>
                     <td><div class="d-flex">
                         <form action="{{ route('feedback.edit', ['feedback' => $feedback->id]) }}" method="get">
                             @csrf

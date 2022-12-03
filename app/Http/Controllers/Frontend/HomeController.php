@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\Service;
 use App\Models\Category;
 use App\Models\Feedback;
+use App\Models\CourseUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -27,7 +28,7 @@ class HomeController extends Controller
         $services   = Service::all();
         $feedbacks=Feedback::with('user')->orderBy('created_at', 'DESC')->take(6)->get();
         $instructors=User::where('role_id','=', 2)->count();
-        $studentEnrolled=User::with('courses')->where('role_id','=',3)->get();
+        $studentEnrolled=CourseUser::where('user_id','!=',2)->get();
         return view('frontend.index',compact('categories','about','courses','services','feedbacks','instructors','studentEnrolled'));
     }
 }

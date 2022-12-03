@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
             $table->string('feedback');
+            $table->string('rating');
             $table->timestamps();
         });
     }
