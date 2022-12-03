@@ -437,7 +437,6 @@
                             <div class="eduvibe-testimonial-three inner testimonial-card-activation-1 slick-arrow-style-2">
                                 @forelse ($feedbacks as $feedback)
                                 <div class="single-card">
-
                                     <div class="rating">
                                         <i class="on icon-Star"></i>
                                         <i class="on icon-Star"></i>
