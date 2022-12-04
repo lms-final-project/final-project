@@ -34,7 +34,7 @@
                 <div class="instructor-profile-left">
                     <div class="inner">
                         <div class="thumbnail">
-                            <img src="{{ asset('storage/'.$student_details->image) }}" alt="About Images">
+                            <img src="{{ asset('storage/'.$student_details->image) }}"style="width:100px;height:100px" alt="About Images">
                         </div>
                         <div class="content">
                             <h5 class="title">{{$student_details->user->name}}</h5>
@@ -44,9 +44,9 @@
                                 <p><span>Phone:</span> <a href="tel:+91 458 654 528">{{$student_details->phone}}</a></p>
                             </div>
 
-                            <ul class="social-share bg-transparent justify-content-center medium-size">
+                            <ul class="social-share bg-transparent justify-content-center   medium-size ">
                                 @if ($student_details->social_links['facebook'])
-                                    <li><a href="{{$student_details->social_links['facebook']}}"><i class="icon-Fb"></i></a></li>
+                                    <li ><a href="{{$student_details->social_links['facebook']}}"><i class="icon-Fb "></i></a></li>
                                 @endif
                                 @if ($student_details->social_links['linkedin'])
                                     <li><a href="{{$student_details->social_links['linkedin']}}"><i class="icon-linkedin"></i></a></li>
@@ -72,7 +72,58 @@
                             <h3 class="title">Hello, I’m {{$student_details->user->name}}</h3>
 
                         </div>
+                        <div class="edu-course-wrapper pt--65">
+                            <div class="section-title text-start mb--20">
 
+                                <h3 class="title">Courses Enrolled By : {{$student_details->user->name}}</h3>
+                            </div>
+                            <div class="instructor-profile-courses course-activation course-activation-item-2 slick-gutter-15 edu-slick-button">
+                                @forelse ($registered_courses as $course)
+                                <!-- Start Single Card  -->
+                                <div class="col-12 col-sm-6 col-lg-4" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                    <div class="edu-card card-type-1 radius-small">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="{{route('course_details',$course->id)}}">
+                                                    <img class="w-100" src="{{ asset('storage/'.$course->image) }}" alt="Course Meta" style="height: 250px">
+                                                </a>
+                                                <div class="top-position status-group left-top shadow">
+                                                    <span class="eduvibe-status status-01">{{ $course->type->name }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="content">
+                                                <ul class="edu-meta meta-01">
+                                                    <li><i class="icon-file-list-4-line"></i>{{$course->courseContents->count()}}</li>
+                                                    <li><i class="icon-time-line"></i>{{$course->time}}</li>
+                                                </ul>
+                                                <h6 class="title"><a href="{{route('course_details',$course->id)}}">{{$course->title}}</a>
+                                                </h6>
+
+                                                <div class="card-bottom">
+                                                    <div class="price-list price-style-03">
+                                                        @if ($course->is_free)
+                                                        <div class="price current-price">Free</div>
+
+                                                        @else
+                                                        <div class="price current-price">{{'$'.$course->price}}</div>
+
+                                                        @endif
+                                                    </div>
+                                                    <ul class="edu-meta meta-01">
+                                                        <li><i class="icon-account-circle-line"></i>{{$course->users->count()-1}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Card  -->
+                            @empty
+                                <div class="text-center">
+                                    <h5>There isn't any course enrolled yet</h5>
+                                </div>
+                            @endforelse
+                        </div>
                         <!--<div class="edu-skill-style mt--65">
                             <div class="section-title text-start mb--30">
                                 <span class="pre-title">Skillset</span>

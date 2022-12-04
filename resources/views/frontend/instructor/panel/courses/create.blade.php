@@ -72,7 +72,33 @@
                 <label for="category_id" class="form-label">Category</label>
                 <x-form.select-option :options="$categories" name="category_id" />
             </div>
+            <div class="mb-3">
+                <label for="days_id" class="form-label">Days</label>
+                <select name="days_id"class="form-select" aria-label="Default select example" required>
+                    <option selected disabled>Open to pick one</option>
+                    @foreach ($daysOfCourse as $days )
+                    <option  value="{{$days->id}}">{{$days->days}}</option>
+                    @endforeach
+                  </select>
+                </div>
 
+                <div class="mb-3">
+                    <label for="start_date" class="form-label">StartDate</label>
+                    <input type="date" id="start_date"class="form-control" name='start_date'/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="end_date" class="form-label">EndDate</label>
+                        <input type="date" id="end_date"class="form-control" name='end_date' />
+                        </div>
+                        <div class="mb-3">
+                            <label for="time" class="form-label ">Time</label>
+                            <input name='time' type="text" id="timepicker" class="form-control  " placeholder="time" required >
+                            </div>
+                            <div class="mb-3">
+                                <label for="zoom_link" class="form-label">Zoom_link</label>
+                                <x-form.text-input name='zoom_link' placeholder="Zoom link"/>
+
+                            </div>
             <div class="mb-3">
                 <div class="d-flex py-2">
                     <label for="topic" class="form-label">Topics</label>
@@ -136,5 +162,18 @@
                 $('.pcertification-section textarea').prop('required',false);
             }
         })
+    </script>
+    <script>
+$('#timepicker').timepicker({
+    timeFormat: 'h:mm p',
+    interval: 60,
+    minTime: '6:00pm',
+    maxTime:'11:00pm',
+    defaultTime: '6:00pm',
+    startTime: '6:00pm',
+    dynamic:false,
+    dropdown: true,
+    scrollbar: true,
+});
     </script>
 @endpush

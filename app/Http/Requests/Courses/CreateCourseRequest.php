@@ -31,6 +31,11 @@ class CreateCourseRequest extends FormRequest
             'certification'     => ['required_if:has_certificate,true'],
             'course_type_id'    => ['required' , 'exists:course_types,id'],
             'category_id'       => ['required' , 'exists:categories,id'],
+            'days_id'           => ['required' ],
+            'start_date'             => ['required' , 'date','date_format:Y-m-d'],
+            'end_date'             => ['required' , 'date','date_format:Y-m-d'],
+            'time'                 =>['required'],
+            'zoom_link'             => ['required' , 'string'],
         ];
     }
 

@@ -68,8 +68,8 @@ class ProfileController extends Controller
 
 
     public function store(StoreProfileRequest $request){
-
-        if($request->hasFile('image')){
+return "ljknhjgg";
+        /*if($request->hasFile('image')){
             $file=$request->file('image');
             $path=$file->store('Profile','public');
         }
@@ -82,7 +82,7 @@ class ProfileController extends Controller
             'description'   => $request->description,
             'social_links'  => $request->social,
         ]);
-        return redirect()->route('instructor_profile')->with('success' , 'profile created successfully');
+        return redirect()->route('instructor_profile')->with('success' , 'profile created successfully');*/
     }
 
     public function change_password(Request $request){

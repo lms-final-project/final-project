@@ -21,8 +21,8 @@ class StudentProfileController extends Controller
     public function index()
     {
         $student_details = Auth()->user()->profile_student;
-
-        return view('frontend.student.panel.profile.index', compact('student_details'));
+        $registered_courses=auth()->user()->courses;
+        return view('frontend.student.panel.profile.index', compact('student_details','registered_courses'));
     }
 
     /**

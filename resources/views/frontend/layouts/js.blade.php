@@ -20,5 +20,6 @@
  <script src="{{ asset('frontend/assets/js/vendor/tilt.jquery.min.js') }}"></script>
  <script src="{{ asset('frontend/assets/js/alertify.min.js') }}"></script>
  <script src="{{ asset('assets/js/jquery-confirm.js') }}"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
  <!-- Main JS -->
  <script src="{{ asset('frontend/assets/js/main.js') }}"></script>

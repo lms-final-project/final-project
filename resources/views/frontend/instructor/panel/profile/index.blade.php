@@ -180,8 +180,8 @@
                                             </div>
                                             <div class="content">
                                                 <ul class="edu-meta meta-01">
-                                                    <li><i class="icon-file-list-4-line"></i>29 Lessons</li>
-                                                    <li><i class="icon-time-line"></i>19h 15m 26s</li>
+                                                    <li><i class="icon-file-list-4-line"></i>{{$course->courseContents->count()}}</li>
+                                                    <li><i class="icon-time-line"></i>{{$course->time}}</li>
                                                 </ul>
                                                 <h6 class="title"><a href="{{route('course_details',$course->id)}}">{{$course->title}}</a>
                                                 </h6>
@@ -197,7 +197,7 @@
                                                         @endif
                                                     </div>
                                                     <ul class="edu-meta meta-01">
-                                                        <li><i class="icon-account-circle-line"></i>85 Students</li>
+                                                        <li><i class="icon-account-circle-line"></i>{{$course->users->count()-1}}</li>
                                                     </ul>
                                                 </div>
                                             </div>

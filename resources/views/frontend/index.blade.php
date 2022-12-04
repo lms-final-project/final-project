@@ -300,7 +300,7 @@
                                         </h6>
                                         <ul class="edu-meta meta-01">
                                             <li><i class="icon-file-list-4-line"></i>{{$course->courseContents->count()}}</li>
-                                            <li><i class="icon-time-line"></i>18h 15m 44s</li>
+                                            <li><i class="icon-time-line"></i>{{$course->time}}</li>
                                         </ul>
 
 
