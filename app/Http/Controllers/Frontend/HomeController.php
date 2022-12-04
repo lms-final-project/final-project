@@ -26,9 +26,9 @@ class HomeController extends Controller
         $courses    = Course::status()->with('type')->take(6)->get();
         $about      = About::orderBy('created_at', 'DESC')->take(4)->get();
         $services   = Service::all();
-        $feedbacks=Feedback::with('user')->orderBy('created_at', 'DESC')->take(6)->get();
-        $instructors=User::where('role_id','=', 2)->count();
-        $studentEnrolled=CourseUser::where('user_id','!=',2)->get();
+        $feedbacks  =Feedback::with('user')->orderBy('created_at', 'DESC')->take(6)->get();
+        $instructors =User::where('role_id','=', 2)->count();
+        $studentEnrolled =CourseUser::all();
         return view('frontend.index',compact('categories','about','courses','services','feedbacks','instructors','studentEnrolled'));
     }
 }

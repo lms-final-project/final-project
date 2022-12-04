@@ -27,6 +27,11 @@ return new class extends Migration
             $table->foreignId('course_type_id')->constrained('course_types');
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('instructor_id')->constrained('users');
+            $table->foreignId('days_id')->constrained('course_days');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('time');
+            $table->string('zoom_link');
             $table->enum('status',  ['accepted' , 'pinned' , 'rejected'])->default('pinned');
             $table->timestamps();
         });

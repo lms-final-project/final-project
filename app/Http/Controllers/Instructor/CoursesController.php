@@ -5,18 +5,19 @@ namespace App\Http\Controllers\Instructor;
 use Exception;
 use App\Models\Course;
 use App\Models\Category;
+use App\Models\CourseDays;
 use App\Models\CourseType;
+use App\Models\CourseUser;
 use App\Models\CourseTopic;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Courses\CreateCourseRequest;
 use App\Http\Requests\Courses\UpdateCourseRequest;
-use App\Models\CourseUser;
 
 class CoursesController extends Controller
 {
@@ -40,7 +41,8 @@ class CoursesController extends Controller
     {
         $types = CourseType::all();
         $categories = Category::all();
-        return view('frontend.instructor.panel.courses.create', compact('types','categories'));
+        $daysOfCourse=CourseDays::all();
+        return view('frontend.instructor.panel.courses.create', compact('types','categories','daysOfCourse'));
     }
 
     /**
@@ -61,6 +63,7 @@ class CoursesController extends Controller
                 $filefile = $request->file('file');
                 $pathfile = $filefile->store('instructors/courses/files' , 'public');
             }
+
             $course = Course::create([
                 'image'                 => $path,
                 'file'                  => $pathfile ?? null,
@@ -73,6 +76,11 @@ class CoursesController extends Controller
                 'certification'         => $request->certification,
                 'course_type_id'        => $request->course_type_id,
                 'category_id'           => $request->category_id,
+                'days_id'               =>$request->days_id,
+                'start_date'            =>$request->start_date,
+                'end_date'              =>$request->end_date,
+                'time'                  =>$request->time,
+                'zoom_link'             =>$request->zoom_link,
                 'instructor_id'         => auth()->user()->id
             ]);
 
@@ -124,8 +132,8 @@ class CoursesController extends Controller
         $course = Course::with('topics')->find($id);
         $types = CourseType::all();
         $categories = Category::all();
-
-        return view('frontend.instructor.panel.courses.edit',compact('types','categories','course'));
+        $daysOfCourse=CourseDays::all();
+        return view('frontend.instructor.panel.courses.edit',compact('types','categories','course','daysOfCourse'));
     }
 
     /**
@@ -166,6 +174,11 @@ class CoursesController extends Controller
                 'certification'         => $request->certification,
                 'course_type_id'        => $request->course_type_id,
                 'category_id'           => $request->category_id,
+                'days_id'               =>$request->days_id,
+                'start_date'            =>$request->start_date,
+                'end_date'              =>$request->end_date,
+                'time'                  =>$request->time,
+                'zoom_link'             =>$request->zoom_link,
             ]);
 
             if($old_image && $request->hasFile('image')){
