@@ -17,8 +17,24 @@
 
     }
     .section-title .title{
-        font-size: 44px !important;
+        font-size: 40px !important;
     }
+    .testimonial-card-box {
+    
+    margin-top: -275px !important;
+}
+.eduvibe-home-three-testimonial {
+  
+    height: 600px;
+}
+.NewFontSize{
+    font-size: 20px;
+    color:#231F40;
+    font-family:var(--font-primary);
+    
+}
+
+    
 </style>
 @extends('frontend.layouts.app')
 
@@ -54,7 +70,7 @@
                             <div class="shape-image shape-image-1">
                                 <img src="{{ asset('frontend/assets/images/shapes/shape-11-03.png')}}" alt="Shape Thumb" />
                             </div>
-                            <div class="shape-image shape-image-2">
+                            <div class="shape-image shape-image-2 NewClass">
                                 <img src="{{ asset('frontend/assets/images/shapes/shape-01-02.png')}}" alt="Shape Thumb" />
                             </div>
                             <div class="shape-image shape-image-3">
@@ -437,11 +453,13 @@
                             <div class="eduvibe-testimonial-three inner testimonial-card-activation-1 slick-arrow-style-2">
                                 @forelse ($feedbacks as $feedback)
                                 <div class="single-card">
+                                    <div class="NewFontSize">Student Rating:</div>
                                     <div class="rating">
                                          @for ($i=0;$feedback->rating > $i;$i++)
                                             <i class="on icon-Star"></i>
                                         @endfor
                                     </div>
+                                    <div class="NewFontSize">Student Feedback:</div>
                                     <p class="description">{{$feedback->feedback}}</p>
                                     <div class="client-info">
                                         @if ($feedback->user->profile_student)
@@ -475,9 +493,9 @@
                             <span class="pre-title">Testimonials</span>
                             <h3 class="title">Students Feedback</h3>
 
-                        <p class="description mt--25 mb--25" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, venenatis
-                            dictum et nec.</p>
-                        <h6 class="subtitle" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">People Love To Learn With Us</h6>
+                        <p class="description mt--25 mb--25" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">It is great to provide feedback from our students participating in this academy!
+                            </p>
+                        <h6 class="subtitle" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Students Love To Learn With Us</h6>
 
                         <div class="row g-5">
                             <!-- Start Single Feature  -->
