@@ -56,5 +56,8 @@ class Course extends Model
     public function users(){
         return $this->belongsToMany( User::class , 'course_users' );
     }
+    public function links(){
+        return $this->hasMany( CourseZoom::class ,'course_id','id' );
+}
 
 }

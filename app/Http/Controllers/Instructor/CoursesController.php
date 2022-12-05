@@ -79,8 +79,8 @@ class CoursesController extends Controller
                 'days_id'               =>$request->days_id,
                 'start_date'            =>$request->start_date,
                 'end_date'              =>$request->end_date,
-                'time'                  =>$request->time,
-                'zoom_link'             =>$request->zoom_link,
+                'start_time'            =>$request->start_time,
+                'end_time'            =>$request->end_time,
                 'instructor_id'         => auth()->user()->id
             ]);
 
@@ -177,8 +177,8 @@ class CoursesController extends Controller
                 'days_id'               =>$request->days_id,
                 'start_date'            =>$request->start_date,
                 'end_date'              =>$request->end_date,
-                'time'                  =>$request->time,
-                'zoom_link'             =>$request->zoom_link,
+                'start_time'                  =>$request->start_time,
+                'end_time'                  =>$request->end_time,
             ]);
 
             if($old_image && $request->hasFile('image')){

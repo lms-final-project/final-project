@@ -20,21 +20,21 @@
         font-size: 40px !important;
     }
     .testimonial-card-box {
-    
+
     margin-top: -275px !important;
 }
 .eduvibe-home-three-testimonial {
-  
+
     height: 600px;
 }
 .NewFontSize{
     font-size: 20px;
     color:#231F40;
     font-family:var(--font-primary);
-    
+
 }
 
-    
+
 </style>
 @extends('frontend.layouts.app')
 
@@ -316,7 +316,7 @@
                                         </h6>
                                         <ul class="edu-meta meta-01">
                                             <li><i class="icon-file-list-4-line"></i>{{$course->courseContents->count()}}</li>
-                                            <li><i class="icon-time-line"></i>{{$course->time}}</li>
+                                            <li><i class="icon-time-line"></i>{{$course->start_time}}-{{$course->end_time}}</li>
                                         </ul>
 
 

@@ -40,19 +40,25 @@
                     <form action="{{ route('courses.edit', $course->id) }}" method="get">
                         @csrf
                         @if ($course->status != 'rejected')
-                            <button class="btn btn-info btn-sm rounded-3"style="font-size: 12px">Edit</button>
+                            <button class="btn btn-info btn-sm rounded-3"style="font-size: 18px"><i class="ri-edit-line"></i></button>
                         @endif
                     </form>
                     <form class="ms-3 delete-form" action="{{ route('courses.destroy', $course->id) }}" method="POST">
                         @csrf
                         @method('delete')
                     </form>
-                    <button class="btn btn-danger btn-sm rounded-3 delete-btn"style="font-size: 12px">Delete</button>
+                    <button class="btn btn-danger btn-sm rounded-3 "style="font-size: 16px"><i class="ri-delete-bin-6-line"></i></button>
                     <form class="ms-3" action="{{ route('curriculum.show', $course->id) }}" method="get">
                         @csrf
                         @if ($course->status == 'accepted')
                             <button class="btn btn-success btn-sm rounded-3"style="font-size: 10px">Add
                                 curriculum</button>
+                        @endif
+                    </form>
+                    <form class="ms-3" action="{{route('indexZoom',['course'=>$course->id])}}" method="get">
+                        @csrf
+                        @if ($course->status == 'accepted')
+                            <button class="btn  btn-secondary btn-sm rounded-3"style="font-size: 10px">Scheduling ZoomLinks</button>
                         @endif
                     </form>
                 </div>

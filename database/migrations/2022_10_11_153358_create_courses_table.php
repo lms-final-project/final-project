@@ -30,8 +30,8 @@ return new class extends Migration
             $table->foreignId('days_id')->constrained('course_days');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('time');
-            $table->string('zoom_link');
+            $table->string('start_time');
+            $table->string('end_time');
             $table->enum('status',  ['accepted' , 'pinned' , 'rejected'])->default('pinned');
             $table->timestamps();
         });
