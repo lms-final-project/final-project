@@ -1,11 +1,7 @@
 @extends('frontend.student.panel.layouts.index', ['active_btn' => 'feedback'])
 
 @section('student_panel')
-@if ($errors->any())
-    @foreach ($errors->all() as $error)
-        <p class="text-danger">{{$error}}</p>
-    @endforeach
-@endif
+
 <div class="border border-light">
     <form action="{{route('feedback.store')}}"  method="POST">
         @csrf
@@ -17,18 +13,24 @@
 
             <div class="mb-3">
                 <label for="feedback" class="form-label">Feedback</label>
-                <input type="text" name="feedback" placeholder="Write feedback">
-
+                <input type="text" name="feedback" @class(['form-control' , 'is-invalid' => $errors->has( 'feedback' )]) placeholder="Write feedback">
+                @error('feedback')
+    <span class="invalid-feedback">
+        {{ $message }}
+    </span>
+@enderror
             </div>
             <div class="mb-3">
+            <label for="rating" class="form-label">Choose the number of stars that represent your rating</label>
             <select name="rating"class="form-select" style="color:#696969;font-weight: 500;border-radius: 10px;border-color:#D3D3D3"aria-label="Default select example">
-                <option selected >Choose the number of stars that represent your rating</option>
-                <option  value="1">One</option>
+
+                <option selected value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
                 <option value="4">Four</option>
                 <option value="5">Five</option>
               </select>
+
             </div>
         </div>
         <div class="text-center py-4">

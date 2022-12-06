@@ -101,14 +101,14 @@
                         <input type="date" id="end_date"class="form-control" value='{{$course->end_date}}'name='end_date' />
                         </div>
                         <div class="mb-3">
-                            <label for="time" class="form-label ">Time</label>
-                            <input name='time' type="text" id="timepicker" class="form-control  " value='{{$course->time}}'placeholder="time" required >
+                            <label for="start_time" class="form-label ">StartTime</label>
+                            <input name='start_time' type="text" id="timepicker" class="form-control  " value='{{$course->start_time}}'placeholder="start_time" required >
                             </div>
                             <div class="mb-3">
-                                <label for="zoom_link" class="form-label">Zoom_link</label>
-                                <x-form.text-input name='zoom_link'value='{{$course->zoom_link}}' placeholder="Zoom link"/>
-
-                            </div>
+                                <label for="end_time" class="form-label ">EndTime</label>
+                                <input name='end_time' type="text" id="timepicker" class="form-control  " value='{{$course->end_time}}'placeholder="start_time" required >
+                                </div>
+            
             <div class="mb-3">
                 <div class="d-flex py-2">
                     <label for="topic" class="form-label">Topics</label>

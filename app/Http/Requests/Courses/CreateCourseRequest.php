@@ -34,8 +34,9 @@ class CreateCourseRequest extends FormRequest
             'days_id'           => ['required' ],
             'start_date'             => ['required' , 'date','date_format:Y-m-d'],
             'end_date'             => ['required' , 'date','date_format:Y-m-d'],
-            'time'                 =>['required'],
-            'zoom_link'             => ['required' , 'string'],
+            'start_time'                 =>['required'],
+            'end_time'                 =>['required'],
+            
         ];
     }
 

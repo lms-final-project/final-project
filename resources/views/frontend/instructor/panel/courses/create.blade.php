@@ -91,14 +91,14 @@
                         <input type="date" id="end_date"class="form-control" name='end_date' />
                         </div>
                         <div class="mb-3">
-                            <label for="time" class="form-label ">Time</label>
-                            <input name='time' type="text" id="timepicker" class="form-control  " placeholder="time" required >
+                            <label for="start_time" class="form-label ">StartTime</label>
+                            <input name='start_time' type="text" class="timepicker" class="form-control  " placeholder="start_time" required >
                             </div>
                             <div class="mb-3">
-                                <label for="zoom_link" class="form-label">Zoom_link</label>
-                                <x-form.text-input name='zoom_link' placeholder="Zoom link"/>
-
-                            </div>
+                                <label for="end_time" class="form-label ">EndTime</label>
+                                <input name='end_time' type="text" class="timepicker" class="form-control  " placeholder="end_time" required >
+                                </div>
+                        
             <div class="mb-3">
                 <div class="d-flex py-2">
                     <label for="topic" class="form-label">Topics</label>
@@ -164,7 +164,7 @@
         })
     </script>
     <script>
-$('#timepicker').timepicker({
+$('.timepicker').timepicker({
     timeFormat: 'h:mm p',
     interval: 60,
     minTime: '6:00pm',

@@ -206,13 +206,18 @@
 
                                                 <li><span><i class="icon-user-2-line_tie"></i> Instructor</span><span>{{ $course->instructor->name }}</span></li>
                                                 <li><span><i class="icon-user-2"></i> Enrolled</span><span>{{$course->users->count()-1}}</span></li>
-                                                @if ($is_registered)
-                                                <li><span><i class="ri-external-link-fill"></i>ZoomLink <a href="{{$course->zoom_link}}"></span><span>{{$course->zoom_link}}</a></span></li>
-                                                @endif
+                                                @if ($is_registered )
+                                                @if( Auth::user()->role_id==3)
+                                                <li><span><i class="ri-external-link-fill"></i>ZoomLinks <a href="{{route('Zoom',['course'=>$course->id])}}"></span><span>ShowMeeting</a></span></li>
 
+                                                @elseif( Auth::user()->role_id==2)
+
+                                                <li><span><i class="ri-external-link-fill"></i>ZoomLinks <a href="{{route('indexZoom',['course'=>$course->id])}}"></span><span>ShowMeeting</a></span></li>
+                                                @endif
+                                                @endif
                                                 <li><span><i class="ri-calendar-todo-line"></i> StartDate</span><span>{{ $course->start_date }}</span></li>
                                                 <li><span><i class="ri-calendar-todo-line"></i> EndDate</span><span>{{ $course->end_date }}</span></li>
-                                                <li><span><i class="ri-time-line"></i> CourseTime</span><span>{{ $course->time }}</span></li>
+                                                <li><span><i class="ri-time-line"></i> CourseTime</span><span>{{ $course->start_time}}-{{$course->end_time}} </span></li>
                                             </ul>
 
                                             @if (!$is_registered)

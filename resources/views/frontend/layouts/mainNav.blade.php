@@ -8,7 +8,7 @@
     color: #232B87;
     font-size: 18px;
     font-weight: 1000;
-   
+
 }
 
 .edu-btn{
@@ -23,7 +23,7 @@ a.edu-btn:hover, button.edu-btn:hover {
 
 
 a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
-    
+
     border: 2px solid #232B87 !important;
 }
 
@@ -47,25 +47,25 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
                 <nav class="mainmenu-nav d-none d-lg-block">
                     <ul class="mainmenu">
                         <li class="has-droupdown"><a href="#">Home</a>
-                         
+
                         </li>
-                        <li class="has-droupdown"><a href="#">About Us</a>
-                         
+                        <li class="has-droupdown"><a href="#about_section">About Us</a>
+
                         </li>
 
-                        <li class="has-droupdown"><a href="#">Categories</a>
-                         
+                        <li class="has-droupdown"><a href="#category_section">Categories</a>
+
                         </li>
-                        <li class="has-droupdown"><a href="#">Courses</a>
-                    
+                        <li class="has-droupdown"><a href="#course_section">Courses</a>
+
                         </li>
-                        <li class="has-droupdown"><a href="#">FAGs</a>
-                          
+                        <li class="has-droupdown"><a href="#service_section">Services</a>
+
                                 </li>
-                               
+
                             </ul>
                         </li>
-                    
+
                     </ul>
                 </nav>
             </div>

@@ -94,7 +94,7 @@
                                             <div class="content">
                                                 <ul class="edu-meta meta-01">
                                                     <li><i class="icon-file-list-4-line"></i>{{$course->courseContents->count()}}</li>
-                                                    <li><i class="icon-time-line"></i>{{$course->time}}</li>
+                                                    <li><i class="icon-time-line"></i>{{$course->start_time}}-{{$course->end_time}}</li>
                                                 </ul>
                                                 <h6 class="title"><a href="{{route('course_details',$course->id)}}">{{$course->title}}</a>
                                                 </h6>
