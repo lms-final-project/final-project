@@ -91,6 +91,7 @@
         <!-- End Sldier Area  -->
 
         {{-- Start Course Categories --}}
+        <section id="category_section">
         <div class="sercice-area eduvibe-service-five service-wrapper-5 edu-section-gap bg-color-white">
             <div class="container eduvibe-animated-shape">
                 <div class="row">
@@ -137,11 +138,12 @@
                 </div>
             </div>
         </div>
-
+    </section>
         {{-- End Course Categories --}}
     @endsection
 
     @section('content')
+    <section id="service_section">
         <div class="home-three-about edu-about-area about-style-4 bg-color-white edu-section-gapBottom">
             <div class="container eduvibe-animated-shape">
                 <div class="row g-lg-5 g-md-5 g-sm-5">
@@ -190,7 +192,7 @@
                 </div>
             </div>
         </div>
-
+    </section>
 
         <!-- Start Counterup Area -->
        <div class="edu-counterup-and-course-area">
@@ -280,7 +282,7 @@
 
 
 
-
+<section id="course_section" >
             <div class="edu-course-area eduvibe-home-three-course counterup-overlay-top bg-image edu-section-gapTop edu-section-gapBottom">
                 <div class="container eduvibe-animated-shape">
                     <div class="row">
@@ -377,10 +379,12 @@
                 </div>
             </div>
         </div>
+</section>
        <!--  End Counterup Area  -->
 
-        @if ($about->count()>0)
+
         <!-- Start Accordion Area  -->
+        <section id="about_section">
         <div class="edu-accordion-area eduvibe-home-three-accordion accordion-shape-1 edu-section-gap bg-color-white">
             <div class="container eduvibe-animated-shape">
                 <div class="row g-5">
@@ -401,12 +405,13 @@
                             </div>
                         </div>
                     </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" id="about_section">
                             <div class="accordion-style-1">
                                 <div class="section-title text-start mb--40" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                     <span class="pre-title">About Us</span>
                                     <h3 class="title">Get Every General Answers From Here</h3>
                                 </div>
+                                @if ($about->count()>0)
                                 <div class="edu-accordion edu-accordion-01" id="accordionExample1" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                     @foreach ($about  as $about)
                                     <div class="edu-accordion-item">
@@ -423,6 +428,7 @@
                                     </div>
                                     @endforeach
                                 </div>
+                                @endif
                             </div>
                         </div>
                 </div>
@@ -437,8 +443,9 @@
                 </div>
             </div>
         </div>
+        </section>
         <!-- End Accordion Area  -->
-        @endif
+
 
 <!--feedback-->
 

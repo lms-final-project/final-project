@@ -83,7 +83,10 @@ class FeedbackController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Feedback $feedback)
-    {
+    {       $validated = $request->validate([
+             'feedback' => 'required',
+            'rating' => 'required',
+            ]);
         $feedback->update([
 
           'feedback'=>  $request->feedback,

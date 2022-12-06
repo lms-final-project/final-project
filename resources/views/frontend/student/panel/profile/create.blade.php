@@ -1,11 +1,6 @@
 @extends('frontend.student.panel.layouts.index', ['active_btn' => 'profile'])
 
 @section('student_panel')
-@if ($errors->any())
-    @foreach ($errors->all() as $error)
-        <p class="text-danger">{{$error}}</p>
-    @endforeach
-@endif
 <div class="border border-light">
     <form action="{{route('profile.store')}}" enctype="multipart/form-data" method="POST">
         @csrf
@@ -19,7 +14,12 @@
                         <i class="ri-image-line"></i>
                         <p>upload image</p>
                     </label>
-                    <input type="file" name="image" class="custom-file-input" id="image" style="opacity: 0" accept="image/*">
+                    <input type="file" name="image" @class(['custom-file-input' , 'is-invalid' => $errors->has( 'image' )]) id="image" style="opacity: 0" accept="image/*">
+                    @error('image')
+                    <span class="invalid-feedback">
+                        {{ $message }}
+                    </span>
+                @enderror
                 </div>
             </div>
 
@@ -31,11 +31,26 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Social Links</label>
-                <input type="text" name="social[facebook]" placeholder="Enter Facbook Link">
+                <input type="text"@class([ 'is-invalid' => $errors->has( 'social[facebook]' )]) name="social[facebook]" placeholder="Enter Facbook Link">
+                @error('social[facebook]')
+                <span class="invalid-feedback">
+                    {{ $message }}
+                </span>
+            @enderror
                 <br>
-                <input type="text" name="social[linkedin]" placeholder="Enter LinkedIn Link">
+                <input type="text" @class(['is-invalid' => $errors->has( 'social[linkedin]' )])name="social[linkedin]" placeholder="Enter LinkedIn Link">
+                @error('social[linkedin]')
+                <span class="invalid-feedback">
+                    {{ $message }}
+                </span>
+            @enderror
                 <br>
-                <input type="text" name="social[twitter]" placeholder="Enter Twitter Link">
+                <input type="text" @class([ 'is-invalid' => $errors->has( 'social[twitter]' )])name="social[twitter]" placeholder="Enter Twitter Link">
+                @error('social[twitter]')
+                <span class="invalid-feedback">
+                    {{ $message }}
+                </span>
+            @enderror
             </div>
 
         </div>

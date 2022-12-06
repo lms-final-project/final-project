@@ -21,7 +21,7 @@
 @enderror
             </div>
             <div class="mb-3">
-            <label for="feedback" class="form-label">Choose the number of stars that represent your rating</label>
+            <label for="rating" class="form-label">Choose the number of stars that represent your rating</label>
             <select name="rating"class="form-select" style="color:#696969;font-weight: 500;border-radius: 10px;border-color:#D3D3D3"aria-label="Default select example">
 
                 <option selected value="1">One</option>
@@ -30,6 +30,7 @@
                 <option value="4">Four</option>
                 <option value="5">Five</option>
               </select>
+
             </div>
         </div>
         <div class="text-center py-4">
