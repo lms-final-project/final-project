@@ -34,6 +34,7 @@
     
 }
 
+
     
 </style>
 @extends('frontend.layouts.app')
@@ -51,7 +52,7 @@
                                     <span class="pre-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Better Learning Future With Us</span>
                                     <h1 class="title" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">Real Knowledge Build a Life</h1>
                                     <p class="description" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">Learning is a life-long journey that in fact we never find the terminate stop. Stop searching, enjoy the process.</p>
-                                    <a class="edu-btn" href="#" data-sal-delay="450" data-sal="slide-up" data-sal-duration="800">Must return to page <i class="icon-arrow-right-line-right"></i></a>
+                                    <a class="edu-btn" href="{{ route('login') }}" data-sal-delay="450" data-sal="slide-up" data-sal-duration="800">JOIN WITH US!<i class="icon-arrow-right-line-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +180,7 @@
                                 @endforelse
                             </div>
                             <div class="read-more-btn mt--30" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                                <a class="edu-btn" href="about-us-1.html">Know About Us <i class="icon-arrow-right-line-right"></i></a>
+                                <a class="edu-btn" href="{{ route('dashboard.about.index') }}">KNOW ABOUT US <i class="icon-arrow-right-line-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -352,7 +353,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="load-more-btn mt--60 text-center">
-                                <a class="edu-btn" href="course-style-3.html">View All Courses<i
+                                <a class="edu-btn" href="course-style-3.html">VIEW ALL COURSES<i
                                             class="icon-arrow-right-line-right"></i></a>
                             </div>
                         </div>
