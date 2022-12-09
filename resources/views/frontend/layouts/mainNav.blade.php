@@ -46,7 +46,7 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
             <div class="col-lg-8 d-none d-xl-block">
                 <nav class="mainmenu-nav d-none d-lg-block">
                     <ul class="mainmenu">
-                        <li class="has-droupdown"><a href="#">Home</a>
+                        <li class="has-droupdown"><a href="{{route('home')}}">Home</a>
 
                         </li>
                         <li class="has-droupdown"><a href="#about_section">About Us</a>

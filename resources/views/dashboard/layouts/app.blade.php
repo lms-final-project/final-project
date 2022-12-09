@@ -1,4 +1,22 @@
 
+<style>
+    .btn-primary {
+    color: #fff !important;
+    background-color: #df99b9 !important;
+    border-color: #df99b9 !important;
+}
+
+.btn-primary:hover {
+    color: #fff !important;
+    background-color: #df99b9!important;
+    border-color: #df99b9 !important;
+}
+.flat-card .row-table span {
+    
+    color: #373a3c !important;
+
+}
+</style>
 <!DOCTYPE html>
 <html lang="en">
 

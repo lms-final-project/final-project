@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>LMS-Signin</title>
+	<title>Knowledge Academy Signin</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -12,7 +12,7 @@
 	<meta name="keywords" content="">
 	<meta name="author" content="Phoenixcoded" />
 	<!-- Favicon icon -->
-	<link rel="icon" href="{{ asset('dashboard/assets/images/favicon.ico')}}" type="image/x-icon">
+	<!--<link rel="icon" href="{{ asset('dashboard/assets/images/favicon.ico')}}" type="image/x-icon">-->
 
 	<!-- vendor css -->
 	<link rel="stylesheet" href="{{ asset('dashboard/assets/css/style.css')}}">

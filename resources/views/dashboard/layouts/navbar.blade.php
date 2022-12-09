@@ -1,10 +1,49 @@
+<style>
+    .mob-toggler, .mobile-menu{
+        right:-40px !important;
+    }
+    .pcoded-navbar {
+        width:240px;
+    }
+    .pcoded-navbar .pcoded-inner-navbar li.pcoded-menu-caption{
+        color:#df99b9;
+        font-size:16px;
+    }
+    .pcoded-navbar .pcoded-inner-navbar li.active > a, .pcoded-navbar .pcoded-inner-navbar li:focus > a, .pcoded-navbar .pcoded-inner-navbar li:hover > a {
+    color: #df99b9 !important;
+}
+.pcoded-navbar .pcoded-inner-navbar li.active > a, .pcoded-navbar .pcoded-inner-navbar li:focus > a, .pcoded-navbar .pcoded-inner-navbar li:hover > a {
+    color: #df99b9 !important;
+}
+.pcoded-navbar .pcoded-inner-navbar > li.active > a, .pcoded-navbar .pcoded-inner-navbar > li.pcoded-trigger > a {
+    background: #df99b9 !important;
+    color: #fff !important;
+}
+.card{
+    border-top:3px solid #df99b9 !important
+}
+.text-c-green {
+    color: #df99b9 !important;
+}
+
+.row-table .card-body:hover {
+    background-color: #df99b9 !important;
+    color: white !important;
+}
+.row-table .card-body:hover i, .row-table .card-body:hover span, .row-table .card-body:hover h5 {
+    color: white !important;
+}
+
+
+</style>
 <header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
     <div class="m-header">
         <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
         <a href="#!" class="b-brand">
             <!-- ========   change your logo hear   ============ -->
-            <img src="{{ asset('dashboard/assets/images/logo.png')}}" alt="" class="logo">
-            <img src="{{ asset('dashboard/assets/images/logo-icon.png')}}" alt="" class="logo-thumb">
+             
+            <img src="{{ asset('dashboard/assets/images/Knowledgeacademy1.png')}}" alt="" class="logo NewStyle">
+           
         </a>
         <a href="#!" class="mob-toggler">
             <i class="feather icon-more-vertical"></i>

@@ -4,7 +4,7 @@
 
             <div class="">
                 <div class="main-menu-header">
-                    <img class="img-radius" src="{{ asset('dashboard/assets/images/user/avatar-2.jpg')}}" alt="User-Profile-Image">
+                    <img class="img-radius" src="{{ asset('dashboard/assets/images/user/TariqAdmin.jpg')}}" alt="User-Profile-Image">
                     <div class="user-details">
                         <span>{{ Auth::user()->name }}</span>
                         <div id="more-details">manager<i class="fa fa-chevron-down m-l-5"></i></div>
