@@ -205,7 +205,7 @@
                                                 {{-- <li><span><i class="icon-calendar-2-line"></i> Deadline</span><span>25 Dec, 2022</span></li> --}}
 
                                                 <li><span><i class="icon-user-2-line_tie"></i> Instructor</span><span>{{ $course->instructor->name }}</span></li>
-                                                <li><span><i class="icon-user-2"></i> Enrolled</span><span>{{$course->users->count()-1}}</span></li>
+                                                <li><span><i class="icon-user-2"></i> Enrolled</span><span>{{$course->users->count()}}</span></li>
                                                 @if ($is_registered )
                                                 @if( Auth::user()->role_id==3)
                                                 <li><span><i class="ri-external-link-fill"></i>ZoomLinks <a href="{{route('Zoom',['course'=>$course->id])}}"></span><span>ShowMeeting</a></span></li>

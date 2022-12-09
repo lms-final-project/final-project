@@ -45,23 +45,26 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
             </div>
             <div class="col-lg-8 d-none d-xl-block">
                 <nav class="mainmenu-nav d-none d-lg-block">
+                    @php
+                        $current_route = Request::route()->getName();
+                    @endphp
                     <ul class="mainmenu">
-                        <li class="has-droupdown"><a href="{{route('home')}}">Home</a>
+                        <li class="has-droupdown"><a href="{{$current_route == 'home'? '#' : route('home')}}"">Home</a>
 
                         </li>
-                        <li class="has-droupdown"><a href="#about_section">About Us</a>
-
+                        <li class="has-droupdown">
+                            <a href="{{$current_route == 'home'? '#about_section' : route('home').'/#about_section'}}">About Us</a>
                         </li>
 
-                        <li class="has-droupdown"><a href="#category_section">Categories</a>
-
+                        <li class="has-droupdown">
+                            <a href="{{$current_route == 'home'? '#category_section' : route('home').'/#category_section'}}">Categories</a>
                         </li>
-                        <li class="has-droupdown"><a href="#course_section">Courses</a>
-
+                        <li class="has-droupdown">
+                            <a href="{{$current_route == 'home'? '#course_section' : route('home').'/#course_section'}}">Courses</a>
                         </li>
-                        <li class="has-droupdown"><a href="#service_section">Services</a>
-
-                                </li>
+                        <li class="has-droupdown">
+                            <a href="{{$current_route == 'home'? '#service_section' : route('home').'/#service_section'}}">Services</a>
+                        </li>
 
                             </ul>
                         </li>
@@ -90,14 +93,9 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
                             @endif
 
                             <div class="has-droupdown" >
-                               <a class=" dropdown-toggle edu-btn btn-medium left-icon header-button ms-3 fs-5" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-
-
-                                        {{ auth()->user()->name }}
-
+                                <a class=" dropdown-toggle edu-btn btn-medium left-icon header-button ms-3 fs-5" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ auth()->user()->name }}
                                 </a>
-
-
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <li>
                                         <form action="{{ route('logout') }}" method="POST">
@@ -115,10 +113,7 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
                                         @else
                                         <a class="dropdown-item  btn-medium left-icon header-button fs-5 "style="color:#525ee1fd;font-size:10px;font-weight:bold" href="{{route('profile.create')}}">Profile</a>
                                         @endif
-
                                     </li>
-
-
                                 </ul>
                             </div>
 

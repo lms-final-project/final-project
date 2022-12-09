@@ -42,12 +42,15 @@ class PaymentsController extends Controller
     }
 
     public function success(Request $request ,$course_id){
+        $course=Course::findorfail($course_id);
         $provider = new ExpressCheckout();
         $response = $provider->getExpressCheckoutDetails($request->token);
         if( in_array( strtoupper($response['ACK']) , ['SUCCESS' , 'SUCCESSWITHWARNING'] ) ){
             CourseUser::create([
-                'course_id' => $course_id,
-                'user_id'   => auth()->user()->id,
+                'course_id'   => $course->id,
+                'user_id'     => auth()->user()->id,
+                'is_free'     => false,
+                'amount_paid' => $course->price,
             ]);
             return redirect()->route('course_details' , $course_id)->with('success' , 'Course purchased successfully');
         }

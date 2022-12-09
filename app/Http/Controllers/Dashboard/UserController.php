@@ -60,7 +60,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+$user=User::find($id);
+$user->update([
+    'role_id' =>2,
+]);
+return redirect()->route('dashboard.users.index')->with('success' , 'The request has been approved ');
     }
 
     /**
@@ -83,6 +87,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user=User::find($id);
+        $user->delete();
+        return redirect()->route('dashboard.users.index')->with('danger' , 'User deleted succesffully');
     }
 }

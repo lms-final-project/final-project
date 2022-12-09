@@ -3,12 +3,11 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-4">
                         <input type="text" class="form-control" placeholder="Search title course"wire:model='title'>
                     </div>
-                    <div class="col-3">
+                    <div class="col-4">
                         <div class="form-group">
-
                             <select  wire:model='category_id'class="form-control" id="exampleFormControlSelect1">
                                 <option value="" placeholder="Search category name" selected >Select Category </option>
                                 @foreach ($categories as $category)
@@ -16,22 +15,18 @@
                                 @endforeach
                             </select>
                         </div>
-
                     </div>
-                    <div class="col-3">
+                    <div class="col-4">
                         <div class="form-group">
-
                             <select  wire:model='course_type_id'class="form-control" id="exampleFormControlSelect1">
                                 <option value="" placeholder="Search course-type name" selected >Select Course_type </option>
                                 @foreach ($courseTypes as $coursetype)
                                 <option value="{{ $coursetype->id }}"> {{ $coursetype->name }} </option>
-                            @endforeach
+                                @endforeach
                             </select>
                         </div>
-
                     </div>
 
-                    <div class="col-3">4</div>
                 </div>
             </div>
             <div class="card-body table-border-style">
@@ -50,7 +45,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
                             @forelse ($courses as $course)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -77,12 +71,12 @@
                                     @endif
                                     <td>{{ $course->category->name ?? 'test' }}</td>
                                     <td>{{ $course->instructor->name }}</td>
-                                    <td>{{ $course->type->name  }}</td>
+                                    <td>{{ $course->type->name }}</td>
 
                                     <td>
                                         @if ($course->status == 'pinned')
-                                            <button class="btn btn-sm btn-outline-info rounded" wire:click='acceptCourse({{$course->id}})'>Accept</button>
-                                            <button class="btn btn-sm btn-outline-danger rounded" wire:click='rejectCourse({{$course->id}})'>Reject</button>
+                                            <button class="rounded btn btn-sm btn-outline-info" wire:click='acceptCourse({{$course->id}})'>Accept</button>
+                                            <button class="rounded btn btn-sm btn-outline-danger" wire:click='rejectCourse({{$course->id}})'>Reject</button>
                                         @endif
                                     </td>
                                 </tr>
