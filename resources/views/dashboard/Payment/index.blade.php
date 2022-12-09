@@ -48,7 +48,7 @@
                                 @endforelse
                             </tbody>
                             <tfoot >
-                                <td class="price_txt " style="background-color:#20c997; "  scope="col" colspan="2">Total Amount Paid</td>
+                                <td class="price_txt " style="background-color:#df99b9; "  scope="col" colspan="2">Total Amount Paid</td>
                                 <td align="center">{{$Total_paid}}$</td>
 
                               </tfoot>
