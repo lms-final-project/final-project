@@ -13,4 +13,6 @@ class CourseController extends Controller
        // dd($courses);
         return view('dashboard.Courses.index',compact('courses'));
     }
+
+    
 }

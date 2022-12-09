@@ -28,12 +28,15 @@
                     <div class="edu-footer-widget explore-widget">
                         <h5 class="widget-title">Explore</h5>
                         <div class="inner">
+                            @php
+                            $current_route = Request::route()->getName();
+                        @endphp
                             <ul class="footer-link link-hover">
-                                <li><a href="#"><i class="icon-Double-arrow"></i>About Us</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Categories</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>Coueses</a></li>
-                                <li><a href="#"><i class="icon-Double-arrow"></i>FAQs</a></li>
-                                
+                                <li><a href="{{$current_route == 'home'? '#about_section' : route('home').'/#about_section'}}"><i class="icon-Double-arrow"></i>About Us</a></li>
+                                <li><a href="{{$current_route == 'home'? '#category_section' : route('home').'/#category_section'}}"><i class="icon-Double-arrow"></i>Categories</a></li>
+                                <li><a href="{{$current_route == 'home'? '#course_section' : route('home').'/#course_section'}}"><i class="icon-Double-arrow"></i>Courses</a></li>
+                                <li><a href="{{$current_route == 'home'? '#service_section' : route('home').'/#service_section'}}"><i class="icon-Double-arrow"></i>Services</a></li>
+
                             </ul>
                         </div>
                     </div>
@@ -48,7 +51,7 @@
                                 <li><a href="#"><i class="icon-Double-arrow"></i>Facebook</a></li>
                                 <li><a href="#"><i class="icon-Double-arrow"></i>Twitter</a></li>
                                 <li><a href="#"><i class="icon-Double-arrow"></i>WhatsApp</a></li>
-                             
+
                             </ul>
                         </div>
                     </div>
@@ -80,5 +83,5 @@
                 </div>
             </div>
         </div>
-    
+
 </footer>

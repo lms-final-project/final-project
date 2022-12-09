@@ -34,7 +34,7 @@
 
 }
 
-    
+
 </style>
 @extends('frontend.layouts.app')
 
@@ -332,7 +332,7 @@
                                                 @endif
                                             </div>
                                             <ul class="edu-meta meta-01">
-                                                <li><i class="icon-account-circle-line"></i>{{$course->users->count()-1}}</li>
+                                                <li><i class="icon-account-circle-line"></i>{{$course->users->count()}}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -354,7 +354,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="load-more-btn mt--60 text-center">
-                                <a class="edu-btn" href="course-style-3.html">VIEW ALL COURSES<i
+                                <a class="edu-btn" href="{{route('Allcourses')}}">VIEW ALL COURSES<i
                                             class="icon-arrow-right-line-right"></i></a>
                             </div>
                         </div>

@@ -7,7 +7,7 @@
 
 @section('breadcrump')
     @include('frontend.layouts.breadcrumb' , [
-        'title' => "$category->name",
+        'title' => "All Courses",
         'items' => [
             [
                 'name' => 'Home',
@@ -25,7 +25,7 @@
 <div class="edu-course-area edu-section-gap bg-color-white">
     <div class="container">
         <div class="row g-5 mt--10">
-            @forelse ($courses as $course)
+            @forelse ($AllCourses as $course)
                 <!-- Start Single Card  -->
                 <div class="col-12 col-sm-6 col-lg-4" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                     <div class="edu-card card-type-1 radius-small">

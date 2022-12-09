@@ -32,7 +32,7 @@
                         @endif
                     </div>
                     <ul class="edu-meta meta-01">
-                        <li><i class="icon-account-circle-line"></i>{{$course->users->count()-1}}</li>
+                        <li><i class="icon-account-circle-line"></i>{{$course->users->count()}}</li>
                     </ul>
 
                 </div>
@@ -46,8 +46,9 @@
                     <form class="ms-3 delete-form" action="{{ route('courses.destroy', $course->id) }}" method="POST">
                         @csrf
                         @method('delete')
+                        <button class="btn btn-danger btn-sm rounded-3 "style="font-size: 16px"><i class="ri-delete-bin-6-line"></i></button>
                     </form>
-                    <button class="btn btn-danger btn-sm rounded-3 "style="font-size: 16px"><i class="ri-delete-bin-6-line"></i></button>
+
                     <form class="ms-3" action="{{ route('curriculum.show', $course->id) }}" method="get">
                         @csrf
                         @if ($course->status == 'accepted')
