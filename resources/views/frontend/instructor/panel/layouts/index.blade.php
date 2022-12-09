@@ -38,7 +38,7 @@
                             <li  @class(['active' => $active_btn == 'courses'])>
                                 <a href="{{ route('courses.index') }}" class="d-flex justify-center items-center">
                                     <i class="ri-slideshow-line"></i>
-                                    show all courses
+                                    courses
                                 </a>
                             </li>
                             <li  @class(['active' => $active_btn == 'profile_password'])>

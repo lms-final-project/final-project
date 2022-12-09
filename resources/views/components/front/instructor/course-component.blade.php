@@ -63,6 +63,16 @@
                         @endif
                     </form>
                 </div>
+                <div class="d-flex mt-3">
+                    <form class="ms-3" action="{{route('assignments.index') }}" method="GET">
+                        @csrf
+
+                        @if ($course->status == 'accepted')
+                            <input type="hidden" name="course_id" value="{{ $course->id }}">
+                            <button class="btn  btn-primary btn-lg rounded-3"style="font-size: 12px">Assignments</button>
+                        @endif
+                    </form>
+                </div>
             </div>
         </div>
     </div>

@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/jquery-confirm.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css')}}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery.datetimepicker.min.css') }}">
     <style>
         #user-btn:hover{
             cursor: pointer;
