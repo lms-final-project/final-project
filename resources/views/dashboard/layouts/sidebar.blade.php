@@ -37,35 +37,44 @@
                 </li>
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link">
-                        <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+                        <span class="pcoded-micon"><i class="ri-html5-line text-c-white mb-1 d-block"></i></span>
                         <span class="pcoded-mtext">Courses</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li @class(['active' =>$active_button == 'courses'])>
                             <a href="{{ route('dashboard.courses') }}" >
-                                Show All
+                                <i class="ri-slideshow-3-line text-c-white mb-1 d-block">   Show All</i>
                             </a>
                         </li>
                     </ul>
                     <ul class="pcoded-submenu">
                         <li @class(['active' =>$active_button == 'category'])>
+
                             <a href="{{ route('dashboard.category.index') }}" >
-                                Categories
+                                <i class="ri-article-line text-c-white mb-1 d-block">   Categories</i>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item pcoded-hasmenu">
                     <a href="{{route('dashboard.about.index')}}" @class(['active' =>$active_button == 'about'])>
-                        <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+                        <span class="pcoded-micon"> <i class="ri-question-line text-c-white mb-1 d-block"></i></span>
                         <span class="pcoded-mtext">About</span>
                     </a>
 
                 </li>
                 <li class="nav-item pcoded-hasmenu">
                     <a href="{{route('dashboard.service.index')}}" @class(['active' =>$active_button == 'service'])>
-                        <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+                        <span class="pcoded-micon"><i class="ri-service-line text-c-white mb-1 d-block"></i></span>
                        <span class="pcoded-mtext">Services</span>
+                    </a>
+
+                </li>
+
+                <li class="nav-item pcoded-hasmenu">
+                    <a href="{{route('dashboard.all_payments')}}" @class(['active' =>$active_button == 'payment'])>
+                        <span class="pcoded-micon"><i class="ri-money-dollar-circle-line text-c-white mb-1 d-block"></i></span>
+                       <span class="pcoded-mtext">Payment</span>
                     </a>
 
                 </li>

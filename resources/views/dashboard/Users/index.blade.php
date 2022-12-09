@@ -41,7 +41,23 @@
                                         </td>
                                         @endif
                                         <td>
+                                            <div class="d-flex">
+                                                @if($user->role_id==3)
+                                            <form action="{{ route('dashboard.users.edit',['user'=>$user->id]) }}" method="get">
+                                                @csrf
+                                                    <button class="btn btn-info btn-sm rounded-3"style="font-size: 12px;margin-right:5px">Instructor approval</button>
 
+                                            </form>
+                                        @endif
+
+                                            <form class="ms-2" action="{{  route('dashboard.users.destroy',['user'=>$user->id]) }}" method="post">
+                                                @method('delete')
+                                                @csrf
+
+                                                <button class="btn btn-sm btn-danger rounded-3 " style="font-size: 12px">Delete</button>
+
+                                            </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @empty

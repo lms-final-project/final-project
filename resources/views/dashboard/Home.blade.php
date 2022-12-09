@@ -40,83 +40,90 @@
                 <div class="col-sm-3 card-body br">
                     <div class="row">
                         <div class="col-sm-4">
-                            <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
+                            <i class="ri-user-line text-c-green mb-1 d-block"></i>
                         </div>
                         <div class="col-sm-8 text-md-center">
-                            <h5>10k</h5>
-                            <span>Visitors</span>
+                            <h5>{{$instructor_count ?? 0}}</h5>
+                            <span>Instructors</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 card-body br">
                     <div class="row">
                         <div class="col-sm-4">
-                            <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
+                            <i class="ri-user-line text-c-green mb-1 d-block"></i>
                         </div>
                         <div class="col-sm-8 text-md-center">
-                            <h5>10k</h5>
-                            <span>Visitors</span>
+                            <h5>{{$student_enrolled ?? 0}}</h5>
+                            <span>Student Enrolled</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 card-body br">
+                    <a href="{{ route('dashboard.category.index') }}">
                     <div class="row">
                         <div class="col-sm-4">
-                            <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
+                            <i class="ri-article-line text-c-green mb-1 d-block"></i>
                         </div>
                         <div class="col-sm-8 text-md-center">
-                            <h5>10k</h5>
-                            <span>Visitors</span>
+                            <h5>{{$category_count ?? 0}}</h5>
+                            <span>Categories</span>
                         </div>
-                    </div>
+                    </div></a>
+
                 </div>
             </div>
 
             <div class="row-table">
                 <div class="col-sm-3 card-body br">
+                    <a href="{{ route('dashboard.courses') }}">
                     <div class="row">
                         <div class="col-sm-4">
-                            <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
+                            <i class="ri-html5-line text-c-green mb-1 d-block"></i>
                         </div>
                         <div class="col-sm-8 text-md-center">
-                            <h5>10k</h5>
-                            <span>Visitors</span>
+                            <h5>{{$course_count ?? 0}}</h5>
+                            <span>Accepted Courses</span>
                         </div>
-                    </div>
+                    </div></a>
                 </div>
                 <div class="col-sm-3 card-body br">
+                    <a href="{{ route('dashboard.all_zoom_meeting') }}">
                     <div class="row">
                         <div class="col-sm-4">
-                            <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
+                            <i class="ri-link text-c-green mb-1 d-block"></i>
                         </div>
                         <div class="col-sm-8 text-md-center">
-                            <h5>10k</h5>
-                            <span>Visitors</span>
+                            <h5>{{$zoom_meeting_count ?? 0}}</h5>
+                            <span>All Zoom Meeting</span>
                         </div>
-                    </div>
+                    </div></a>
                 </div>
                 <div class="col-sm-3 card-body br">
+                    <a href="{{ route('dashboard.service.index') }}">
                     <div class="row">
                         <div class="col-sm-4">
-                            <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
+                            <i class="ri-service-line text-c-green mb-1 d-block"></i>
                         </div>
                         <div class="col-sm-8 text-md-center">
-                            <h5>10k</h5>
-                            <span>Visitors</span>
+                            <h5>{{$services_count ?? 0}}</h5>
+                            <span>Available services</span>
                         </div>
-                    </div>
+                    </div></a>
                 </div>
                 <div class="col-sm-3 card-body br">
+                    <a href="{{ route('dashboard.about.index') }}">
                     <div class="row">
                         <div class="col-sm-4">
-                            <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
+                            <i class="ri-question-line text-c-green mb-1 d-block"></i>
                         </div>
                         <div class="col-sm-8 text-md-center">
-                            <h5>10k</h5>
-                            <span>Visitors</span>
+                            <h5>{{$generalQuestion_count ?? 0}}</h5>
+                            <span>Common Questions</span>
                         </div>
-                    </div>
+                    </div></a>
                 </div>
+
             </div>
         </div>
 

@@ -14,6 +14,10 @@ class CoursesController extends Controller
         $courses = Course::with('type')->category($category->id)->status('accepted')->get();
         return view('frontend.courses' , compact('category', 'courses'));
     }
+    public function allCourses(){
+        $AllCourses=Course::with('type')->status('accepted')->get();
+        return view('frontend.all_courses' , compact('AllCourses'));
+    }
 
     public function show($course_id){
         $course = Course::findOrFail($course_id);
