@@ -22,7 +22,8 @@ class AssignmentsController extends Controller
     public function index(Request $request)
     {
         $course = Course::find($request->course_id);
-        return view('frontend.instructor.panel.assignments.index', compact('course'));
+        $Assignments=Assignment::where('course_id','=',$request->course_id)->get();
+        return view('frontend.instructor.panel.assignments.index', compact('course','Assignments'));
     }
 
     /**
@@ -45,8 +46,11 @@ class AssignmentsController extends Controller
      */
     public function store(Request $request)
     {
+
+
         DB::beginTransaction();
         try{
+            $course=Course::find($request->course_id);
             if($request->hasFile('file')){
                 $filefile = $request->file('file');
                 $pathfile = $filefile->store('instructors/courses/assignments' , 'public');
@@ -57,6 +61,7 @@ class AssignmentsController extends Controller
                 'course_id'     => $request->course_id,
                 'grade'         => $request->grade,
                 'description'   => $request->description,
+                'title'         =>$request->title,
                 'start_date'    => Carbon::parse($request->start_date) ,
                 'end_date'      => Carbon::parse($request->end_date) ,
                 'is_active'     => $request->boolean('is_active'),
@@ -72,7 +77,8 @@ class AssignmentsController extends Controller
             }
 
             DB::commit();
-            return redirect()->back()->with('success' , 'Assignment added succesffully');
+            $All_assignment=Assignment::where('course_id','=',$request->course_id)->get();
+            return view('frontend.instructor.panel.assignments.index',compact('course','All_assignment'))->with('success' , 'Assignment added succesffully');
 
         }catch(Exception $e){
             Log::info($e->getMessage());
@@ -97,9 +103,11 @@ class AssignmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($assignment_id)
     {
-        //
+
+        $Assignment=Assignment::findorfail($assignment_id);
+        return view('frontend.instructor.panel.assignments.edit',compact('Assignment') );
     }
 
     /**
@@ -109,9 +117,39 @@ class AssignmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $Assignment_id)
     {
-        //
+        DB::beginTransaction();
+        try{
+            $course=Course::find($request->course_id);
+            $assignment=Assignment::findorfail($Assignment_id);
+            $old_file=$assignment->file;
+            if($request->hasFile('file')){
+                $filefile = $request->file('file');
+                $pathfile = $filefile->store('instructors/courses/assignments' , 'public');
+            }
+
+            $assignment->update([
+                'grade'         => $request->grade,
+                'description'   => $request->description,
+                'title'         =>$request->title,
+                'start_date'    => Carbon::parse($request->start_date) ,
+                'end_date'      => Carbon::parse($request->end_date) ,
+                'is_active'     => $request->boolean('is_active'),
+                'file'          => $pathfile ?? $old_file
+            ]);
+
+
+
+            DB::commit();
+            $All_assignment=Assignment::where('course_id','=',$request->course_id)->get();
+            return view('frontend.instructor.panel.assignments.index',compact('course','All_assignment'))->with('success' , 'Assignment updated succesffully');
+
+
+        }catch(Exception $e){
+            Log::info($e->getMessage());
+            dd('something went wrong');
+        }
     }
 
     /**
@@ -120,8 +158,11 @@ class AssignmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$assignment_id)
     {
-        //
+        $assignment=Assignment::findorfail($assignment_id);
+        $assignment->delete();
+        return redirect()->back()->with('danger' , 'Assignment deleted!');
+
     }
 }

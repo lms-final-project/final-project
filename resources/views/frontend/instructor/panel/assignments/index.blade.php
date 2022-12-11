@@ -17,15 +17,16 @@
             </div>
         </div>
         <div class="row g-5 mt--25">
-            {{-- @forelse ($courses as $course) --}}
-                <!-- Start Single Card  -->
-                {{-- <x-front.instructor.course-component :course="$course" /> --}}
-            {{-- @empty --}}
+             @forelse ($Assignments as $Assignment)
+                <!-- Start Single Card -->
+                <x-front.instructor.assignments-component :assignment="$Assignment" />
+
+             @empty
                 <h5 class="text-center">
-                    There isn't any course yet
+                    There isn't any assignment yet
                 </h5>
-            {{-- @endforelse --}}
-        </div>
+             @endforelse
+
     </div>
 @endsection
 

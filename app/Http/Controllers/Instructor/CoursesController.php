@@ -86,18 +86,19 @@ class CoursesController extends Controller
 
             // To Register The Instructor Directly
             if($course->is_free){
-                CourseUser::create([
-                    'user_id'   => auth()->user()->id,
-                    'course_id' => $course->id,
-                ]);
-            }else{
-                CourseUser::create([
-                    'user_id'      => auth()->user()->id,
-                    'course_id'    => $course->id,
-                    'is_free'      =>false,
-                    'amount_paid' =>$course->price
-                ]);
-            }
+            CourseUser::create([
+                'user_id'   => auth()->user()->id,
+                'course_id' => $course->id,
+            ]);
+        }
+        else{
+            CourseUser::create([
+                'user_id'      => auth()->user()->id,
+                'course_id'    => $course->id,
+                'is_free'      =>false,
+                'amount_paid' =>$course->price
+            ]);
+        }
             // For Topics
             if($request->topics){
                 foreach($request->topics as $topic){

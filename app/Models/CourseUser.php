@@ -12,7 +12,7 @@ class CourseUser extends Model
     use HasFactory;
     protected $table = 'course_users' ;
     protected $guarded = [];
-public $Total_Price=0;
+
     protected function userId(): Attribute
     {
         return Attribute::make(
@@ -26,5 +26,5 @@ public $Total_Price=0;
             get: fn ($value) => Course::findorfail($value),
         );
     }
-   
+
 }

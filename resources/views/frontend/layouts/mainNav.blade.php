@@ -74,7 +74,7 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
             </div>
             <div class="col-lg-6 col-xl-2 col-md-6 col-6">
                 <div class="header-right d-flex justify-content-end">
-                   
+
                         @auth
                             @if (auth()->user()->role->name == 'instructor')
                                 <form action="{{ route('instructor.panel') }}" method="GET">
@@ -90,6 +90,7 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
                                         StudentPanel
                                     </button>
                                 </form>
+                                
                             @endif
 
                             <div class="has-droupdown" >
@@ -123,8 +124,8 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
                             <div class="quote-icon quote-user d-none d-md-block ml--15 ml_sm--5">
                                 <a class="edu-btn btn-medium left-icon header-button" href="{{ route('login') }}"><i class="ri-user-line"></i>Login / Register</a>
                             </div>
-                        
-                        
+
+
                             <div class="quote-icon quote-user d-block d-md-none ml--15 ml_sm--5">
                                 <a class="white-box-icon" href=""><i class="ri-user-line"></i></a>
                             </div>

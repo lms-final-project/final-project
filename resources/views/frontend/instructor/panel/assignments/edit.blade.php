@@ -6,50 +6,58 @@
             <p class="text-danger">{{ $error }}</p>
         @endforeach
     @endif
-    <form action="{{ route('assignments.store') }}" enctype="multipart/form-data" method="POST">
+    <form action="{{route('assignments.update',$Assignment->id)}}" enctype="multipart/form-data" method="POST">
         @csrf
+        @method('put')
         <div class="row">
-            <h5 class="text-center">Add New Assignment</h5>
+            <h5 class="text-center">Update Assignment</h5>
             <div class="col-12">
                 <div class="mb-3">
-                    <label for="courseFile" class="form-label">Upload file</label>
-                    <input type="file" name="file" class="form-control" id="courseFile">
+                    <label for="courseFile" class="form-label">
+                        @if ($Assignment->file)
+                        <span>File is:{{$Assignment->file}}</span>
+
+                    @else
+                        <i class=""></i>
+                        <p>upload file</p>
+                    @endif
+                    </label>
+                    <input type="file" name="file" class="form-control" value="{{$Assignment->file}}" id="courseFile">
                 </div>
             </div>
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <x-form.text-input name='title' placeholder='title'/>
+                <input type ="text"name='title' placeholder='title'value="{{$Assignment->title}}" />
             </div>
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <x-form.text-area-input name='description' />
+                <input type="text" name='description'value="{{$Assignment->description}}" />
             </div>
 
             <div class="mb-3">
                 <label for="grade" class="form-label">Grade</label>
-                <x-form.number-input name='grade' />
+                <x-form.number-input name='grade' value='{{$Assignment->grade}}'/>
             </div>
 
             <div class="mb-3">
                 <label for="is_active" class="form-label">Active</label><br>
-                <input type="checkbox" id="is_active" name="is_active" style="opacity: 1; height: 20px; width: fit-content; position: static">
+                <input type="checkbox" id="is_active"value="{{$Assignment->is_active}}" name="is_active" style="opacity: 1; height: 20px; width: fit-content; position: static">
             </div>
 
             <div class="mb-3">
                 <label for="start_date" class="form-label">StartDate</label>
-                <input type="text" id="start_date" class="form-control dateTimePicker" name='start_date' />
+                <input type="text" id="start_date"value="{{$Assignment->start_date}}" class="form-control dateTimePicker" name='start_date' />
             </div>
             <div class="mb-3">
                 <label for="end_date" class="form-label">EndDate</label>
-                <input type="text" id="end_date" class="form-control dateTimePicker" name='end_date' />
+                <input type="text" id="end_date" value="{{$Assignment->end_date}}" class="form-control dateTimePicker" name='end_date' />
             </div>
-            <input type="hidden" name="course_id" value="{{ $course_id }}">
-            <input type="hidden" name="instructor_id" value="{{ $instructor_id }}">
+<input type="hidden" name="course_id" value="{{$Assignment->course_id}}">
             <div class="text-center py-4">
                 <div class="button-group">
                     <button type="submit" class="edu-btn btn-dark btn-sm">
-                        Create
+                        Update
                         <i class="icon-arrow-right-line-right"></i>
                     </button>
                 </div>

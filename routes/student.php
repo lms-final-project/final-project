@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\Student\StudentProfileController;
 
 Route::prefix('student')->middleware('checkStudent:student')->group(function(){
     Route::get('/panel' , [DashboardController::class , 'index'])->name('student.panel');
+    Route::post('/panel/{student}' , [DashboardController::class , 'update'])->name('student.ToInstructor');
     Route::get('/courses' , [CoursesController::class , 'registered_courses'])->name('student.courses');
     Route::resource('/profile', StudentProfileController::class);
     Route::get('/password',[StudentProfileController::class , 'password'])->name('password');

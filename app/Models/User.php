@@ -7,6 +7,7 @@ use instructor;
 use Carbon\Carbon;
 use App\Models\Role;
 use App\Models\Feedback;
+use App\Models\Assignment;
 use App\Models\StudentProfile;
 use App\Models\InstructorDetails;
 use Laravel\Sanctum\HasApiTokens;
@@ -29,7 +30,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role_id'
+        'role_id',
+        'requestTo_instructor'
     ];
 
     /**
@@ -95,5 +97,9 @@ class User extends Authenticatable
 
     public function feedbacks(){
         return $this->hasMany( Feedback::class ,'student_id','id' );
+}
+
+public function assignments(){
+    return $this->belongsToMany( Assignment::class , 'assignment_students' );
 }
 }

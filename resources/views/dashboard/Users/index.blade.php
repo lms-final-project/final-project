@@ -42,7 +42,7 @@
                                         @endif
                                         <td>
                                             <div class="d-flex">
-                                                @if($user->role_id==3)
+                                                @if($user->role_id==3 && $user->requestTo_instructor==true)
                                             <form action="{{ route('dashboard.users.edit',['user'=>$user->id]) }}" method="get">
                                                 @csrf
                                                     <button class="btn btn-info btn-sm rounded-3"style="font-size: 12px;margin-right:5px">Instructor approval</button>
