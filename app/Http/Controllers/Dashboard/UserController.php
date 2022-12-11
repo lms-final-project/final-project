@@ -60,11 +60,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-$user=User::find($id);
-$user->update([
-    'role_id' =>2,
-]);
-return redirect()->route('dashboard.users.index')->with('success' , 'The request has been approved ');
+        $user=User::find($id);
+         $user->update([
+         'role_id' =>2,
+         ]);
+       return redirect()->route('dashboard.users.index')->with('success' , 'The request has been approved ');
     }
 
     /**
