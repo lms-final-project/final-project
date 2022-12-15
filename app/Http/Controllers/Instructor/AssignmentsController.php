@@ -22,8 +22,8 @@ class AssignmentsController extends Controller
     public function index(Request $request)
     {
         $course = Course::find($request->course_id);
-        $Assignments=Assignment::where('course_id','=',$request->course_id)->get();
-        return view('frontend.instructor.panel.assignments.index', compact('course','Assignments'));
+        $assignments = Assignment::where('course_id','=',$request->course_id)->get();
+        return view('frontend.instructor.panel.assignments.index', compact('course','assignments'));
     }
 
     /**
@@ -47,10 +47,10 @@ class AssignmentsController extends Controller
     public function store(Request $request)
     {
 
+        // dd($request->all());
 
         DB::beginTransaction();
         try{
-            $course=Course::find($request->course_id);
             if($request->hasFile('file')){
                 $filefile = $request->file('file');
                 $pathfile = $filefile->store('instructors/courses/assignments' , 'public');
@@ -77,8 +77,7 @@ class AssignmentsController extends Controller
             }
 
             DB::commit();
-            $All_assignment=Assignment::where('course_id','=',$request->course_id)->get();
-            return view('frontend.instructor.panel.assignments.index',compact('course','All_assignment'))->with('success' , 'Assignment added succesffully');
+            return redirect()->route('assignments.index',['course_id'=>$request->course_id])->with('success' , 'Assignment added succesffully');
 
         }catch(Exception $e){
             Log::info($e->getMessage());
@@ -106,8 +105,8 @@ class AssignmentsController extends Controller
     public function edit($assignment_id)
     {
 
-        $Assignment=Assignment::findorfail($assignment_id);
-        return view('frontend.instructor.panel.assignments.edit',compact('Assignment') );
+        $assignment=Assignment::findorfail($assignment_id);
+        return view('frontend.instructor.panel.assignments.edit',compact('assignment') );
     }
 
     /**
@@ -140,12 +139,8 @@ class AssignmentsController extends Controller
             ]);
 
 
-
             DB::commit();
-            $All_assignment=Assignment::where('course_id','=',$request->course_id)->get();
-            return view('frontend.instructor.panel.assignments.index',compact('course','All_assignment'))->with('success' , 'Assignment updated succesffully');
-
-
+            return redirect()->route('assignments.index',['course_id'=>$request->course_id])->with('success' , 'Assignment added succesffully');
         }catch(Exception $e){
             Log::info($e->getMessage());
             dd('something went wrong');
@@ -163,6 +158,5 @@ class AssignmentsController extends Controller
         $assignment=Assignment::findorfail($assignment_id);
         $assignment->delete();
         return redirect()->back()->with('danger' , 'Assignment deleted!');
-
     }
 }

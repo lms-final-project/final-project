@@ -17,16 +17,15 @@
             </div>
         </div>
         <div class="row g-5 mt--25">
-             @forelse ($Assignments as $Assignment)
-                <!-- Start Single Card -->
-                <x-front.instructor.assignments-component :assignment="$Assignment" />
+            @forelse ($assignments as $assignment)
+            <!-- Start Single Card -->
+            <x-front.instructor.assignments-component :assignment="$assignment" />
 
-             @empty
-                <h5 class="text-center">
-                    There isn't any assignment yet
-                </h5>
-             @endforelse
-
+            @empty
+            <h5 class="text-center">
+                There isn't any assignment yet
+            </h5>
+            @endforelse
     </div>
 @endsection
 
