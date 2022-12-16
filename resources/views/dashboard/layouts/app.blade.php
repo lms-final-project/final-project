@@ -12,7 +12,7 @@
     border-color: #df99b9 !important;
 }
 .flat-card .row-table span {
-    
+
     color: #373a3c !important;
 
 }
@@ -100,6 +100,7 @@
     <script src="{{ asset('frontend/assets/js/alertify.min.js') }}"></script>
     {{-- Customized js --}}
     <script src="{{ asset('dashboard/assets/js/custom.js') }}"></script>
+
 
     <script>
         alertify.set('notifier','position', 'top-right');

@@ -22,17 +22,17 @@
                     <td>{{$feedback->feedback}}</td>
                     <td>{{$feedback->rating}}</td>
                     <td><div class="d-flex">
-                        <form action="{{ route('feedback.edit', ['feedback' => $feedback->id]) }}" method="get">
+                        <form action="{{ route('feedback.edit', ['feedback' => $feedback->id]) }}" method="get" >
                             @csrf
-                                <button class="btn btn-info btn-sm rounded-3"style="font-size: 12px">Edit</button>
+                                <button class="btn btn-info btn-sm rounded-3 "style="font-size: 12px">Edit</button>
 
                         </form>
 
 
-                        <form class="ms-2" action="{{ route('feedback.destroy', ['feedback' => $feedback->id]) }}" method="POST">
+                        <form class="ms-2 delete-form" action="{{ route('feedback.destroy', ['feedback' => $feedback->id]) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-sm btn-danger rounded-3 " style="font-size: 12px">Delete</button>
+                            <button class="btn btn-sm btn-danger rounded-3 delete-btn" style="font-size: 12px">Delete</button>
 
                         </form>
                     </div></td>
@@ -54,6 +54,27 @@
         </div>
 @endsection
 
-@push('scripts')
 
+@push('scripts')
+    <script>
+        $('.delete-btn').on('click' , function(){
+            let delete_btn = $(this)
+            $.confirm({
+                title: 'Course will be deleted !',
+                type: 'red',
+                typeAnimated: true,
+                buttons: {
+                    tryAgain: {
+                        text: 'Delete',
+                        btnClass: 'btn-red',
+                        action: function(){
+                            delete_btn.siblings('.delete-form').first().submit();
+                        }
+                    },
+                    close: function () {
+                    }
+                }
+            });
+        })
+    </script>
 @endpush

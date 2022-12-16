@@ -73,7 +73,7 @@
                                     <form action="{{ route('dashboard.about.destroy' , $about->id) }}" method="post" class="ml-2 delete-form">
                                         @csrf
                                         @method('delete')
-                                        <input type="button" class="btn btn-sm btn-outline-danger delete-btn" value="Delete">
+                                        <input type="button" class="btn btn-sm btn-danger delete-btn" value="Delete">
                                     </form>
                                 </div>
                             </td>

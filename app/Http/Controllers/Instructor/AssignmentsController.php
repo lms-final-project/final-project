@@ -140,7 +140,7 @@ class AssignmentsController extends Controller
 
 
             DB::commit();
-            return redirect()->route('assignments.index',['course_id'=>$request->course_id])->with('success' , 'Assignment added succesffully');
+            return redirect()->route('assignments.index',['course_id'=>$request->course_id])->with('success' , 'Assignment updated succesffully');
         }catch(Exception $e){
             Log::info($e->getMessage());
             dd('something went wrong');

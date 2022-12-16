@@ -83,7 +83,7 @@
                             <td>
                                 <div class="d-flex">
 
-                                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModalLive{{ $service->id }}">Update</button>
+                                    <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#exampleModalLive{{ $service->id }}">Update</button>
                                     <form action="{{ route('dashboard.service.destroy' , $service->id) }}" method="post" class="ml-2 delete-form">
                                         @csrf
                                         @method('delete')

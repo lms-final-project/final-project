@@ -3,7 +3,7 @@
     'active_button' => 'category',
     'page_title'    => 'category page'
 ])
- 
+
 @section('content')
     <div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -80,7 +80,7 @@
                                         <form action="{{ route('dashboard.category.destroy' , $category->id) }}" method="post" class="ml-2 delete-form">
                                             @csrf
                                             @method('delete')
-                                            <input type="button" class="btn btn-sm btn-outline-danger delete-btn" value="Delete">
+                                            <input type="button" class="btn btn-sm btn-danger delete-btn" value="Delete">
                                         </form>
                                     @endif
                                 </div>

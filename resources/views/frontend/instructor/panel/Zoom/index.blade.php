@@ -31,11 +31,11 @@
                         </form>
 
 
-                        <form class="ms-2" action="{{ route('deleteZoom', ['link' => $link->id]) }}" method="post">
+                        <form class="ms-2 delete-form" action="{{ route('deleteZoom', ['link' => $link->id]) }}" method="post">
                             @method('delete')
                             @csrf
 
-                            <button class="btn btn-sm btn-danger rounded-3 " style="font-size: 12px">Delete</button>
+                            <button class="btn btn-sm btn-danger rounded-3 delete-btn " style="font-size: 12px">Delete</button>
 
                         </form>
                     </div></td>
@@ -58,5 +58,25 @@
 @endsection
 
 @push('scripts')
-
+    <script>
+        $('.delete-btn').on('click' , function(){
+            let delete_btn = $(this)
+            $.confirm({
+                title: 'Course will be deleted !',
+                type: 'red',
+                typeAnimated: true,
+                buttons: {
+                    tryAgain: {
+                        text: 'Delete',
+                        btnClass: 'btn-red',
+                        action: function(){
+                            delete_btn.siblings('.delete-form').first().submit();
+                        }
+                    },
+                    close: function () {
+                    }
+                }
+            });
+        })
+    </script>
 @endpush
