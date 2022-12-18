@@ -16,5 +16,5 @@ Route::prefix('student')->middleware('checkStudent:student')->group(function(){
     Route::post('/change_password',[StudentProfileController::class , 'change_password'])->name('change_password');
     Route::resource('/feedback', FeedbackController::class);
     Route::get('index/{course}', [CoursesController::class , 'zoom_index'])->name('Zoom');
-
+    Route::post('solution/{assignment}', [CoursesController::class , 'upload_solution'])->name('upload_solution');
 });

@@ -21,21 +21,20 @@ class CoursesController extends Controller
 
     public function show($course_id){
         $course = Course::findOrFail($course_id);
-
         $courseHeading = $course->courseHeadings;
         $courses = Course::with('type')->category($course->category_id )->status('accepted')->get();
+        $assignments=$course->assignments;
         $is_registered = false;
         if(Auth::user()){
            $registered_courses = [];
            foreach (auth()->user()->courses as $single_course) {
             $registered_courses[] = $single_course->id;
         }
-        // dd(auth()->user()->courses);
         if(in_array($course->id , $registered_courses)){
             $is_registered = true;
         }
 
-           return view('frontend.course_details' , compact('course','courses','courseHeading' , 'is_registered'));}
+           return view('frontend.course_details' , compact('course','courses','courseHeading' , 'is_registered','assignments'));}
 
         else{
            return view('frontend.course_details' , compact('course','courses','courseHeading','is_registered' ));

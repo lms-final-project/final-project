@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\CourseUser;
 use Illuminate\Http\Request;
+use App\Models\AssignmentStudent;
+use Illuminate\Support\Facades\Auth;
 use Srmklive\PayPal\Services\ExpressCheckout;
 
 class PaymentsController extends Controller
@@ -14,6 +16,8 @@ class PaymentsController extends Controller
             'user_id'   =>  auth()->user()->id,
             'course_id' =>  $course_id
         ]);
+    
+        
         return redirect()->back()->withSuccess('Course purchased successfully');
     }
 
@@ -52,6 +56,7 @@ class PaymentsController extends Controller
                 'is_free'     => false,
                 'amount_paid' => $course->price,
             ]);
+
             return redirect()->route('course_details' , $course_id)->with('success' , 'Course purchased successfully');
         }
         return redirect()->route('course_details' , $course_id)->with('danger' , 'Something went wrong, try again later');

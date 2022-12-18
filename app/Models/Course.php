@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Assignment;
 use App\Models\CourseType;
 use App\Models\CourseTopic;
 use App\Models\CourseContent;
@@ -59,5 +60,7 @@ class Course extends Model
     public function links(){
         return $this->hasMany( CourseZoom::class ,'course_id','id' );
 }
-
+public function assignments(){
+    return $this->hasMany( Assignment::class ,'course_id','id' );
+}
 }
