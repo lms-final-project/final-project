@@ -34,13 +34,15 @@ class CoursesController extends Controller
         }
         $validated = $request->validate([
             'solution' => 'required',
-            
+
         ]);
         $student=AssignmentStudent::where('student_id','=',Auth::user()->id)->get();
         $student[0]->update([
         'solution_file'=>$pathfile,
         'status'=>'completed',
       ]);
+      $students  = Assignment::find($assignment_id)->users()->pluck('student_id')->get();
+      dd($students);
       return redirect()->back()->with('success', 'Solution submitted successfully',);
     }
 }
