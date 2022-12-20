@@ -10,6 +10,6 @@ class AssignmentStudent extends Model
 {
     use HasFactory;
     protected $guarded = [];
+ 
 
-    
 }

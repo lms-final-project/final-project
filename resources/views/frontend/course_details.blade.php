@@ -139,6 +139,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            @auth
+
 
                                 <div class="tab-pane fade" id="assignments" role="tabpanel" aria-labelledby="assignment-tab">
                                     <div class="course-tab-content">
@@ -160,57 +162,19 @@
 
                                                     <div id="flush-{{$assignment->id}}" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample1">
                                                         <div class="edu-accordion-body">
-
                                                             <ul>
                                                                 <li>
-
                                                                     @if ($assignment->is_active)
                                                                     <a  href="{{ route('download' , $assignment->file) }}"><i class="ri-file-download-line"></i>{{$assignment->description}}</a>
-
-                                                                    <div class="icon"> <i class="ri-lock-unlock-line"></i><button type="button" class=" btn" style="background-color:#525fe1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                                        upload solution
-                                                                    </button></div>
-
-<!-- Button trigger modal -->
-
-@php
-    dd(auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->status);
-@endphp
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Upload Solution File</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="{{route('upload_solution',['assignment'=>$assignment->id])}}" enctype="multipart/form-data" method="POST">
-            @csrf
-
-            <div class="modal-body">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="name">Solution</label>
-                        <input type="file" name="solution" @class(['form-control' , 'is-invalid' => $errors->has('solution')])  id="solution"  placeholder="Add solution">
-                        @error('solution')
-                            <span class="invalid-feedback">
-                                {{ $message }}
-                            </span>
-                        @enderror
-                    </div>
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn  btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
-                <button type="submit" class="btn  btn-primary" >Upload</button>
-            </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
+                                                                    @php
+                                                                         $statusAssignment=auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->status;
+                                                                             if($statusAssignment=="completed"){
+                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:#525FE1;color:white;padding:2px\">submitted for grading</span> ";}
+                                                                             else{
+                                                                           echo" <div class=\"icon\"> <i class=\"ri-lock-unlock-line\"></i><button type=\"button\" class=\" btn\" style=\"background-color:#525fe1\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">upload solution
+                                                                               </button></div>";
+                                                                                }
+                                                                      @endphp
                                                                     @else
                                                                     <span><i class="ri-file-line"></i>{{$assignment->description}}</span>
                                                                     <div class="icon"><i class="icon-lock-password-line"></i></div>
@@ -221,6 +185,39 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                                <!-- Button trigger modal -->
+                                                                <!-- Modal -->
+                                                                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                   <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                       <div class="modal-header">
+                                                                         <h5 class="modal-title" id="exampleModalLabel">Upload Solution File</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <form action="{{route('upload_solution',['assignment'=>$assignment->id])}}" enctype="multipart/form-data" method="POST">
+                                                                         @csrf
+                                                                         <div class="modal-body">
+                                                                            <div class="card-body">
+                                                                                <div class="form-group">
+                                                                                    <label for="name">Solution</label>
+                                                                                    <input type="file" name="solution" @class(['form-control' , 'is-invalid' => $errors->has('solution')])  id="solution"  placeholder="Add solution">
+                                                                                    @error('solution')
+                                                                                        <span class="invalid-feedback">
+                                                                                            {{ $message }}
+                                                                                        </span>
+                                                                                    @enderror
+                                                                                </div>
+
+                                                                                 </div>
+                                                                                   </div>
+                                                                                  <div class="modal-footer">
+                                                                                 <button type="button" class="btn  btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                                                                                   <button type="submit" class="btn  btn-primary" >Upload</button>
+                                                                                        </div>
+                                                                               </form>
+                                                                         </div>
+                                                                         </div>
+                                                                             </div>
                                             @empty
                                                 <div style="font-size: 20px">
                                                     <span>No Assignments Yet</span>
@@ -229,7 +226,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                @endauth
                                 <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
                                     <div class="course-tab-content">
                                         <div class="course-author-wrapper">

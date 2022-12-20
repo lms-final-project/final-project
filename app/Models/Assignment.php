@@ -19,4 +19,5 @@ class Assignment extends Model
         return $this->belongsToMany( User::class , 'assignment_students' );
 
     }
+  
 }

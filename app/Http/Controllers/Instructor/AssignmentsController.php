@@ -71,7 +71,7 @@ class AssignmentsController extends Controller
             $students  = Course::find($request->course_id)->users()->pluck('user_id')->toArray();
             foreach($students as $student){
                 AssignmentStudent::create([
-                    'student_id' => $student,
+                    'user_id' => $student,
                     'assignment_id' => $assignment->id
                 ]);
             }
