@@ -142,38 +142,41 @@
 
                                 <div class="tab-pane fade" id="assignments" role="tabpanel" aria-labelledby="assignment-tab">
                                     <div class="course-tab-content">
-                                        
+
                                         <div class="edu-accordion-02" id="accordionExample1">
 
                                             @forelse ($assignments as $assignment)
-                                           
+
                                                 <div class="edu-accordion-item">
                                                     <div class="edu-accordion-header" id="headingThree">
 
                                                         <button class="edu-accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                                         data-bs-target="#flush-{{$assignment->id}}" aria-expanded="false" aria-controls="flush-{{$assignment->id}}">
                                                         {{$assignment->title}}
-                                                      
+
                                                     </button>
-                                                    
+
                                                     </div>
-                                                   
+
                                                     <div id="flush-{{$assignment->id}}" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample1">
                                                         <div class="edu-accordion-body">
 
-                                                            <ul>    
+                                                            <ul>
                                                                 <li>
-                                                                    
+
                                                                     @if ($assignment->is_active)
                                                                     <a  href="{{ route('download' , $assignment->file) }}"><i class="ri-file-download-line"></i>{{$assignment->description}}</a>
-                                                                
+
                                                                     <div class="icon"> <i class="ri-lock-unlock-line"></i><button type="button" class=" btn" style="background-color:#525fe1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                                        upload solution 
+                                                                        upload solution
                                                                     </button></div>
-                                                                    
+
 <!-- Button trigger modal -->
 
-  
+@php
+    dd(auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->status);
+@endphp
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -182,9 +185,9 @@
           <h5 class="modal-title" id="exampleModalLabel">Upload Solution File</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{route('upload_solution',['assignment'=>$assignment->id])}}"enctype="multipart/form-data" method="POST">
+        <form action="{{route('upload_solution',['assignment'=>$assignment->id])}}" enctype="multipart/form-data" method="POST">
             @csrf
-            
+
             <div class="modal-body">
                 <div class="card-body">
                     <div class="form-group">
@@ -196,7 +199,7 @@
                             </span>
                         @enderror
                     </div>
-                  
+
                 </div>
             </div>
             <div class="modal-footer">

@@ -36,8 +36,10 @@ class CoursesController extends Controller
             'solution' => 'required',
 
         ]);
-        $student=AssignmentStudent::where('student_id','=',Auth::user()->id)->get();
-        $student[0]->update([
+        $student = AssignmentStudent::where('student_id', Auth::user()->id)
+                                    ->where('assignment_id' , $assignment_id)->first();
+
+        $student->update([
         'solution_file'=>$pathfile,
         'status'=>'completed',
       ]);
