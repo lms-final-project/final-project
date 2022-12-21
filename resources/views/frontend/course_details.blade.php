@@ -30,7 +30,7 @@
         <div class="edu-course-details-area edu-section-gap bg-color-white">
             <div class="container">
                 <div class="row g-5">
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-9 col-lg-7">
                         <div class="course-details-content">
                             <div class="content-top">
                                 <div class="author-meta">
@@ -65,7 +65,11 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="asignment-tab" data-bs-toggle="tab" data-bs-target="#assignments" type="button" role="tab" aria-controls="assignments" aria-selected="false">Assignments</button>
                                 </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="meeting-tab" data-bs-toggle="tab" data-bs-target="#meetings" type="button" role="tab" aria-controls="meetings" aria-selected="false">Meetings</button>
+                                </li>
                                 @endif
+
 
 
                             </ul>
@@ -272,7 +276,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-4 col-lg-5">
+                    <div class="col-xl-3 col-lg-5">
                         <div class="eduvibe-sidebar course-details-sidebar">
                             <div class="inner">
                                 <div class="eduvibe-widget">
@@ -299,8 +303,8 @@
 
                                                 {{-- <li><span><i class="icon-calendar-2-line"></i> Deadline</span><span>25 Dec, 2022</span></li> --}}
 
-                                                <li><span><i class="icon-user-2-line_tie"></i> Instructor</span><span>{{ $course->instructor->name }}</span></li>
-                                                <li><span><i class="icon-user-2"></i> Enrolled</span><span>{{$course->users->count()}}</span></li>
+                                                <li><span><i class="icon-user-2-line_tie"></i>Instructor</span><span>{{ $course->instructor->name }}</span></li>
+                                                <li><span><i class="icon-user-2"></i>Enrolled</span><span>{{$course->users->count()}}</span></li>
                                                 @if ($is_registered )
                                                 @if( Auth::user()->role_id==3)
                                                 <li><span><i class="ri-external-link-fill"></i>ZoomLinks <a href="{{route('Zoom',['course'=>$course->id])}}"></span><span>ShowMeeting</a></span></li>
@@ -310,9 +314,9 @@
                                                 <li><span><i class="ri-external-link-fill"></i>ZoomLinks <a href="{{route('indexZoom',['course'=>$course->id])}}"></span><span>ShowMeeting</a></span></li>
                                                 @endif
                                                 @endif
-                                                <li><span><i class="ri-calendar-todo-line"></i> StartDate</span><span>{{ $course->start_date }}</span></li>
-                                                <li><span><i class="ri-calendar-todo-line"></i> EndDate</span><span>{{ $course->end_date }}</span></li>
-                                                <li><span><i class="ri-time-line"></i> CourseTime</span><span>{{ $course->start_time}}-{{$course->end_time}} </span></li>
+                                                <li><span><i class="ri-calendar-todo-line"></i>StartDate</span><span>{{ $course->start_date }}</span></li>
+                                                <li><span><i class="ri-calendar-todo-line"></i>EndDate</span><span>{{ $course->end_date }}</span></li>
+                                                <li><span style="font-size: 14px"><i class="ri-time-line"></i>CourseTime</span><span style="font-size: 10px;font-weight:800">{{ $course->start_time}}-{{$course->end_time}} </span></li>
                                             </ul>
 
                                             @if (!$is_registered)
