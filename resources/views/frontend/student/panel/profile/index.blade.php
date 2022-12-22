@@ -69,14 +69,14 @@
                     <div class="inner">
                         <div class="section-title text-start">
                             <span class="pre-title">About Me</span>
-                            <h3 class="title">Hello, I’m {{$student_details->user->name}}</h3>
+                            <h3 class="title" style="font-size: 30px">Hello, I’m {{$student_details->user->name}}</h3>
 
                         </div>
                         <div class="edu-course-wrapper pt--65">
                             <div class="section-title text-start mb--20">
 
-                                <h3 class="title">Courses Enrolled By : {{$student_details->user->name}}</h3>
-                            </div>
+                                <h3 class="title"style="font-size: 30px">Courses Enrolled By : {{$student_details->user->name}}</h3>
+                            </div><br>
                             <div class="instructor-profile-courses course-activation course-activation-item-2 slick-gutter-15 edu-slick-button">
                                 @forelse ($registered_courses as $course)
                                 <!-- Start Single Card  -->

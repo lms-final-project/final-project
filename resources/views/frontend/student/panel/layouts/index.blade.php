@@ -29,29 +29,48 @@
                 <div class="col-md-3" id="dashboard-links">
                     <div>
                         <ul class="dashboard__list__items">
+
                             <li @class(['active' => $active_btn == 'dashboard'])>
                                 <a href="{{ route('student.panel') }}" class="d-flex justify-center items-center">
                                     <i class="ri-dashboard-line me-2"></i>
                                     dashboard
                                 </a>
                             </li>
+
                             <li  @class(['active' => $active_btn == 'courses'])>
                                 <a href="{{route('student.courses')}}" class="d-flex justify-center items-center">
                                     <i class="ri-slideshow-line"></i>
                                     show all my courses
                                 </a>
                             </li>
+
                             <li  @class(['active' => $active_btn == 'profile_password'])>
                                 <a href="{{route('password')}}" class="d-flex justify-center items-center">
                                     <i class="ri-profile-line"></i>
                                     Edit Password
                                 </a>
                             </li>
+
                             <li  @class(['active' => $active_btn == 'feedback'])>
                                 <a href="{{route('feedback.index')}}" class="d-flex justify-center items-center">
                                     <i class="ri-feedback-line"></i>
                                      Feedback List
                                 </a>
+                            </li>
+                            <li  @class(['active' => $active_btn == 'be_instructor'])>
+                                @if (Auth::user()->requestTo_instructor==1)
+
+                                    <span style="color: #525FE1;font-weight:bold">Request sent, wait for approval</span>
+                                
+
+                                 @else
+                                 <a href="{{route('student.ToInstructor',['student'=>Auth::user()->id])}}" class="d-flex justify-center items-center">
+                                    <i class="ri-git-pull-request-line"></i>
+                                     Request to be instructor
+                                </a>
+                                @endif
+
+
                             </li>
                         </ul>
                     </div>
