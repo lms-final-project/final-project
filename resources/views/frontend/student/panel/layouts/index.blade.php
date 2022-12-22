@@ -3,6 +3,8 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/instrcutor/app.css') }}">
+    
+
 @endpush
 
 @section('breadcrump')
@@ -61,7 +63,7 @@
                                 @if (Auth::user()->requestTo_instructor==1)
 
                                     <span style="color: #525FE1;font-weight:bold">Request sent, wait for approval</span>
-                                
+
 
                                  @else
                                  <a href="{{route('student.ToInstructor',['student'=>Auth::user()->id])}}" class="d-flex justify-center items-center">
