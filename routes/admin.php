@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\PaymentController;
 use App\Http\Controllers\Dashboard\ServiceController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\CertificateController;
 
 Route::prefix('dashboard')->as('dashboard.')->middleware(['checkAdmin:admin' , 'auth'])->group( function() {
     Route::get('/',[DashboardController::class , 'index'] )->name('home');
@@ -26,6 +27,9 @@ Route::prefix('dashboard')->as('dashboard.')->middleware(['checkAdmin:admin' , '
     Route::get('all_payments' , [PaymentController::class , 'index'])->name('all_payments');
     //Zoom route
     Route::get('all_zoom_meeting' , [ZoomController::class , 'index'])->name('all_zoom_meeting');
-
+    //Certifcate route
+    Route::get('all_certificate' , [CertificateController::class , 'certificate'])->name('all_certificate');
+    Route::post('accept_certificate/{certificate}' , [CertificateController::class , 'accept_certificate'])->name('accept_certificate');
+    Route::post('reject_certificate/{certificate}' , [CertificateController::class , 'reject_certificate'])->name('reject_certificate');
 
 });

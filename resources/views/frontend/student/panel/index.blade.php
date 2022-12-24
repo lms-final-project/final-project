@@ -68,10 +68,11 @@
 
     <div class="panel" style="margin-right: 20px" >
         <ol>
-            <li>To see all the courses you are enrolled in,click on Show All My Courses on the left</li>
+            <li>To see all the courses you are enrolled in and send certificate request ,click on Show All My Courses on the left</li>
             <li>If you want to change your password,click on Edit Password on the left</li>
             <li>If you want to write a feedback,click Feedback List on the left</li>
             <li>If you want to send request to be a instructor,click Request to be Instructor on the left</li>
+            <li>To see all certificte requests ,click All Cerificate Requets on the left</li>
         </ol>
         </div>
 @endsection

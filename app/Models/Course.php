@@ -63,4 +63,5 @@ class Course extends Model
 public function assignments(){
     return $this->hasMany( Assignment::class ,'course_id','id' );
 }
+
 }

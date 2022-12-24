@@ -3,7 +3,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/instrcutor/app.css') }}">
-    
+
 
 @endpush
 
@@ -33,28 +33,28 @@
                         <ul class="dashboard__list__items">
 
                             <li @class(['active' => $active_btn == 'dashboard'])>
-                                <a href="{{ route('student.panel') }}" class="d-flex justify-center items-center">
+                                <a style="font-size: 15px" href="{{ route('student.panel') }}" class="d-flex justify-center items-center">
                                     <i class="ri-dashboard-line me-2"></i>
                                     dashboard
                                 </a>
                             </li>
 
                             <li  @class(['active' => $active_btn == 'courses'])>
-                                <a href="{{route('student.courses')}}" class="d-flex justify-center items-center">
+                                <a style="font-size: 15px"  href="{{route('student.courses')}}" class="d-flex justify-center items-center">
                                     <i class="ri-slideshow-line"></i>
                                     show all my courses
                                 </a>
                             </li>
 
                             <li  @class(['active' => $active_btn == 'profile_password'])>
-                                <a href="{{route('password')}}" class="d-flex justify-center items-center">
+                                <a style="font-size: 15px"  href="{{route('password')}}" class="d-flex justify-center items-center">
                                     <i class="ri-profile-line"></i>
                                     Edit Password
                                 </a>
                             </li>
 
                             <li  @class(['active' => $active_btn == 'feedback'])>
-                                <a href="{{route('feedback.index')}}" class="d-flex justify-center items-center">
+                                <a style="font-size: 15px"href="{{route('feedback.index')}}" class="d-flex justify-center items-center">
                                     <i class="ri-feedback-line"></i>
                                      Feedback List
                                 </a>
@@ -66,12 +66,21 @@
 
 
                                  @else
-                                 <a href="{{route('student.ToInstructor',['student'=>Auth::user()->id])}}" class="d-flex justify-center items-center">
+                                 <a style="font-size: 15px"  href="{{route('student.ToInstructor',['student'=>Auth::user()->id])}}" class="d-flex justify-center items-center">
                                     <i class="ri-git-pull-request-line"></i>
                                      Request to be instructor
                                 </a>
                                 @endif
 
+
+                            </li>
+
+                            <li  @class(['active' => $active_btn == 'certificate'])>
+
+                                 <a style="font-size: 15px" href="{{route('student.certificate.index')}}"  class="d-flex justify-center items-center">
+                                    <i class="ri-article-line"></i>
+                                   All Certificate Requests
+                                </a>
 
                             </li>
                         </ul>
@@ -87,6 +96,10 @@
         </div>
     </div>
 </div>
+
+
+
+
 @endsection
 
 @push('scripts')

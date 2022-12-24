@@ -66,7 +66,7 @@
                                     <button class="nav-link" id="asignment-tab" data-bs-toggle="tab" data-bs-target="#assignments" type="button" role="tab" aria-controls="assignments" aria-selected="false">Assignments</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="meeting-tab" data-bs-toggle="tab" data-bs-target="#meetings" type="button" role="tab" aria-controls="meetings" aria-selected="false">Meetings</button>
+                                    <button class="nav-link" id="meetings-tab" data-bs-toggle="tab" data-bs-target="#meetings" type="button" role="tab" aria-controls="meetings" aria-selected="false">Meetings</button>
                                 </li>
                                 @endif
 
@@ -230,7 +230,31 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="tab-pane fade" id="meetings" role="tabpanel" aria-labelledby="meetings-tab">
+                                    <div class="course-tab-content">
+
+                                        <div class="edu-accordion-02" id="accordionExample1">
+                                            @if( Auth::user()->role_id==3)
+                                            <span><i class="ri-external-link-fill"></i>Zoom Links:<br><br> <a href="{{route('Zoom',['course'=>$course->id])}}"></span><span>Click here to access all Zoom links for this course:</a></span></li>
+
+                                            @elseif( Auth::user()->role_id==2)
+
+                                            <span><i class="ri-external-link-fill"></i>Zoom Links: <br><br><a href="{{route('indexZoom',['course'=>$course->id])}}"></span><span>Click here to schedule all meetings for this course:</a></span>
+                                            @endif
+
+                                        </div>
+                                    </div>
+                                </div>
                                 @endauth
+
+
+
+
+
+
+
                                 <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
                                     <div class="course-tab-content">
                                         <div class="course-author-wrapper">
@@ -305,15 +329,7 @@
 
                                                 <li><span><i class="icon-user-2-line_tie"></i>Instructor</span><span>{{ $course->instructor->name }}</span></li>
                                                 <li><span><i class="icon-user-2"></i>Enrolled</span><span>{{$course->users->count()}}</span></li>
-                                                @if ($is_registered )
-                                                @if( Auth::user()->role_id==3)
-                                                <li><span><i class="ri-external-link-fill"></i>ZoomLinks <a href="{{route('Zoom',['course'=>$course->id])}}"></span><span>ShowMeeting</a></span></li>
 
-                                                @elseif( Auth::user()->role_id==2)
-
-                                                <li><span><i class="ri-external-link-fill"></i>ZoomLinks <a href="{{route('indexZoom',['course'=>$course->id])}}"></span><span>ShowMeeting</a></span></li>
-                                                @endif
-                                                @endif
                                                 <li><span><i class="ri-calendar-todo-line"></i>StartDate</span><span>{{ $course->start_date }}</span></li>
                                                 <li><span><i class="ri-calendar-todo-line"></i>EndDate</span><span>{{ $course->end_date }}</span></li>
                                                 <li><span style="font-size: 14px"><i class="ri-time-line"></i>CourseTime</span><span style="font-size: 10px;font-weight:800">{{ $course->start_time}}-{{$course->end_time}} </span></li>

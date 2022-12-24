@@ -9,8 +9,13 @@ use App\Http\Controllers\Frontend\Student\StudentProfileController;
 
 Route::prefix('student')->middleware('checkStudent:student')->group(function(){
     Route::get('/panel' , [DashboardController::class , 'index'])->name('student.panel');
-    Route::post('/panel/{student}' , [DashboardController::class , 'update'])->name('student.ToInstructor');
+    Route::get('/panel/{student}' , [DashboardController::class , 'update'])->name('student.ToInstructor');
     Route::get('/courses' , [CoursesController::class , 'registered_courses'])->name('student.courses');
+    Route::get('/certificate' , [DashboardController::class , 'certificate'])->name('student.certificate');
+    Route::get('/certificate_index' , [DashboardController::class , 'index_certificate'])->name('student.certificate.index');
+    Route::post('/certificate_delete/{certificate}' , [DashboardController::class , 'delete_certificate'])->name('student.certificate.delete');
+    Route::post('/print_certificate/{certificate}' , [DashboardController::class , 'print_certificate'])->name('student.certificate.print');
+
     Route::resource('/profile', StudentProfileController::class);
     Route::get('/password',[StudentProfileController::class , 'password'])->name('password');
     Route::post('/change_password',[StudentProfileController::class , 'change_password'])->name('change_password');

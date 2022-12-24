@@ -78,6 +78,16 @@
                     </a>
 
                 </li>
+
+
+                <li class="nav-item pcoded-hasmenu">
+                    <a href="{{route('dashboard.all_certificate')}}" @class(['active' =>$active_button == 'certificate'])>
+                        <span class="pcoded-micon"><i  class="ri-article-line text-c-white mb-1 d-block"></i></span>
+                       <span class="pcoded-mtext">Certificate</span>
+                    </a>
+
+                </li>
+
             </ul>
         </div>
     </div>

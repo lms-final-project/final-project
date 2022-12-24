@@ -50,19 +50,18 @@
                                             </form>
                                         @endif
 
-                                            <form class="ms-2" action="{{  route('dashboard.users.destroy',['user'=>$user->id]) }}" method="post">
+                                            <form class="ms-2 delete-form" action="{{  route('dashboard.users.destroy',['user'=>$user->id]) }}" method="post">
                                                 @method('delete')
                                                 @csrf
-
-                                                <button class="btn btn-sm btn-danger rounded-3 " style="font-size: 12px">Delete</button>
-
+                                                <input type="button" class="btn btn-sm btn-danger delete-btn" value="Delete">
                                             </form>
+
                                             </div>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <th colspan="5">No users yet</th>
+                                        <th colspan="5">No users  yet</th>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -73,3 +72,23 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.delete-btn').on('click' , ()=>{
+            Swal.fire({
+                title: 'Are you sure to delete this service?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $('.delete-btn').closest('.delete-form').submit();
+                }
+            })
+        })
+    </script>
+@endpush

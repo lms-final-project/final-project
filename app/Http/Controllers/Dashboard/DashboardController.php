@@ -26,4 +26,6 @@ class DashboardController extends Controller
         return view('dashboard.Home' , compact('users_count','instructor_count','student_enrolled','course_count','category_count','zoom_meeting_count','services_count','generalQuestion_count'));
     }
 
+    
+
 }

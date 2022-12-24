@@ -37,16 +37,21 @@
                             <h6 class="title">
                                 <a href="{{ route('course_details', $course->id) }}">{{ $course->title }}</a>
                             </h6>
+                            <ul class="edu-meta meta-01">
+                                <li><i class="icon-account-circle-line"></i>
+                                  {{$course->users->count()-1}}
 
-                            <div class="card-bottom">
+                            </li>
+                            </ul>
+                            
+                            <div class="d-flex mt-3">
 
-                                <ul class="edu-meta meta-01">
-                                    <li><i class="icon-account-circle-line"></i>
-                                      {{$course->users->count()-1}}
+                                <form class="ms-3" action="{{route('student.certificate')}}" method="GET">
+                                    @csrf
+                                        <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                        <button class="btn  btn-primary btn-lg rounded-3"style="font-size: 12px">Request Certificate</button>
 
-                                </li>
-                                </ul>
-
+                                </form>
                             </div>
 
                         </div>
