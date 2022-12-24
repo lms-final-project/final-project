@@ -1,6 +1,7 @@
 <?php
 
 
+// use Barryvdh\DomPDF\ServiceProvider;
 use Illuminate\Support\Facades\Facade;
 use Srmklive\PayPal\Providers\PayPalServiceProvider;
 
@@ -158,7 +159,7 @@ return [
 
     'providers' => [
 
-         Barryvdh\DomPDF\ServiceProvider::class,
+
 
         /*
          * Laravel Framework Service Providers...
@@ -186,10 +187,10 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-
         /*
          * Package Service Providers...
          */
+
 
         /*
          * Application Service Providers...
@@ -213,8 +214,9 @@ return [
     |
     */
 
-    'aliases' => [
-        'PDF' => Barryvdh\DomPDF\Facade::class,
-      ]
+    'aliases' => Facade::defaultAliases()->merge([
+        // 'ExampleClass' => App\Example\ExampleClass::class,
+        // 'PDF' => Barryvdh\DomPDF\Facade::class,
+    ])->toArray(),
 
 ];
