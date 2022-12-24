@@ -8,6 +8,7 @@ use App\Models\Certificate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class DashboardController extends Controller
 {
