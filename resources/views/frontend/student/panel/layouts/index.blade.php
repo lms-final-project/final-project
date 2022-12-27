@@ -60,16 +60,23 @@
                                 </a>
                             </li>
                             <li  @class(['active' => $active_btn == 'be_instructor'])>
-                                @if (Auth::user()->requestTo_instructor==1)
+                                @if (Auth::user()->requestTo_instructor==1 && Auth::user()->role_id==3)
 
                                     <span style="color: #525FE1;font-weight:bold">Request sent, wait for approval</span>
 
 
-                                 @else
+                                 @elseif(Auth::user()->requestTo_instructor==1 && Auth::user()->role_id==2)
+                                 <span style="color: #525FE1;font-weight:bold">Approval accepted and you became a instructor</span>
+                                 @elseif(auth()->user()->requestTo_instructor==0)
                                  <a style="font-size: 15px"  href="{{route('student.ToInstructor',['student'=>Auth::user()->id])}}" class="d-flex justify-center items-center">
+                                   
                                     <i class="ri-git-pull-request-line"></i>
-                                     Request to be instructor
+                                     Request to be instructor 
                                 </a>
+                            
+                                
+                                      
+
                                 @endif
 
 

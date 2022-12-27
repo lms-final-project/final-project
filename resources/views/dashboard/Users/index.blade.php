@@ -4,6 +4,54 @@
 ])
 
 @section('content')
+<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLiveLabel">Create User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form action="{{ route('dashboard.users.store') }}" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    @csrf
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" name="name" id="Username" placeholder="User name">
+                            <x-input_error :messages="$errors->get('name')" class="mt-2" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" id="Email" name="email" placeholder="Email address">
+                            <x-input_error :messages="$errors->get('email')" class="mt-2" />
+                        </div>
+                        <div class="form-group mb-4">
+                            <input type="password" class="form-control" id="Password" name="password" placeholder="Password">
+                        </div>
+                        <div class="form-group mb-4">
+                            <input type="password" class="form-control" id="Password" name="password_confirmation" placeholder="Password Confirmation">
+                            <x-input_error :messages="$errors->get('password')" class="mt-2" />
+                            <x-input_error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        </div>
+                        <div class="form-group mb-4" >
+                            <label>Select role of user</label>
+                            <select name="role"class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option selected value="2">Instructor</option>
+                                <option value="3">Student</option>
+                               
+                              </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModalLive">
+    Add User
+</button>
     <div class="row">
         <div class="col-12">
             <div class="card">

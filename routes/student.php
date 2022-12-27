@@ -9,7 +9,7 @@ use App\Http\Controllers\Frontend\Student\DashboardController;
 use App\Http\Controllers\Frontend\Student\CertificateController;
 use App\Http\Controllers\Frontend\Student\StudentProfileController;
 
-Route::prefix('student')->middleware('checkStudent:student')->group(function(){
+Route::prefix('student')->middleware('checkStudent:student|instructor')->group(function(){
     Route::get('/panel' , [DashboardController::class , 'index'])->name('student.panel');
     Route::get('/panel/{student}' , [DashboardController::class , 'update'])->name('student.ToInstructor');
     Route::get('/courses' , [CoursesController::class , 'registered_courses'])->name('student.courses');
