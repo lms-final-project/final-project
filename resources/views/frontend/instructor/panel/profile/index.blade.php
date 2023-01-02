@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-4 pr--55">
-
+                @if($instructor_details != null)
                 <div class="instructor-profile-left">
                     <div class="inner">
                         <div class="thumbnail">
@@ -62,11 +62,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>@else
+                <span class="pre-title">This Instructor does not have a profile</span>
+                @endif
             </div>
             <div class="col-lg-8">
                 <div class="instructor-profile-right">
                     <div class="inner">
+                        @if($instructor_details !=null)
                         <div class="section-title text-start">
                             <span class="pre-title">About Me</span>
                             <h3 class="title">Hello, I’m {{$instructor_details->user->name}}</h3>
@@ -158,11 +161,16 @@
 
                             </div>
                         </div>-->
-
+@endif
                         <div class="edu-course-wrapper pt--65">
                             <div class="section-title text-start mb--20">
                                 <span class="pre-title">Courses</span>
+                                @if($instructor_details != null)
                                 <h3 class="title">Course By : {{$instructor_details->user->name}}</h3>
+                                @else
+                                <h3 class="title">Course By : This Instructor</h3>
+                               
+                                @endif
                             </div>
                             <div class="instructor-profile-courses course-activation course-activation-item-2 slick-gutter-15 edu-slick-button">
                                 @forelse ($courses as $course)
@@ -221,6 +229,7 @@
             </div>
         </div>
     </div>
-</div>
+   
+
 
 @endsection

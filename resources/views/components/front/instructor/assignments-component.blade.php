@@ -41,7 +41,12 @@
                         <button class="btn btn-danger btn-sm rounded-3 delete-btn "style="font-size: 16px"><i class="ri-delete-bin-6-line"></i></button>
                         <input type="hidden" name="course_id" value="{{ $assignment->course_id }}">
                     </form>
-
+                    <form class="ms-3" action="{{route('Assessment',$assignment->id)}}" method="get">
+                        @csrf
+                       @method('post')
+                            <button class="btn btn-success btn-sm rounded-3"style="font-size: 11px">Student Assessment</button>
+                        
+                    </form>
 
 
                 </div>

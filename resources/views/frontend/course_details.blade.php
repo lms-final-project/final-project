@@ -171,11 +171,18 @@
                                                                     @if ($assignment->is_active)
                                                                     <a  href="{{ route('download' , $assignment->file) }}"><i class="ri-file-download-line"></i>{{$assignment->description}}</a>
                                                                     @php
+                                                                    
                                                                          $statusAssignment=auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->status;
-                                                                             if($statusAssignment=="completed"){
-                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:#525FE1;color:white;padding:2px\">submitted for grading</span> ";}
-                                                                             else{
-                                                                           echo" <div class=\"icon\"> <i class=\"ri-lock-unlock-line\"></i><button type=\"button\" class=\" btn\" style=\"background-color:#525fe1\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">upload solution
+                                                                         $assessmentAssignment=auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->assessment;
+                                                                         
+                                                                             if($statusAssignment=="completed" && $assessmentAssignment=="waiting_assessment"){
+                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:#525FE1;color:white;padding:2px\">Submitted for grading</span> ";}
+                                                                                    elseif($statusAssignment=="completed" && $assessmentAssignment=="fail"){
+                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:red;color:white;padding:2px\">Fail</span> ";} 
+                                                                                    elseif($statusAssignment=="completed" && $assessmentAssignment=="pass"){
+                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:green;color:white;padding:2px\">Pass</span> ";}
+                                                                                   else{
+                                                                                    echo" <div class=\"icon\"> <i class=\"ri-lock-unlock-line\"></i><button type=\"button\" class=\" btn\" style=\"background-color:#525fe1\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">upload solution
                                                                                </button></div>";
                                                                                 }
                                                                       @endphp

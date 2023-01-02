@@ -42,6 +42,7 @@
 </head>
 
 <!-- [ auth-signin ] start -->
+
 <div class="auth-wrapper">
 	<div class="auth-content text-center">
 		<img src="{{ asset('dashboard/assets/images/Knowledgeacademy1.png')}}" alt="" class="img-fluid mb-4 KnwoledgeBordr ">
@@ -50,15 +51,27 @@
 			<div class="row align-items-center ">
 				<div class="col-md-12">
                     <div class="card-body">
+      
                         <form  method="POST" action="{{ route('login') }}">
                             @csrf
                             <h4 class="mb-3 f-w-600">Signin</h4>
                             <hr>
                             <div class="form-group mb-3">
-                                <input type="text" class="form-control" name="email" id="Email" placeholder="Email address">
+                                <input type="text" class="form-control" name="email" id="Email"@class(['form-control' , 'is-invalid' => $errors->has( 'email' )]) placeholder="Email address">
+                               
+                                @error('email')
+                    <span class="invalid-email text-danger">
+                        {{ $message }}
+                    </span>
+                @enderror
                             </div>
                             <div class="form-group mb-4">
-                                <input type="password" class="form-control" name="password" id="Password" placeholder="Password">
+                                <input type="password" class="form-control" name="password" id="Password"@class(['form-control' , 'is-invalid' => $errors->has( 'password' )]) placeholder="Password">
+                                @error('password')
+                                <span  class="invalid-password text-danger">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                             </div>
                             <div class="custom-control custom-checkbox text-left mb-4 mt-2">
                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
