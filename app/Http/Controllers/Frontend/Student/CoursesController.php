@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Frontend\Student;
 
-
-
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Assignment;
