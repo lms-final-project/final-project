@@ -182,7 +182,7 @@
                                                                                     elseif($statusAssignment=="completed" && $assessmentAssignment=="pass"){
                                                                                     echo "<span class=\"rounded-3\" style=\"background-color:green;color:white;padding:2px\">Pass</span> ";}
                                                                                    else{
-                                                                                    echo" <div class=\"icon\"> <i class=\"ri-lock-unlock-line\"></i><button type=\"button\" class=\" btn\" style=\"background-color:#525fe1\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">upload solution
+                                                                                    echo" <div class=\"icon\"> <i class=\"ri-lock-unlock-line\"></i><button type=\"button\" class=\" btn\" style=\"background-color:#525fe1\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal$assignment->id\">upload solution$assignment->id
                                                                                </button></div>";
                                                                                 }
                                                                       @endphp
@@ -198,18 +198,19 @@
                                                 </div>
                                                                 <!-- Button trigger modal -->
                                                                 <!-- Modal -->
-                                                                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                   <div class="modal fade" id="exampleModal{{$assignment->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                    <div class="modal-dialog">
                                                                      <div class="modal-content">
                                                                        <div class="modal-header">
                                                                          <h5 class="modal-title" id="exampleModalLabel">Upload Solution File</h5>
+                                                                         {{$assignment->id}}
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <form action="{{route('upload_solution',['assignment'=>$assignment->id])}}" enctype="multipart/form-data" method="POST">
                                                                          @csrf
                                                                          <div class="modal-body">
                                                                             <div class="card-body">
-                                                                                <div class="form-group">
+                                                                                <div class="form-group"> 
                                                                                     <label for="name">Solution</label>
                                                                                     <input type="file" name="solution" @class(['form-control' , 'is-invalid' => $errors->has('solution')])  id="solution"  placeholder="Add solution">
                                                                                     @error('solution')

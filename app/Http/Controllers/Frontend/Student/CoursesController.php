@@ -28,6 +28,7 @@ class CoursesController extends Controller
     }
 
     public function upload_solution(Request $request,$assignment_id){
+        
         if($request->hasFile('solution')){
             $filefile = $request->file('solution');
             $pathfile = $filefile->store('students/solution/assignments' , 'public');
@@ -36,7 +37,9 @@ class CoursesController extends Controller
             'solution' => 'required',
 
         ]);
-        $student = AssignmentStudent::where('user_id', Auth::user()->id)->first();
+        $student = AssignmentStudent::where('user_id', Auth::user()->id)->where('assignment_id','=',$assignment_id)->first();
+        
+       
         $student->update([
         'solution_file'=>$pathfile,
         'status'=>'completed',
