@@ -268,7 +268,7 @@
                                         <div class="course-author-wrapper">
                                             <div class="thumbnail">
                                                 @if ($course->instructor->instructor_details && $course->instructor->instructor_details->image)
-                                                    <img src="{{asset('storage/'.$course->instructor->instructor_details->image)}}" alt="Author Images" class="img-fluid">
+                                                    <img src="{{asset('storage/'.$course->instructor->instructor_details->image)}}" alt="Author Images" style="width: 200px;height:232px" class="img-fluid">
                                                 @else
                                                     <img src="{{asset('assets/images/default_instructor_image.png')}}" alt="Author Images">
                                                 @endif
@@ -297,6 +297,9 @@
                                                         @if ($course->instructor->instructor_details->social_links['twitter'])
                                                             <li><a href="{{$course->instructor->instructor_details->social_links['twitter']}}"><i class="icon-Twitter"></i></a></li>
                                                         @endif
+                                                        @if ($course->instructor->instructor_details->user->email)
+                                                        <li><a href="mailto:{{$course->instructor->instructor_details->user->email}}"><i class="ri-mail-line" ></i></a></li>
+                                                    @endif
                                                     </ul>
                                                 @endif
 

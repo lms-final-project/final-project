@@ -4,7 +4,7 @@
 
     <form action="{{route('store_profile')}}" enctype="multipart/form-data" method="POST">
         @csrf
-       @method('post')
+       
         <div class="row">
             <h5 class="text-center">My profile</h5>
             <div class="col-12">

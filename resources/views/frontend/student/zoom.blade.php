@@ -5,7 +5,7 @@
 
         <div class="row">
 
-            <h5 class="text-left" style="font-size: 25px;color:rgba(38, 0, 255, 0.822)">Scheduled Meeting</h5>
+            <h5 class="text-left" style="font-size: 25px;color:rgba(38, 0, 255, 0.822)">Scheduled Meetings</h5>
             <table class="table">
                 <thead class="thead-dark">
                   <tr>

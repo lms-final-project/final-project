@@ -40,7 +40,7 @@
                             <h5 class="title">{{$instructor_details->user->name}}</h5>
                             <span class="subtitle">{{$instructor_details->job_title}}</span>
                             <div class="contact-with-info">
-                                <p><span>Email:</span> <a href="#">{{$instructor_details->user->email}}</a></p>
+                                <p><span>Email:</span> <a href="mailto:{{$instructor_details->user->email}}">Send Email</a></p>
                                 <p><span>Phone:</span> <a href="tel:+91 458 654 528">{{$instructor_details->phone}}</a></p>
                             </div>
 
@@ -54,11 +54,13 @@
                                 @if ($instructor_details->social_links['twitter'])
                                     <li><a href="{{$instructor_details->social_links['twitter']}}"><i class="icon-Twitter"></i></a></li>
                                 @endif
-                            </ul>
-                            <div class="d-flex">
+                               
 
-                               <div style="background-color: #525FE1;margin-right:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="{{route('edit_profile')}}">Edit Profile</a></div>
-                                <div style="background-color: #525FE1;margin-left:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="">Contact Me</a></div>
+                            </ul>
+                            <div class="d-flex" >
+
+                               <div style="background-color: #525FE1;margin:auto;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="{{route('edit_profile')}}">Edit Profile</a></div>
+                               
                             </div>
                         </div>
                     </div>
