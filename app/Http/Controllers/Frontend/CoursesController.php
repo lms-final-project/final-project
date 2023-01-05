@@ -40,6 +40,7 @@ class CoursesController extends Controller
            return view('frontend.course_details' , compact('course','courses','courseHeading','is_registered' ));
            }
     }
+    
     public function download($file){
         return response()->download(public_path('storage/'.$file));
     }

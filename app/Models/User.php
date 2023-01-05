@@ -32,7 +32,8 @@ class User extends Authenticatable
         'password',
         'role_id',
         'requestTo_instructor',
-        'certification_request'
+        'certification_request',
+        'status',
     ];
 
     /**

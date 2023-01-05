@@ -78,9 +78,21 @@ class UserController extends Controller
         $user=User::find($id);
          $user->update([
          'role_id' =>2,
+         'status'=>"accepted",
          ]);
        return redirect()->route('dashboard.users.index')->with('success' , 'The request has been approved ');
     }
+
+    public function reject($id)
+    {
+        $user=User::find($id);
+         $user->update([
+         'role_id' =>3,
+         'status'=>"rejected",
+         ]);
+       return redirect()->route('dashboard.users.index')->with('danger' , 'The request has been rejected ');
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -101,7 +113,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
-    {  $user->delete();
+    {   $user->delete();
 
         return redirect()->route('dashboard.users.index')->with('danger' , 'User deleted succesffully');
     }

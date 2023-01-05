@@ -15,6 +15,7 @@ Route::prefix('dashboard')->as('dashboard.')->middleware(['checkAdmin:admin' , '
     Route::get('/',[DashboardController::class , 'index'] )->name('home');
     // Users routes
     Route::resource('/users' , UserController::class);
+    Route::get('/users/reject/{user}' , [UserController::class , 'reject'])->name('reject_requestInstructor');
     // Categories routes
     Route::resource('/category' , CategoryController::class);
     // About routes

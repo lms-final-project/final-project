@@ -13,8 +13,8 @@ class DashboardController extends Controller
 {
     public function index(){
 
-    $registered_courses=auth()->user()->courses;
-     return view('frontend.student.panel.index',compact('registered_courses'));
+       $registered_courses=auth()->user()->courses;
+       return view('frontend.student.panel.index',compact('registered_courses'));
 
     }
 

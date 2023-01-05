@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Instructor;
 
 use Exception;
+use Carbon\Carbon;
 use App\Models\Course;
+use App\Models\Assignment;
 use Illuminate\Http\Request;
+use App\Models\AssignmentStudent;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\Assignment;
-use App\Models\AssignmentStudent;
-use Carbon\Carbon;
+use App\Http\Requests\CreateAssignmentRequest;
+use App\Http\Requests\UpdateAssignmentRequest;
 
 class AssignmentsController extends Controller
 {
@@ -44,11 +46,8 @@ class AssignmentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAssignmentRequest $request)
     {
-
-        // dd($request->all());
-
         DB::beginTransaction();
         try{
             if($request->hasFile('file')){
@@ -116,7 +115,7 @@ class AssignmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $Assignment_id)
+    public function update(UpdateAssignmentRequest $request, $Assignment_id)
     {
         DB::beginTransaction();
         try{

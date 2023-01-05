@@ -90,12 +90,18 @@
                                         @endif
                                         <td>
                                             <div class="d-flex">
-                                                @if($user->role_id==3 && $user->requestTo_instructor==true)
+                                                @if($user->role_id==3 && $user->requestTo_instructor==true &&$user->status=="pinned")
                                             <form action="{{ route('dashboard.users.edit',['user'=>$user->id]) }}" method="get">
                                                 @csrf
-                                                    <button class="btn btn-info btn-sm rounded-3"style="font-size: 12px;margin-right:5px">Accept student to be instructor</button>
+                                                    <button class="btn btn-info btn-sm rounded-5"style="font-size: 12px;margin-right:5px">Accept student to be instructor</button>
 
                                             </form>
+                                            <form action="{{route('dashboard.reject_requestInstructor',['user'=>$user->id])}}" method="get">
+                                                @csrf
+                                                    <button class="btn btn-secondary btn-sm rounded-5"style="font-size: 12px;margin-right:5px">Reject student to be instructor</button>
+
+                                            </form>
+
                                         @endif
 
                                             <form class="ms-2 delete-form" action="{{  route('dashboard.users.destroy',['user'=>$user->id]) }}" method="post">

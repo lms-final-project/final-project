@@ -10,7 +10,6 @@ class DashboardController extends Controller
 {
     public function index(){
         $allcourses=Course::all();
-       // dd($allcourses);
         return view('frontend.instructor.panel.index',compact('allcourses'));
     }
 }

@@ -27,7 +27,7 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-            return view('frontend.student.panel.feedback.create');
+        return view('frontend.student.panel.feedback.create');
 
     }
 

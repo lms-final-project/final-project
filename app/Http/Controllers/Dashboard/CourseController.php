@@ -10,7 +10,6 @@ class CourseController extends Controller
 {
     public function index(){
         $courses=Course::all();
-       // dd($courses);
         return view('dashboard.Courses.index',compact('courses'));
     }
 

@@ -60,13 +60,15 @@
                                 </a>
                             </li>
                             <li  @class(['active' => $active_btn == 'be_instructor'])>
-                                @if (Auth::user()->requestTo_instructor==1 && Auth::user()->role_id==3)
+                                @if (Auth::user()->requestTo_instructor==1 && Auth::user()->status=="pinned")
 
                                     <span style="color: #525FE1;font-weight:bold">Request sent, wait for approval</span>
 
 
-                                 @elseif(Auth::user()->requestTo_instructor==1 && Auth::user()->role_id==2)
+                                 @elseif(Auth::user()->requestTo_instructor==1 && Auth::user()->status=="accepted")
                                  <span style="color: #525FE1;font-weight:bold">Approval accepted and you became a instructor</span>
+                                 @elseif(Auth::user()->requestTo_instructor==1 && Auth::user()->status=="rejected")
+                                 <span style="color:red;font-weight:bold">Rejected request to be instructor</span>
                                  @elseif(auth()->user()->requestTo_instructor==0)
                                  <a style="font-size: 15px"  href="{{route('student.ToInstructor',['student'=>Auth::user()->id])}}" class="d-flex justify-center items-center">
                                    

@@ -90,7 +90,7 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
                                         StudentPanel
                                     </button>
                                 </form>
-                                @elseif(auth()->user()->role->name == 'instructor' && auth()->user()->requestTo_instructor==1)
+                                @elseif(auth()->user()->role->name == 'instructor' && auth()->user()->requestTo_instructor==1 &&auth()->user()->status=="accepted")
                                 <div class="has-droupdown" >
                                     <a class=" dropdown-toggle edu-btn btn-medium left-icon header-button ms-3 fs-5" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
                                         Instructor/Student Panel
