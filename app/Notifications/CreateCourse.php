@@ -16,12 +16,12 @@ class CreateCourse extends Notification
      *
      * @return void
      */
-    private $course_id;
+    private $courseid;
     private $instructorName;
     private $courseName;
-    public function __construct($course_id,$instructorName,$courseName)
+    public function __construct($courseid,$instructorName,$courseName)
     {
-        $this->$course_id=$course_id;
+        $this->$courseid=$courseid;
         $this->$instructorName=$instructorName;
         $this->$courseName=$courseName;
     }
@@ -60,7 +60,7 @@ class CreateCourse extends Notification
     public function toArray($notifiable)
     {
         return [
-            'course_id'=>$this->$course_id,
+            'courseid'=>$this->$courseid,
             'instructor'=>$this->$instructorName,
             'courseName'=>$this->$courseName,
         ];

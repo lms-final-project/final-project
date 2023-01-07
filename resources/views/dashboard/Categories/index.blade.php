@@ -75,12 +75,12 @@
                             <td>
                                 <div class="d-flex">
 
-                                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModalLive{{ $category->id }}">Update</button>
+                                    <button type="button" class="btn btn-sm btn-info"style="height:30px"  data-toggle="modal" data-target="#exampleModalLive{{ $category->id }}">Update</button>
                                     @if ( $category->is_removable )
                                         <form action="{{ route('dashboard.category.destroy' , $category->id) }}" method="post" class="ml-2 delete-form">
                                             @csrf
                                             @method('delete')
-                                            <input type="button" class="btn btn-sm btn-danger delete-btn" value="Delete">
+                                            <input type="button" class="btn btn-sm btn-danger delete-btn" style="height:30px" value="Delete">
                                         </form>
                                     @endif
                                 </div>
@@ -154,7 +154,7 @@
     <script>
         $('.delete-btn').on('click' , function(){
             Swal.fire({
-                title: 'Are you sure to delete this service?',
+                title: 'Are you sure to delete this category?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,

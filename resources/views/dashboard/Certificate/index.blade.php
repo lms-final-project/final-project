@@ -65,21 +65,5 @@
     </div>
 @endsection
 @push('scripts')
-    <script>
-        $('.delete-btn').on('click' , ()=>{
-            Swal.fire({
-                title: 'Are you sure to delete this service?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    $('.delete-btn').closest('.delete-form').submit();
-                }
-            })
-        })
-    </script>
+    
 @endpush

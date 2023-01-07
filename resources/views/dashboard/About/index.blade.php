@@ -69,11 +69,13 @@
                             <td>
                                 <div class="d-flex">
 
-                                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModalLive{{ $about->id }}">Update</button>
+                                    <button type="button" class="btn btn-sm btn-info "style="height:30px" data-toggle="modal" data-target="#exampleModalLive{{ $about->id }}">Update</button>
+                                    
                                     <form action="{{ route('dashboard.about.destroy' , $about->id) }}" method="post" class="ml-2 delete-form">
                                         @csrf
                                         @method('delete')
-                                        <input type="button" class="btn btn-sm btn-danger delete-btn" value="Delete">
+                                        <input type="button" class="btn btn-sm btn-danger delete-btn p-2"style="height:30px" value="Delete">
+                                       
                                     </form>
                                 </div>
                             </td>
@@ -140,7 +142,7 @@
     <script>
         $('.delete-btn').on('click' , ()=>{
             Swal.fire({
-                title: 'Are you sure to delete this service?',
+                title: 'Are you sure to delete this question?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,

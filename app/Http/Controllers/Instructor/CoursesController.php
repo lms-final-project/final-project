@@ -116,12 +116,12 @@ class CoursesController extends Controller
 
            
 
-            $AllStudents=User::where('role_id','=',3)->get();
+          /*  $AllStudents=User::where('role_id','=',3)->get();
              $instructorName=Auth::user()->name;
              $courseName=$course->title;
-             $course_id=$course->id;
+             $courseid=$course->id;
             // dd($course_id);
-            Notification::send($AllStudents,new CreateCourse($course_id,$instructorName,$courseName));
+            Notification::send($AllStudents,new CreateCourse($courseid,$instructorName,$courseName));*/
             DB::commit();
             return redirect()->route('courses.index')->with('success' , 'Course added succesffully');
         }catch(Exception $e){

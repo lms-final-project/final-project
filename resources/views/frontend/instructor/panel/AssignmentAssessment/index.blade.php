@@ -34,7 +34,7 @@
                         
                         
                        <td> <div class="d-flex">
-                                                @if($student->assessment=='waiting_assessment' && $student->status == "completed")
+                                                @if($student->assessment=='waiting assessment' && $student->status == "completed")
                                                     <form action="{{route('PassAssessment',$student->assignment_id)}}" method="GET" >
                                                         @csrf
                                                     @method('post')

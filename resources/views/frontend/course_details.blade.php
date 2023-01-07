@@ -175,7 +175,7 @@
                                                                          $statusAssignment=auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->status;
                                                                          $assessmentAssignment=auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->assessment;
                                                                          
-                                                                             if($statusAssignment=="completed" && $assessmentAssignment=="waiting_assessment"){
+                                                                             if($statusAssignment=="completed" && $assessmentAssignment=="waiting assessment"){
                                                                                     echo "<span class=\"rounded-3\" style=\"background-color:#525FE1;color:white;padding:2px\">Submitted for grading</span> ";}
                                                                                     elseif($statusAssignment=="completed" && $assessmentAssignment=="fail"){
                                                                                     echo "<span class=\"rounded-3\" style=\"background-color:red;color:white;padding:2px\">Fail</span> ";} 
@@ -203,7 +203,7 @@
                                                                      <div class="modal-content">
                                                                        <div class="modal-header">
                                                                          <h5 class="modal-title" id="exampleModalLabel">Upload Solution File</h5>
-                                                                         {{$assignment->id}}
+                                                                        
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <form action="{{route('upload_solution',['assignment'=>$assignment->id])}}" enctype="multipart/form-data" method="POST">

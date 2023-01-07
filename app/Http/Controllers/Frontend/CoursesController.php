@@ -22,7 +22,7 @@ class CoursesController extends Controller
     public function show($course_id){
         $course = Course::findOrFail($course_id);
         $courseHeading = $course->courseHeadings;
-        $courses = Course::with('type')->category($course->category_id )->status('accepted')->get();
+        $courses = Course::with('type')->category($course->category_id )->status('accepted')->where('id','!=',$course_id)->get();
         $assignments=$course->assignments;
         $is_registered = false;
         if(Auth::user()){
