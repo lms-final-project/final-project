@@ -131,7 +131,7 @@
     <script>
         $('.delete-btn').on('click' , ()=>{
             Swal.fire({
-                title: 'Are you sure to delete this service?',
+                title: 'Are you sure to delete this user?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,

@@ -29,7 +29,7 @@ class CoursesComponent extends Component
 
     public function acceptCourse($id){
         $course=Course::find($id);
-       // dd($course);
+       // dd($course)
        $course->update([
         'status'=>'accepted',
        ]);

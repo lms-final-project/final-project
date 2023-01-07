@@ -120,7 +120,7 @@ class CoursesController extends Controller
              $instructorName=Auth::user()->name;
              $courseName=$course->title;
              $course_id=$course->id;
-             dd($course_id);
+            // dd($course_id);
             Notification::send($AllStudents,new CreateCourse($course_id,$instructorName,$courseName));
             DB::commit();
             return redirect()->route('courses.index')->with('success' , 'Course added succesffully');

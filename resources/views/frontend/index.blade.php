@@ -146,7 +146,7 @@
     <section id="service_section">
         <div class="home-three-about edu-about-area about-style-4 bg-color-white edu-section-gapBottom">
             <div class="container eduvibe-animated-shape">
-                <div class="row g-lg-5 g-md-5 g-sm-5">
+                <div class="row g-lg-5 g-md-5 g-sm-5 ">
                     <div class="col-lg-12 col-xl-6">
                         <div class="gallery-wrapper">
                             <img class="image-1" src="{{ asset('frontend/assets/images/about/about-05/about-group-10.jpg')}}" alt="About Images">
