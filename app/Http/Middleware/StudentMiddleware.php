@@ -15,8 +15,9 @@ class StudentMiddleware
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next , $role)
-    {
-        if(auth()->check() && $request->user()->role->name == $role){
+    {$roles=explode('|',$role);
+        
+        if(auth()->check() && in_array($request->user()->role->name,$roles) ){
             return $next($request);
         }
 		return redirect('/');

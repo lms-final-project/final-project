@@ -76,21 +76,47 @@ a.edu-btn.btn-medium.header-button, button.edu-btn.btn-medium.header-button {
                 <div class="header-right d-flex justify-content-end">
 
                         @auth
-                            @if (auth()->user()->role->name == 'instructor')
+                            @if (auth()->user()->role->name == 'instructor' && auth()->user()->requestTo_instructor==0)
                                 <form action="{{ route('instructor.panel') }}" method="GET">
                                     @csrf
                                     <button class="edu-btn btn-medium left-icon header-button ms-3 fs-5" >
                                         InstructorPanel
                                     </button>
                                 </form>
-                                @else
+                                @elseif(auth()->user()->role->name == 'student')
                                 <form action="{{ route('student.panel') }}" method="GET">
                                     @csrf
                                     <button class="edu-btn btn-medium left-icon header-button ms-3 fs-5" ">
                                         StudentPanel
                                     </button>
                                 </form>
+                                @elseif(auth()->user()->role->name == 'instructor' && auth()->user()->requestTo_instructor==1 &&auth()->user()->status=="accepted")
+                                <div class="has-droupdown" >
+                                    <a class=" dropdown-toggle edu-btn btn-medium left-icon header-button ms-3 fs-5" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Instructor/Student Panel
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                        <li>
+                                            <form action="{{ route('student.panel') }}" method="GET">
+                                                @csrf
+                                                <button style="color:#525ee1fd;font-size:10px;font-weight:bold"class="dropdown-item   btn-medium left-icon header-button fs-5">
+                                                    Student Panel
+                                                </button>
+                                            </form> 
+                                        </li>
+
+                                        <li>
+                                            <form action="{{ route('instructor.panel') }}" method="GET">
+                                              @csrf
+                                             <button style="color:#525ee1fd;font-size:10px;font-weight:bold"class="dropdown-item   btn-medium left-icon header-button fs-5" >
+                                             Instructor Panel
+                                         </button>
+                                </form>
+                                        </li>
+                                    </ul>
+                                </div>
                                 
+                               
                             @endif
 
                             <div class="has-droupdown" >

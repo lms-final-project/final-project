@@ -171,11 +171,18 @@
                                                                     @if ($assignment->is_active)
                                                                     <a  href="{{ route('download' , $assignment->file) }}"><i class="ri-file-download-line"></i>{{$assignment->description}}</a>
                                                                     @php
+                                                                    
                                                                          $statusAssignment=auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->status;
-                                                                             if($statusAssignment=="completed"){
-                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:#525FE1;color:white;padding:2px\">submitted for grading</span> ";}
-                                                                             else{
-                                                                           echo" <div class=\"icon\"> <i class=\"ri-lock-unlock-line\"></i><button type=\"button\" class=\" btn\" style=\"background-color:#525fe1\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">upload solution
+                                                                         $assessmentAssignment=auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->assessment;
+                                                                         
+                                                                             if($statusAssignment=="completed" && $assessmentAssignment=="waiting_assessment"){
+                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:#525FE1;color:white;padding:2px\">Submitted for grading</span> ";}
+                                                                                    elseif($statusAssignment=="completed" && $assessmentAssignment=="fail"){
+                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:red;color:white;padding:2px\">Fail</span> ";} 
+                                                                                    elseif($statusAssignment=="completed" && $assessmentAssignment=="pass"){
+                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:green;color:white;padding:2px\">Pass</span> ";}
+                                                                                   else{
+                                                                                    echo" <div class=\"icon\"> <i class=\"ri-lock-unlock-line\"></i><button type=\"button\" class=\" btn\" style=\"background-color:#525fe1\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal$assignment->id\">upload solution$assignment->id
                                                                                </button></div>";
                                                                                 }
                                                                       @endphp
@@ -191,18 +198,19 @@
                                                 </div>
                                                                 <!-- Button trigger modal -->
                                                                 <!-- Modal -->
-                                                                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                   <div class="modal fade" id="exampleModal{{$assignment->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                    <div class="modal-dialog">
                                                                      <div class="modal-content">
                                                                        <div class="modal-header">
                                                                          <h5 class="modal-title" id="exampleModalLabel">Upload Solution File</h5>
+                                                                         {{$assignment->id}}
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <form action="{{route('upload_solution',['assignment'=>$assignment->id])}}" enctype="multipart/form-data" method="POST">
                                                                          @csrf
                                                                          <div class="modal-body">
                                                                             <div class="card-body">
-                                                                                <div class="form-group">
+                                                                                <div class="form-group"> 
                                                                                     <label for="name">Solution</label>
                                                                                     <input type="file" name="solution" @class(['form-control' , 'is-invalid' => $errors->has('solution')])  id="solution"  placeholder="Add solution">
                                                                                     @error('solution')
@@ -260,7 +268,7 @@
                                         <div class="course-author-wrapper">
                                             <div class="thumbnail">
                                                 @if ($course->instructor->instructor_details && $course->instructor->instructor_details->image)
-                                                    <img src="{{asset('storage/'.$course->instructor->instructor_details->image)}}" alt="Author Images" class="img-fluid">
+                                                    <img src="{{asset('storage/'.$course->instructor->instructor_details->image)}}" alt="Author Images" style="width: 200px;height:232px" class="img-fluid">
                                                 @else
                                                     <img src="{{asset('assets/images/default_instructor_image.png')}}" alt="Author Images">
                                                 @endif
@@ -289,6 +297,9 @@
                                                         @if ($course->instructor->instructor_details->social_links['twitter'])
                                                             <li><a href="{{$course->instructor->instructor_details->social_links['twitter']}}"><i class="icon-Twitter"></i></a></li>
                                                         @endif
+                                                        @if ($course->instructor->instructor_details->user->email)
+                                                        <li><a href="mailto:{{$course->instructor->instructor_details->user->email}}"><i class="ri-mail-line" ></i></a></li>
+                                                    @endif
                                                     </ul>
                                                 @endif
 

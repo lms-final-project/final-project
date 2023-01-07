@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-4 pr--55">
-
+                @if($instructor_details != null)
                 <div class="instructor-profile-left">
                     <div class="inner">
                         <div class="thumbnail">
@@ -40,7 +40,7 @@
                             <h5 class="title">{{$instructor_details->user->name}}</h5>
                             <span class="subtitle">{{$instructor_details->job_title}}</span>
                             <div class="contact-with-info">
-                                <p><span>Email:</span> <a href="#">{{$instructor_details->user->email}}</a></p>
+                                <p><span>Email:</span> <a href="mailto:{{$instructor_details->user->email}}">Send Email</a></p>
                                 <p><span>Phone:</span> <a href="tel:+91 458 654 528">{{$instructor_details->phone}}</a></p>
                             </div>
 
@@ -54,19 +54,24 @@
                                 @if ($instructor_details->social_links['twitter'])
                                     <li><a href="{{$instructor_details->social_links['twitter']}}"><i class="icon-Twitter"></i></a></li>
                                 @endif
-                            </ul>
-                            <div class="d-flex">
+                               
 
-                               <div style="background-color: #525FE1;margin-right:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="{{route('edit_profile')}}">Edit Profile</a></div>
-                                <div style="background-color: #525FE1;margin-left:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="">Contact Me</a></div>
+                            </ul>
+                            <div class="d-flex" >
+
+                               <div style="background-color: #525FE1;margin:auto;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="{{route('edit_profile')}}">Edit Profile</a></div>
+                               
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>@else
+                <span class="pre-title">This Instructor does not have a profile</span>
+                @endif
             </div>
             <div class="col-lg-8">
                 <div class="instructor-profile-right">
                     <div class="inner">
+                        @if($instructor_details !=null)
                         <div class="section-title text-start">
                             <span class="pre-title">About Me</span>
                             <h3 class="title">Hello, I’m {{$instructor_details->user->name}}</h3>
@@ -158,11 +163,16 @@
 
                             </div>
                         </div>-->
-
+@endif
                         <div class="edu-course-wrapper pt--65">
                             <div class="section-title text-start mb--20">
                                 <span class="pre-title">Courses</span>
+                                @if($instructor_details != null)
                                 <h3 class="title">Course By : {{$instructor_details->user->name}}</h3>
+                                @else
+                                <h3 class="title">Course By : This Instructor</h3>
+                               
+                                @endif
                             </div>
                             <div class="instructor-profile-courses course-activation course-activation-item-2 slick-gutter-15 edu-slick-button">
                                 @forelse ($courses as $course)
@@ -221,6 +231,7 @@
             </div>
         </div>
     </div>
-</div>
+   
+
 
 @endsection

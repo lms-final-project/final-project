@@ -22,7 +22,7 @@ class CourseZoomController extends Controller
 
             $validated = $request->validate([
 
-                'date'             => ['required' , 'date','date_format:Y-m-d'],
+                'date'             => ['required' , 'date'],
                 'zoom_link'        => ['required' ],
             ]);
             CourseZoom::create([

@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete();
             $table->boolean('requestTo_instructor')->default(false);
+            $table->enum('status',  ['accepted' , 'pinned' , 'rejected'])->default('pinned');
+
             $table->rememberToken();
             $table->timestamps();
         });

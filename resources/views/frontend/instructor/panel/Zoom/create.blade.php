@@ -16,11 +16,12 @@
             <div class="mb-3">
                 <label for="date" class="form-label">Date</label>
                 <input type="date" id="date"@class(['form-control' , 'is-invalid' => $errors->has( 'date' )]) name='date' />
+                
                 @error('date')
-                <span class="invalid-feedback">
-                    {{ $message }}
-                </span>
-            @enderror
+    <span class="invalid-feedback">
+        {{ $message }}
+    </span>
+@enderror
                 </div>
 
 

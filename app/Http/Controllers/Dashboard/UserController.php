@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+
+use Illuminate\Validation\Rules;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -38,7 +41,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password),
+            'role_id'   => $request->role,
+        ]);
+        return redirect()->route('dashboard.users.index')->with('success' , 'User added succesffully');
     }
 
     /**
@@ -63,9 +78,21 @@ class UserController extends Controller
         $user=User::find($id);
          $user->update([
          'role_id' =>2,
+         'status'=>"accepted",
          ]);
        return redirect()->route('dashboard.users.index')->with('success' , 'The request has been approved ');
     }
+
+    public function reject($id)
+    {
+        $user=User::find($id);
+         $user->update([
+         'role_id' =>3,
+         'status'=>"rejected",
+         ]);
+       return redirect()->route('dashboard.users.index')->with('danger' , 'The request has been rejected ');
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -86,7 +113,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
-    {  $user->delete();
+    {   $user->delete();
 
         return redirect()->route('dashboard.users.index')->with('danger' , 'User deleted succesffully');
     }

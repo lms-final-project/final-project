@@ -5,6 +5,7 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\InstructorDetails;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateProfile;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -45,7 +46,7 @@ class ProfileController extends Controller
 
 
 
-    public function update(StoreProfileRequest  $request){
+    public function update(UpdateProfile  $request){
         $instructor_details =  Auth()->user()->instructor_details;
 
         $old_image = $instructor_details->image;

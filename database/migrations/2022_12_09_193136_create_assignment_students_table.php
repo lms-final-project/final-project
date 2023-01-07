@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('solution_file')->nullable();
             $table->enum('status' , ['missed' , 'completed' , 'assigned'])->default('assigned');
+            $table->enum('assessment' , ['pass' , 'fail' , 'waiting assessment'])->default('waiting assessment');
             $table->timestamps();
         });
     }

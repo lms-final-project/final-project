@@ -35,6 +35,13 @@
                         <i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a href="{{route('dashboard.users.index')}}" @class(['active' =>$active_button == 'users'])>
+                        <span class="pcoded-micon"><i  class="ri-user-line text-c-white mb-1 d-block"></i></span>
+                       <span class="pcoded-mtext">Users</span>
+                    </a>
+
+                </li>
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link">
                         <span class="pcoded-micon"><i class="ri-html5-line text-c-white mb-1 d-block"></i></span>
@@ -56,14 +63,14 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item pcoded-hasmenu">
+                <li class="nav-item ">
                     <a href="{{route('dashboard.about.index')}}" @class(['active' =>$active_button == 'about'])>
                         <span class="pcoded-micon"> <i class="ri-question-line text-c-white mb-1 d-block"></i></span>
                         <span class="pcoded-mtext">About</span>
                     </a>
 
                 </li>
-                <li class="nav-item pcoded-hasmenu">
+                <li class="nav-item ">
                     <a href="{{route('dashboard.service.index')}}" @class(['active' =>$active_button == 'service'])>
                         <span class="pcoded-micon"><i class="ri-service-line text-c-white mb-1 d-block"></i></span>
                        <span class="pcoded-mtext">Services</span>
@@ -71,7 +78,7 @@
 
                 </li>
 
-                <li class="nav-item pcoded-hasmenu">
+                <li class="nav-item ">
                     <a href="{{route('dashboard.all_payments')}}" @class(['active' =>$active_button == 'payment'])>
                         <span class="pcoded-micon"><i class="ri-money-dollar-circle-line text-c-white mb-1 d-block"></i></span>
                        <span class="pcoded-mtext">Payment</span>
@@ -80,13 +87,15 @@
                 </li>
 
 
-                <li class="nav-item pcoded-hasmenu">
+                <li class="nav-item ">
                     <a href="{{route('dashboard.all_certificate')}}" @class(['active' =>$active_button == 'certificate'])>
                         <span class="pcoded-micon"><i  class="ri-article-line text-c-white mb-1 d-block"></i></span>
                        <span class="pcoded-mtext">Certificate</span>
                     </a>
 
                 </li>
+
+                
 
             </ul>
         </div>

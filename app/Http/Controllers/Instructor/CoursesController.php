@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Instructor;
 
 use Exception;
+use App\Models\User;
 use App\Models\Course;
 use App\Models\Category;
 use App\Models\CourseDays;
 use App\Models\CourseType;
 use App\Models\CourseUser;
-use App\Models\CourseTopic;
 
+use App\Models\CourseTopic;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\CreateCourse;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
 use App\Http\Requests\Courses\CreateCourseRequest;
 use App\Http\Requests\Courses\UpdateCourseRequest;
 
@@ -83,6 +86,8 @@ class CoursesController extends Controller
                 'end_time'            =>$request->end_time,
                 'instructor_id'         => auth()->user()->id
             ]);
+            
+           
 
             // To Register The Instructor Directly
             if($course->is_free){
@@ -109,11 +114,20 @@ class CoursesController extends Controller
                 }
             }
 
-            DB::commit();
+           
 
+            $AllStudents=User::where('role_id','=',3)->get();
+             $instructorName=Auth::user()->name;
+             $courseName=$course->title;
+             $course_id=$course->id;
+            // dd($course_id);
+            Notification::send($AllStudents,new CreateCourse($course_id,$instructorName,$courseName));
+            DB::commit();
             return redirect()->route('courses.index')->with('success' , 'Course added succesffully');
         }catch(Exception $e){
+            DB::rollback();
             Log::info($e->getMessage());
+            Log::info("jgjfg");
             return redirect()->back()->with('error' , 'Something went wrong!');
         }
 

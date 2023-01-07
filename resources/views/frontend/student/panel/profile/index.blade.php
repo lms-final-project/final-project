@@ -44,9 +44,9 @@
                                 <p><span>Phone:</span> <a href="tel:+91 458 654 528">{{$student_details->phone}}</a></p>
                             </div>
 
-                            <ul class="social-share bg-transparent justify-content-center   medium-size ">
+                            <ul class="social-share bg-transparent justify-content-center    ">
                                 @if ($student_details->social_links['facebook'])
-                                    <li ><a href="{{$student_details->social_links['facebook']}}"><i class="icon-Fb "></i></a></li>
+                                    <li ><a href="{{$student_details->social_links['facebook']}}"><i class="icon-Fb " ></i></a></li>
                                 @endif
                                 @if ($student_details->social_links['linkedin'])
                                     <li><a href="{{$student_details->social_links['linkedin']}}"><i class="icon-linkedin"></i></a></li>
@@ -57,8 +57,8 @@
                             </ul>
                             <div class="d-flex">
 
-                               <div style="background-color: #525FE1;margin-right:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="{{route('profile.edit',$student_details->student_id)}}">Edit Profile</a></div>
-                                <div style="background-color: #525FE1;margin-left:5px;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="">Contact Me</a></div>
+                               <div style="background-color: #525FE1;margin:auto;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="{{route('profile.edit',$student_details->student_id)}}">Edit Profile</a></div>
+                              
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                         <div class="edu-course-wrapper pt--65">
                             <div class="section-title text-start mb--20">
 
-                                <h3 class="title"style="font-size: 30px">Courses Enrolled By : {{$student_details->user->name}}</h3>
+                                <h3 class="pre-title"style="">Courses Enrolled By : {{$student_details->user->name}}</h3>
                             </div><br>
                             <div class="instructor-profile-courses course-activation course-activation-item-2 slick-gutter-15 edu-slick-button">
                                 @forelse ($registered_courses as $course)

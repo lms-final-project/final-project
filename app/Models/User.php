@@ -32,7 +32,8 @@ class User extends Authenticatable
         'password',
         'role_id',
         'requestTo_instructor',
-        'certification_request'
+        'certification_request',
+        'status',
     ];
 
     /**
@@ -101,7 +102,7 @@ class User extends Authenticatable
 }
 
 public function assignments(){
-    return $this->belongsToMany( Assignment::class , 'assignment_students' )->withPivot('status');
+    return $this->belongsToMany( Assignment::class , 'assignment_students' )->withPivot('status','assessment');
 }
 
 }

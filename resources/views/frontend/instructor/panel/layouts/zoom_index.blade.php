@@ -7,7 +7,7 @@
 
 @section('breadcrump')
     @include('frontend.layouts.breadcrumb' , [
-        'title' => ' Schedule Meeting',
+        'title' => ' Scheduled Meetings',
         'items' => [
             [
                 'name' => 'Home',

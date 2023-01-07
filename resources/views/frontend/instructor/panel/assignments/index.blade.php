@@ -34,7 +34,7 @@
         $('.delete-btn').on('click' , function(){
             let delete_btn = $(this)
             $.confirm({
-                title: 'Course will be deleted !',
+                title: 'Assignment will be deleted !',
                 type: 'red',
                 typeAnimated: true,
                 buttons: {

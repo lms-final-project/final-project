@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\Instructor\AssignmentsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Instructor\CoursesController;
 use App\Http\Controllers\Instructor\ProfileController;
 use App\Http\Controllers\Instructor\DashboardController;
 use App\Http\Controllers\Instructor\CourseZoomController;
 use App\Http\Controllers\Instructor\CurriculumController;
+use App\Http\Controllers\Instructor\AssignmentsController;
 use App\Http\Controllers\Instructor\CourseContentController;
+use App\Http\Controllers\Instructor\AssignmentAssessmentController;
+
 
 Route::prefix('instructor')->middleware('checkInstructor:instructor')->group(function () {
     Route::get('/panel', [DashboardController::class, 'index'])->name('instructor.panel');
@@ -32,4 +34,10 @@ Route::prefix('instructor')->middleware('checkInstructor:instructor')->group(fun
     Route::delete('delete/{link}', [CourseZoomController::class, 'deleteZoom'])->name('deleteZoom');
     // Assignments
     Route::resource('assignments' , AssignmentsController::class);
+    //AssignmentAssessment
+    Route::get('assessment/{id}', [AssignmentAssessmentController::class, 'index'])->name('Assessment');
+    Route::get('passAssessment/{id}',[AssignmentAssessmentController::class, 'pass'])->name('PassAssessment');
+    Route::get('failAssessment/{id}',[AssignmentAssessmentController::class, 'fail'])->name('FailAssessment');
+    
+   
 });

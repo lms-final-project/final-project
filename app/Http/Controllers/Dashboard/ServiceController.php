@@ -98,7 +98,7 @@ class ServiceController extends Controller
         }
 
       $service->update([
-'image'=>$path,
+        'image'=>$path,
         'title'                 => $request->title,
         'description'           => $request->description,
 
