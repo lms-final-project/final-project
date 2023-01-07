@@ -160,7 +160,7 @@
                                 <span class="pre-title">Who We Are</span>
                                 <h3 class="title">We Offer The Best Carrier</h3>
                             </div>
-                            <div class="feature-style-6 mt--40">
+                            <div class="feature-style-6 mt--40 newCssMarginTop" style="margin-top:-300px !important">
 
 
                             @forelse ($services as $service)

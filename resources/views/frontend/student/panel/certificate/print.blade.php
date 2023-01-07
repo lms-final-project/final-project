@@ -172,12 +172,7 @@ body {
   }
 }
    
-
-
-  
-
-
-    </style>
+</style>
 </head>
 <body>
     <div class="container pm-certificate-container">
@@ -268,4 +263,5 @@ body {
     coursename={{$certificate->course->title}}<br>
     startdate={{$certificate->course->start_date}}<br>
     enddate={{$certificate->course->end_date}}<br>
-  </body></html>
+  </body>
+  </html>
