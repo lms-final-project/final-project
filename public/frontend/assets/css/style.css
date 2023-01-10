@@ -11182,7 +11182,7 @@ button.edu-btn {
       width: 50px;
       height: 50px;
       line-height: 55px;
-      display: inline-block;
+    
       font-size: 18px;
       color: var(--color-white);
       transition: 0.4s;
@@ -11212,10 +11212,8 @@ button.edu-btn {
         line-height: initial; }
         .social-share.icon-transparent li a:hover {
           color: var(--color-primary); }
-  .social-share.border-style {
-    margin: 0 -7px; }
-    .social-share.border-style li {
-      margin: 0 7px; }
+  
+   
       .social-share.border-style li a {
         background: transparent;
         height: 40px;
@@ -11228,7 +11226,7 @@ button.edu-btn {
         border-radius: 100%;
         font-size: 16px; }
         .social-share.border-style li a:hover {
-          color: var(--color-white);
+          color:var(--color-white);
           background: var(--color-primary);
           border-color: var(--color-primary); }
   .social-share.medium-size li a {

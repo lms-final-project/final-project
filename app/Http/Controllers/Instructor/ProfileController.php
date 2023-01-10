@@ -68,7 +68,7 @@ class ProfileController extends Controller
     }
 
 
-    public function store(StoreProfileRequest $request){
+    public function store(Request $request){
 
         if($request->hasFile('image')){
             $file=$request->file('image');

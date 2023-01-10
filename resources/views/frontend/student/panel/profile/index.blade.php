@@ -2,7 +2,13 @@
 
 
 @push('styles')
-
+<style>
+    .social-share i{
+         margin-bottom: -70px !important;
+        display: block;
+        
+    }
+</style>
 @endpush
 
 @section('breadcrump')

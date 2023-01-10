@@ -14,6 +14,7 @@
 .edu-btn{
     color: #232B87 !important;
     font-weight:800px;
+   
 }
 
 a.edu-btn:hover, button.edu-btn:hover {

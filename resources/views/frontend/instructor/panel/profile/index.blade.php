@@ -2,7 +2,13 @@
 
 
 @push('styles')
-
+<style>
+    .social-share i{
+         margin-bottom: -70px !important;
+        display: block;
+        
+    }
+</style>
 @endpush
 
 @section('breadcrump')
@@ -34,7 +40,7 @@
                 <div class="instructor-profile-left">
                     <div class="inner">
                         <div class="thumbnail">
-                            <img src="{{ asset('storage/'.$instructor_details->image) }}" alt="About Images">
+                            <img src="{{ asset('storage/'.$instructor_details->image) }}"style="width:100px;height:100px" alt="About Images">
                         </div>
                         <div class="content">
                             <h5 class="title">{{$instructor_details->user->name}}</h5>
@@ -46,7 +52,7 @@
 
                             <ul class="social-share bg-transparent justify-content-center medium-size">
                                 @if ($instructor_details->social_links['facebook'])
-                                    <li><a href="{{$instructor_details->social_links['facebook']}}"><i class="icon-Fb"></i></a></li>
+                                    <li><a href="{{$instructor_details->social_links['facebook']}}"><i class=" icon icon-Fb"></i></a></li>
                                 @endif
                                 @if ($instructor_details->social_links['linkedin'])
                                     <li><a href="{{$instructor_details->social_links['linkedin']}}"><i class="icon-linkedin"></i></a></li>
