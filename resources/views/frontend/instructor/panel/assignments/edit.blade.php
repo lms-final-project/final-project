@@ -56,7 +56,7 @@
 <input type="hidden" name="course_id" value="{{$assignment->course_id}}">
             <div class="text-center py-4">
                 <div class="button-group">
-                    <button type="submit" class="edu-btn btn-dark btn-sm">
+                    <button type="submit" class="edu-btn  btn-sm">
                         Update
                         <i class="icon-arrow-right-line-right"></i>
                     </button>
