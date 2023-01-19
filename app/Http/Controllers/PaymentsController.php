@@ -16,8 +16,8 @@ class PaymentsController extends Controller
             'user_id'   =>  auth()->user()->id,
             'course_id' =>  $course_id
         ]);
-    
-        
+
+
         return redirect()->back()->withSuccess('Course purchased successfully');
     }
 
@@ -56,7 +56,7 @@ class PaymentsController extends Controller
                 'is_free'     => false,
                 'amount_paid' => $course->price,
             ]);
-
+dd("gjfgjf");
             return redirect()->route('course_details' , $course_id)->with('success' , 'Course purchased successfully');
         }
         return redirect()->route('course_details' , $course_id)->with('danger' , 'Something went wrong, try again later');
