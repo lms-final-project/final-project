@@ -6,7 +6,7 @@
     .social-share i{
          margin-bottom: -70px !important;
         display: block;
-        
+
     }
 </style>
 @endpush
@@ -60,13 +60,13 @@
                                 @if ($instructor_details->social_links['twitter'])
                                     <li><a href="{{$instructor_details->social_links['twitter']}}"><i class="icon-Twitter"></i></a></li>
                                 @endif
-                               
+
 
                             </ul>
                             <div class="d-flex" >
 
                                <div style="background-color: #525FE1;margin:auto;padding:10px" class="rounded"> <a class="btn   " style="font-size:20px;color:white"href="{{route('edit_profile')}}">Edit Profile</a></div>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                                 <h3 class="title">Course By : {{$instructor_details->user->name}}</h3>
                                 @else
                                 <h3 class="title">Course By : This Instructor</h3>
-                               
+
                                 @endif
                             </div>
                             <div class="instructor-profile-courses course-activation course-activation-item-2 slick-gutter-15 edu-slick-button">
@@ -237,7 +237,7 @@
             </div>
         </div>
     </div>
-   
+
 
 
 @endsection

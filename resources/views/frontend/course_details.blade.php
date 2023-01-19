@@ -2,7 +2,13 @@
 
 
 @push('styles')
+<style>
+    .social-share i{
+         margin-bottom: -70px !important;
+        display: block;
 
+    }
+</style>
 @endpush
 
 @section('breadcrump')
@@ -171,14 +177,14 @@
                                                                     @if ($assignment->is_active)
                                                                     <a  href="{{ route('download' , $assignment->file) }}"><i class="ri-file-download-line"></i>{{$assignment->description}}</a>
                                                                     @php
-                                                                    
+
                                                                          $statusAssignment=auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->status;
                                                                          $assessmentAssignment=auth()->user()->assignments()->where('assignment_id' , $assignment->id)->first()->pivot->assessment;
-                                                                         
+
                                                                              if($statusAssignment=="completed" && $assessmentAssignment=="waiting assessment"){
                                                                                     echo "<span class=\"rounded-3\" style=\"background-color:#525FE1;color:white;padding:2px\">Submitted for grading</span> ";}
                                                                                     elseif($statusAssignment=="completed" && $assessmentAssignment=="fail"){
-                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:red;color:white;padding:2px\">Fail</span> ";} 
+                                                                                    echo "<span class=\"rounded-3\" style=\"background-color:red;color:white;padding:2px\">Fail</span> ";}
                                                                                     elseif($statusAssignment=="completed" && $assessmentAssignment=="pass"){
                                                                                     echo "<span class=\"rounded-3\" style=\"background-color:green;color:white;padding:2px\">Pass</span> ";}
                                                                                    else{
@@ -203,14 +209,14 @@
                                                                      <div class="modal-content">
                                                                        <div class="modal-header">
                                                                          <h5 class="modal-title" id="exampleModalLabel">Upload Solution File</h5>
-                                                                        
+
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <form action="{{route('upload_solution',['assignment'=>$assignment->id])}}" enctype="multipart/form-data" method="POST">
                                                                          @csrf
                                                                          <div class="modal-body">
                                                                             <div class="card-body">
-                                                                                <div class="form-group"> 
+                                                                                <div class="form-group">
                                                                                     <label for="name">Solution</label>
                                                                                     <input type="file" name="solution" @class(['form-control' , 'is-invalid' => $errors->has('solution')])  id="solution"  placeholder="Add solution">
                                                                                     @error('solution')
